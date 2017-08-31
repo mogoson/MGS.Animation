@@ -97,7 +97,7 @@ namespace Developer.Animation
         /// </summary>
         public virtual void CreateCurve()
         {
-            if(anchors.Count == 0)
+            if (anchors.Count == 0)
             {
                 curve = null;
                 return;
@@ -138,5 +138,5 @@ namespace Developer.Animation
             return transform.TransformPoint(curve.Evaluate(time));
         }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

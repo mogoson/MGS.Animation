@@ -109,7 +109,7 @@ namespace Developer.Animation
 
             EditorGUI.BeginChangeCheck();
             script.isClose = EditorGUILayout.Toggle("Close", script.isClose);
-            if(EditorGUI.EndChangeCheck())
+            if (EditorGUI.EndChangeCheck())
             {
                 script.CreateCurve();
                 ActiveSceneWindow();
@@ -117,5 +117,5 @@ namespace Developer.Animation
             }
         }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

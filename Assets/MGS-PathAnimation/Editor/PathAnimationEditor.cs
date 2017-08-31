@@ -42,5 +42,5 @@ namespace Developer.Animation
             }
         }
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

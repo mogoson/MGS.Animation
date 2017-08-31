@@ -36,7 +36,7 @@ namespace Developer.AnimationCurve
             this.value = value;
         }
         #endregion
-    }//struct_end
+    }
 
     public class VectorAnimationCurve
     {
@@ -149,11 +149,11 @@ namespace Developer.AnimationCurve
         /// <param name="weight">The smoothing weight to apply to the keyframe's tangents.</param>
         public void SmoothTangents(float weight)
         {
-            for(int i = 0; i < length; i++)
+            for (int i = 0; i < length; i++)
             {
                 SmoothTangents(i, weight);
             }
         }
         #endregion
-    }//struct_end
-}//namespace_end
+    }
+}

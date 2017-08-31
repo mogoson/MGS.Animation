@@ -115,5 +115,5 @@ namespace Developer.Animation
         }
 #endif
         #endregion
-    }//class_end
-}//namespace_end
+    }
+}

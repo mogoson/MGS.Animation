@@ -1,4 +1,4 @@
-==========================================================================
+ï»¿==========================================================================
   Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
   Name: MGS-PathAnimation
   Author: Mogoson   Version: 0.1.0   Date: 7/9/2017
@@ -9,22 +9,22 @@
   [Demand]
     Create path curve by anchors.
 
-	Play animation base on path curve.
+    Play animation base on path curve.
 --------------------------------------------------------------------------
   [Environment]
     Unity 5.0 or above.
     .Net Framework 3.0 or above.
 --------------------------------------------------------------------------
   [Achieve]
-    Path£ºCreate path curve for animation.
+    Path : Create path curve for animation.
 
-    PathAnimation£ºPlay animation base on path curve.
+    PathAnimation : Play animation base on path curve.
 
-    VectorAnimationCurve£ºDefine 3D curve for path.
+    VectorAnimationCurve : Define 3D curve for path.
 
-    PathEditor£ºEdit anchors of path.
+    PathEditor : Edit anchors of path.
 
-    PathAnimationEditor£ºAlign the animation gameobject to the start
+    PathAnimationEditor : Align the animation gameobject to the start
     point of path curve.
 --------------------------------------------------------------------------
   [Usage]

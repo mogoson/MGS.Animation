@@ -1,31 +1,31 @@
-# MGS-PathAnimation
+ï»¿# MGS-PathAnimation
 - [English Manual](./README.md)
 
-## ¸ÅÊö
-- Unity³¡¾°ÖÐÖÆ×÷Â·¾¶¶¯»­²å¼þ°ü¡£
+## æ¦‚è¿°
+- Unityåœºæ™¯ä¸­åˆ¶ä½œè·¯å¾„åŠ¨ç”»æ’ä»¶åŒ…ã€‚
 
-## ÐèÇó
-- Ãªµã·½Ê½´´½¨Â·¾¶ÇúÏß¡£
-- »ùÓÚÂ·¾¶ÇúÏß²¥·ÅÎïÌåÎ»ÒÆ£¬Ðý×ª¶¯»­¡£
+## éœ€æ±‚
+- é”šç‚¹æ–¹å¼åˆ›å»ºè·¯å¾„æ›²çº¿ã€‚
+- åŸºäºŽè·¯å¾„æ›²çº¿æ’­æ”¾ç‰©ä½“ä½ç§»ï¼Œæ—‹è½¬åŠ¨ç”»ã€‚
 
-## »·¾³
-- Unity 5.0 »ò¸ü¸ß°æ±¾¡£
-- .Net Framework 3.0 »ò¸ü¸ß°æ±¾¡£
+## çŽ¯å¢ƒ
+- Unity 5.0 æˆ–æ›´é«˜ç‰ˆæœ¬ã€‚
+- .Net Framework 3.0 æˆ–æ›´é«˜ç‰ˆæœ¬ã€‚
 
-## ÊµÏÖ
-- Path£º´´½¨¶¯»­Â·¾¶ÇúÏß¡£
-- PathAnimation£º»ùÓÚÂ·¾¶ÇúÏß²¥·ÅÎïÌåÎ»ÒÆ£¬Ðý×ª¶¯»­¡£
-- VectorAnimationCurve£º¶¨ÒåÈýÎ¬¿Õ¼ä¶¯»­ÇúÏß¡£
-- PathEditor£º±à¼­Â·¾¶ÇúÏßÃªµã¡£
-- PathAnimationEditor£º¶¯»­ÎïÌå¶ÔÆëµ½Â·¾¶ÇúÏß¿ª¶Ë¡£
+## å®žçŽ°
+- Pathï¼šåˆ›å»ºåŠ¨ç”»è·¯å¾„æ›²çº¿ã€‚
+- PathAnimationï¼šåŸºäºŽè·¯å¾„æ›²çº¿æ’­æ”¾ç‰©ä½“ä½ç§»ï¼Œæ—‹è½¬åŠ¨ç”»ã€‚
+- VectorAnimationCurveï¼šå®šä¹‰ä¸‰ç»´ç©ºé—´åŠ¨ç”»æ›²çº¿ã€‚
+- PathEditorï¼šç¼–è¾‘è·¯å¾„æ›²çº¿é”šç‚¹ã€‚
+- PathAnimationEditorï¼šåŠ¨ç”»ç‰©ä½“å¯¹é½åˆ°è·¯å¾„æ›²çº¿å¼€ç«¯ã€‚
 
-## °¸Àý
-- ¡°MGS-PathAnimation/Scenes¡±Ä¿Â¼ÏÂ´æÓÐÉÏÊö¹¦ÄÜµÄÑÝÊ¾°¸Àý£¬¹©¶ÁÕß²Î¿¼¡£
+## æ¡ˆä¾‹
+- â€œMGS-PathAnimation/Scenesâ€ç›®å½•ä¸‹å­˜æœ‰ä¸Šè¿°åŠŸèƒ½çš„æ¼”ç¤ºæ¡ˆä¾‹ï¼Œä¾›è¯»è€…å‚è€ƒã€‚
 
-## Í¼Ê¾
+## å›¾ç¤º
 - PathEditor
 
 ![PathEditor](./Attachments/PathEditor.png)
 
-## ÁªÏµ
-- Èç¹ûÄãÓÐÈÎºÎÎÊÌâ»òÕß½¨Òé£¬»¶Ó­Í¨¹ýmogoson@qq.comÁªÏµÎÒ¡£
+## è”ç³»
+- å¦‚æžœä½ æœ‰ä»»ä½•é—®é¢˜æˆ–è€…å»ºè®®ï¼Œæ¬¢è¿Žé€šè¿‡mogoson@qq.comè”ç³»æˆ‘ã€‚

@@ -1,4 +1,4 @@
-# MGS-PathAnimation
+﻿# MGS-PathAnimation
 - [中文手册](./README_ZH.md)
 
 ## Summary

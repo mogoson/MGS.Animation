@@ -1,4 +1,4 @@
-﻿# MGS-PathAnimation
+# MGS-PathAnimation
 - [中文手册](./README_ZH.md)
 
 ## Summary
@@ -13,11 +13,11 @@
 - .Net Framework 3.0 or above.
 
 ## Achieve
-- Path£ºCreate path curve for animation.
-- PathAnimation£ºPlay animation base on path curve.
-- VectorAnimationCurve£ºDefine 3D curve for path.
-- PathEditor£ºEdit anchors of path.
-- PathAnimationEditor£ºAlign the animation gameobject to the start point of path curve.
+- Path : Create path curve for animation.
+- PathAnimation : Play animation base on path curve.
+- VectorAnimationCurve : Define 3D curve for path.
+- PathEditor : Edit anchors of path.
+- PathAnimationEditor : Align the animation gameobject to the start point of path curve.
 
 ## Demo
 - Demos in the path "MGS-PathAnimation/Scenes" provide reference to you.

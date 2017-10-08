@@ -1,7 +1,7 @@
 /*************************************************************************
- *  Copyright (C), 2017-2018, Mogoson tech. Co., Ltd.
- *  FileName: VectorCurve.cs
- *  Author: Mogoson   Version: 1.0   Date: 6/21/2017
+ *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
+ *  FileName: VectorAnimationCurve.cs
+ *  Author: Mogoson   Version: 0.1.0   Date: 6/21/2017
  *  Version Description:
  *    Internal develop version,mainly to achieve its function.
  *  File Description:
@@ -15,13 +15,13 @@
  *     1.
  *  History:
  *    <ID>    <author>      <time>      <version>      <description>
- *     1.     Mogoson     6/21/2017       1.0        Build this file.
+ *     1.     Mogoson     6/21/2017       0.1.0       Create this file.
  *************************************************************************/
 
-namespace Developer.AnimationCurve
-{
-    using UnityEngine;
+using UnityEngine;
 
+namespace Developer.AnimationCurveExtension
+{
     public struct VectorKeyframe
     {
         #region Property and Field

@@ -1,7 +1,7 @@
 /*************************************************************************
- *  Copyright (C), 2017-2018, Mogoson tech. Co., Ltd.
+ *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
  *  FileName: PathAnimationEditor.cs
- *  Author: Mogoson   Version: 1.0   Date: 7/9/2017
+ *  Author: Mogoson   Version: 0.1.0   Date: 7/9/2017
  *  Version Description:
  *    Internal develop version,mainly to achieve its function.
  *  File Description:
@@ -14,15 +14,18 @@
  *     1.
  *  History:
  *    <ID>    <author>      <time>      <version>      <description>
- *     1.     Mogoson     7/9/2017       1.0        Build this file.
+ *     1.     Mogoson     7/9/2017       0.1.0        Create this file.
  *************************************************************************/
 
-namespace Developer.Animation
-{
-    using UnityEditor;
-    using UnityEditor.SceneManagement;
-    using UnityEngine;
+using UnityEditor;
+using UnityEngine;
 
+#if UNITY_5_3_OR_NEWER
+using UnityEditor.SceneManagement;
+#endif
+
+namespace Developer.PathAnimation
+{
     [CustomEditor(typeof(PathAnimation), true)]
     [CanEditMultipleObjects]
     public class PathAnimationEditor : Editor
@@ -38,7 +41,12 @@ namespace Developer.Animation
             if (GUILayout.Button("AlignToPath"))
             {
                 script.AlignToPath();
+
+#if UNITY_5_3_OR_NEWER
                 EditorSceneManager.MarkAllScenesDirty();
+#else
+                EditorApplication.MarkSceneDirty();
+#endif
             }
         }
         #endregion

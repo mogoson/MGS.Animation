@@ -1,27 +1,27 @@
 /*************************************************************************
- *  Copyright (C), 2017-2018, Mogoson tech. Co., Ltd.
+ *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
  *  FileName: PathAnimation.cs
- *  Author: Mogoson   Version: 1.0   Date: 7/5/2017
+ *  Author: Mogoson   Version: 0.1.0   Date: 7/5/2017
  *  Version Description:
  *    Internal develop version,mainly to achieve its function.
  *  File Description:
  *    Ignore.
  *  Class List:
  *    <ID>           <name>             <description>
- *     1.         PathAnimation             Ignore.
+ *     1.        PathAnimation             Ignore.
  *  Function List:
  *    <class ID>     <name>             <description>
  *     1.
  *  History:
  *    <ID>    <author>      <time>      <version>      <description>
- *     1.     Mogoson     7/5/2017       1.0        Build this file.
+ *     1.     Mogoson     7/5/2017       0.1.0        Create this file.
  *************************************************************************/
 
-namespace Developer.Animation
-{
-    using UnityEngine;
+using UnityEngine;
 
-    [AddComponentMenu("Developer/Animation/PathAnimation")]
+namespace Developer.PathAnimation
+{
+    [AddComponentMenu("Developer/PathAnimation/PathAnimation")]
     public class PathAnimation : MonoBehaviour
     {
         #region Property and Field
@@ -49,7 +49,7 @@ namespace Developer.Animation
         /// <summary>
         /// Delta to calculate tangent.
         /// </summary>
-        protected float delta = 0.01f;
+        protected float delta = 0.1f;
         #endregion
 
         #region Protected Method
@@ -70,8 +70,8 @@ namespace Developer.Animation
         /// <param name="time">Time of path curve.</param>
         protected void TowTransformBaseOnPath(float time)
         {
-            var pathPoint = path.GetPathPoint(time);
-            var tangent = (path.GetPathPoint(time + delta) - pathPoint).normalized;
+            var pathPoint = path.GetPointOnCurve(time);
+            var tangent = (path.GetPointOnCurve(time + delta) - pathPoint).normalized;
 
             //Update position and look at tangent.
             transform.position = pathPoint;
@@ -107,7 +107,7 @@ namespace Developer.Animation
 
 #if UNITY_EDITOR
         /// <summary>
-        /// Align transform to path [Only call this method in editor script].
+        /// Align transform to path (Only call this method in editor script).
         /// </summary>
         public void AlignToPath()
         {

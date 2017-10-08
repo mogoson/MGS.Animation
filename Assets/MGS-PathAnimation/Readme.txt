@@ -1,18 +1,50 @@
 ==========================================================================
-  Copyright (C), 2017-2018, Mogoson tech. Co., Ltd.
+  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
   Name: MGS-PathAnimation
-  Author: Mogoson   Version: 1.0   Date: 7/9/2017
+  Author: Mogoson   Version: 0.1.0   Date: 7/9/2017
 ==========================================================================
-  [Summeray]
-    This package can be used to make path animation in Unity3D scene.
+  [Summary]
+    Unity plugin for make path animation in scene.
+--------------------------------------------------------------------------
+  [Demand]
+    Create path curve by anchors.
+
+	Play animation base on path curve.
 --------------------------------------------------------------------------
   [Environment]
-    Package applies to Unity3D 5.0, .Net Framework 3.0 or above version.
+    Unity 5.0 or above.
+    .Net Framework 3.0 or above.
+--------------------------------------------------------------------------
+  [Achieve]
+    Path£ºCreate path curve for animation.
+
+    PathAnimation£ºPlay animation base on path curve.
+
+    VectorAnimationCurve£ºDefine 3D curve for path.
+
+    PathEditor£ºEdit anchors of path.
+
+    PathAnimationEditor£ºAlign the animation gameobject to the start
+    point of path curve.
 --------------------------------------------------------------------------
   [Usage]
-    Find the demos in the path "MGS-PathAnimation/Scenes".
-    Understand the usages of component scripts in the demos.
-    Use the compnent scripts in your project.
+    Create a empty gameobject and attach the Path component to it.
+
+    Click the green sphere to add a anchor and drag the handle to change
+    it's position.
+
+    Click the red sphere to remove a anchor if you want.
+
+    Attach the PathAnimation component to the target animation gameobject
+    and set the "Path" as the Path component and click the "AlignToPath"
+    button to align the animation gameobject to the start point of path
+    curve.
+--------------------------------------------------------------------------
+  [Demo]
+    Demos in the path "MGS-PathAnimation/Scenes" provide reference to you.
+--------------------------------------------------------------------------
+  [Resource]
+    https://github.com/mogoson/MGS-PathAnimation.
 --------------------------------------------------------------------------
   [Contact]
     If you have any questions, feel free to contact me at mogoson@qq.com.

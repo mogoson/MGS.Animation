@@ -1,7 +1,7 @@
 /*************************************************************************
- *  Copyright (C), 2017-2018, Mogoson tech. Co., Ltd.
+ *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
  *  FileName: PathEditor.cs
- *  Author: Mogoson   Version: 1.0   Date: 7/5/2017
+ *  Author: Mogoson   Version: 0.1.0   Date: 7/5/2017
  *  Version Description:
  *    Internal develop version,mainly to achieve its function.
  *  File Description:
@@ -14,15 +14,18 @@
  *     1.
  *  History:
  *    <ID>    <author>      <time>      <version>      <description>
- *     1.     Mogoson     7/5/2017       1.0        Build this file.
+ *     1.     Mogoson     7/5/2017       0.1.0        Create this file.
  *************************************************************************/
 
-namespace Developer.Animation
-{
-    using UnityEditor;
-    using UnityEditor.SceneManagement;
-    using UnityEngine;
+using UnityEditor;
+using UnityEngine;
 
+#if UNITY_5_3_OR_NEWER
+using UnityEditor.SceneManagement;
+#endif
+
+namespace Developer.PathAnimation
+{
     [CustomEditor(typeof(Path), true)]
     [CanEditMultipleObjects]
     public class PathEditor : Editor
@@ -47,34 +50,64 @@ namespace Developer.Animation
                 var handleSize = HandleUtility.GetHandleSize(anchorPos);
 
                 Handles.color = blue;
+
+#if UNITY_5_5_OR_NEWER
+                Handles.SphereHandleCap(0, anchorPos, Quaternion.identity, handleSize * nodeSize, EventType.Ignore);
+#else
                 Handles.SphereCap(0, anchorPos, Quaternion.identity, handleSize * nodeSize);
+#endif
                 EditorGUI.BeginChangeCheck();
                 var position = Handles.PositionHandle(anchorPos, Quaternion.identity);
                 if (EditorGUI.EndChangeCheck())
                 {
                     script.anchors[i] = script.transform.InverseTransformPoint(position);
                     script.CreateCurve();
+
+#if UNITY_5_3_OR_NEWER
                     EditorSceneManager.MarkAllScenesDirty();
+#else
+                    EditorApplication.MarkSceneDirty();
+#endif
                 }
 
                 var buttonSize = handleSize * nodeSize * 2;
                 Handles.color = Color.green;
+
+#if UNITY_5_5_OR_NEWER
+                if (Handles.Button(anchorPos + new Vector3(0, 0, handleSize * buttonOffset), Quaternion.identity, buttonSize, buttonSize, Handles.SphereHandleCap))
+#else
                 if (Handles.Button(anchorPos + new Vector3(0, 0, handleSize * buttonOffset), Quaternion.identity, buttonSize, buttonSize, Handles.SphereCap))
+#endif
                 {
                     var anchorOffset = new Vector3(0, 0, handleSize);
                     if (i > 0)
                         anchorOffset = (script.anchors[i] - script.anchors[i - 1]).normalized * handleSize;
                     script.anchors.Insert(i + 1, script.anchors[i] + anchorOffset);
                     script.CreateCurve();
+
+#if UNITY_5_3_OR_NEWER
                     EditorSceneManager.MarkAllScenesDirty();
+#else
+                    EditorApplication.MarkSceneDirty();
+#endif
                 }
 
                 Handles.color = Color.red;
+
+#if UNITY_5_5_OR_NEWER
+                if (Handles.Button(anchorPos + new Vector3(handleSize * buttonOffset, 0, 0), Quaternion.identity, buttonSize, buttonSize, Handles.SphereHandleCap))
+#else
                 if (Handles.Button(anchorPos + new Vector3(handleSize * buttonOffset, 0, 0), Quaternion.identity, buttonSize, buttonSize, Handles.SphereCap))
+#endif
                 {
                     script.anchors.RemoveAt(i);
                     script.CreateCurve();
+
+#if UNITY_5_3_OR_NEWER
                     EditorSceneManager.MarkAllScenesDirty();
+#else
+                    EditorApplication.MarkSceneDirty();
+#endif
                 }
             }
 
@@ -84,11 +117,21 @@ namespace Developer.Animation
                 var buttonSize = handleSize * nodeSize * 2;
 
                 Handles.color = Color.green;
+
+#if UNITY_5_5_OR_NEWER
+                if (Handles.Button(script.transform.position + new Vector3(0, 0, handleSize * buttonOffset), Quaternion.identity, buttonSize, buttonSize, Handles.SphereHandleCap))
+#else
                 if (Handles.Button(script.transform.position + new Vector3(0, 0, handleSize * buttonOffset), Quaternion.identity, buttonSize, buttonSize, Handles.SphereCap))
+#endif
                 {
                     script.anchors.Insert(0, new Vector3(0, 0, handleSize));
                     script.CreateCurve();
+
+#if UNITY_5_3_OR_NEWER
                     EditorSceneManager.MarkAllScenesDirty();
+#else
+                    EditorApplication.MarkSceneDirty();
+#endif
                 }
             }
         }
@@ -113,7 +156,12 @@ namespace Developer.Animation
             {
                 script.CreateCurve();
                 ActiveSceneWindow();
+
+#if UNITY_5_3_OR_NEWER
                 EditorSceneManager.MarkAllScenesDirty();
+#else
+                EditorApplication.MarkSceneDirty();
+#endif
             }
         }
         #endregion

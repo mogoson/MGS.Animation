@@ -1,5 +1,5 @@
 # MGS-PathAnimation
-- [ÖÐÎÄÊÖ²á](./README_ZH.md)
+- [ä¸­æ–‡æ‰‹å†Œ](./README_ZH.md)
 
 ## Summary
 - Unity plugin for make path animation in scene.
@@ -13,11 +13,11 @@
 - .Net Framework 3.0 or above.
 
 ## Achieve
-- Path£ºCreate path curve for animation.
-- PathAnimation£ºPlay animation base on path curve.
-- VectorAnimationCurve£ºDefine 3D curve for path.
-- PathEditor£ºEdit anchors of path.
-- PathAnimationEditor£ºAlign the animation gameobject to the start point of path curve.
+- PathÂ£ÂºCreate path curve for animation.
+- PathAnimationÂ£ÂºPlay animation base on path curve.
+- VectorAnimationCurveÂ£ÂºDefine 3D curve for path.
+- PathEditorÂ£ÂºEdit anchors of path.
+- PathAnimationEditorÂ£ÂºAlign the animation gameobject to the start point of path curve.
 
 ## Demo
 - Demos in the path "MGS-PathAnimation/Scenes" provide reference to you.

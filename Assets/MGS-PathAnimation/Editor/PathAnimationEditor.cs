@@ -34,6 +34,17 @@ namespace Developer.PathAnimation
         protected PathAnimation script { get { return target as PathAnimation; } }
         #endregion
 
+        #region Protected Method
+        protected void MarkSceneDirty()
+        {
+#if UNITY_5_3_OR_NEWER
+            EditorSceneManager.MarkAllScenesDirty();
+#else
+            EditorApplication.MarkSceneDirty();
+#endif
+        }
+        #endregion
+
         #region Public Method
         public override void OnInspectorGUI()
         {
@@ -41,12 +52,7 @@ namespace Developer.PathAnimation
             if (GUILayout.Button("AlignToPath"))
             {
                 script.AlignToPath();
-
-#if UNITY_5_3_OR_NEWER
-                EditorSceneManager.MarkAllScenesDirty();
-#else
-                EditorApplication.MarkSceneDirty();
-#endif
+                MarkSceneDirty();
             }
         }
         #endregion

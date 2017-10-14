@@ -111,6 +111,9 @@ namespace Developer.PathAnimation
         /// </summary>
         public void AlignToPath()
         {
+            if (path.curve == null)
+                path.CreateCurve();
+
             TowTransformBaseOnPath(0);
         }
 #endif

@@ -8,7 +8,6 @@
 --------------------------------------------------------------------------
   [Demand]
     Create path curve by anchors.
-
     Play animation base on path curve.
 --------------------------------------------------------------------------
   [Environment]
@@ -17,13 +16,9 @@
 --------------------------------------------------------------------------
   [Achieve]
     Path : Create path curve for animation.
-
     PathAnimation : Play animation base on path curve.
-
     VectorAnimationCurve : Define 3D curve for path.
-
     PathEditor : Edit anchors of path.
-
     PathAnimationEditor : Align the animation gameobject to the start
     point of path curve.
 --------------------------------------------------------------------------

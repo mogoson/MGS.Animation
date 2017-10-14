@@ -42,7 +42,7 @@ namespace Developer.PathAnimation
         /// <summary>
         /// Delta to calculate tangent.
         /// </summary>
-        protected float delta = 0.1f;
+        protected const float delta = 0.1f;
         #endregion
 
         #region Protected Method

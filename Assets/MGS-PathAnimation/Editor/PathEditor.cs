@@ -26,14 +26,15 @@ namespace Developer.PathAnimation
         #region Property and Field
         protected Path script { get { return target as Path; } }
 
-        protected Color blue = new Color(0, 1, 1, 1);
-        protected float nodeSize = 0.1f;
-        protected float buttonOffset = 0.5f;
+        protected readonly Color blue = new Color(0, 1, 1, 1);
+        protected const float nodeSize = 0.1f;
+        protected const float buttonSize = 0.2f;
+        protected const float buttonOffset = 0.35f;
 
 #if UNITY_5_5_OR_NEWER
-        protected Handles.CapFunction SphereCap = Handles.SphereHandleCap;
+        protected readonly Handles.CapFunction SphereCap = Handles.SphereHandleCap;
 #else
-        protected Handles.DrawCapFunction SphereCap = Handles.SphereCap;
+        protected readonly Handles.DrawCapFunction SphereCap = Handles.SphereCap;
 #endif
         #endregion
 
@@ -60,34 +61,42 @@ namespace Developer.PathAnimation
                     MarkSceneDirty();
                 }
 
-                var buttonSize = handleSize * nodeSize * 2;
-                Handles.color = Color.green;
-                if (Handles.Button(anchorPos + new Vector3(0, 0, handleSize * buttonOffset), Quaternion.identity, buttonSize, buttonSize, SphereCap))
-                {
-                    var anchorOffset = new Vector3(0, 0, handleSize);
-                    if (i > 0)
-                        anchorOffset = (script.anchors[i] - script.anchors[i - 1]).normalized * handleSize;
-                    script.anchors.Insert(i + 1, script.anchors[i] + anchorOffset);
-                    script.CreateCurve();
-                    MarkSceneDirty();
-                }
+                var constOffset = handleSize * buttonOffset;
+                var constSize = handleSize * buttonSize;
 
-                Handles.color = Color.red;
-                if (Handles.Button(anchorPos + new Vector3(handleSize * buttonOffset, 0, 0), Quaternion.identity, buttonSize, buttonSize, SphereCap))
+                if (Event.current.control)
                 {
-                    script.anchors.RemoveAt(i);
-                    script.CreateCurve();
-                    MarkSceneDirty();
+                    Handles.color = Color.green;
+                    if (Handles.Button(anchorPos + new Vector3(constOffset, constOffset, constOffset), Quaternion.identity, constSize, constSize, SphereCap))
+                    {
+                        var anchorOffset = new Vector3(0, 0, handleSize);
+                        if (i > 0)
+                            anchorOffset = (script.anchors[i] - script.anchors[i - 1]).normalized * handleSize;
+                        script.anchors.Insert(i + 1, script.anchors[i] + anchorOffset);
+                        script.CreateCurve();
+                        MarkSceneDirty();
+                    }
+                }
+                else if (Event.current.shift)
+                {
+                    Handles.color = Color.red;
+                    if (Handles.Button(anchorPos + new Vector3(constOffset, constOffset, constOffset), Quaternion.identity, constSize, constSize, SphereCap))
+                    {
+                        script.anchors.RemoveAt(i);
+                        script.CreateCurve();
+                        MarkSceneDirty();
+                    }
                 }
             }
 
             if (script.anchors.Count == 0)
             {
                 var handleSize = HandleUtility.GetHandleSize(script.transform.position);
-                var buttonSize = handleSize * nodeSize * 2;
+                var constOffset = handleSize * buttonOffset;
+                var constSize = handleSize * buttonSize;
 
                 Handles.color = Color.green;
-                if (Handles.Button(script.transform.position + new Vector3(0, 0, handleSize * buttonOffset), Quaternion.identity, buttonSize, buttonSize, SphereCap))
+                if (Handles.Button(script.transform.position + new Vector3(constOffset, constOffset, constOffset), Quaternion.identity, constSize, constSize, SphereCap))
                 {
                     script.anchors.Insert(0, new Vector3(0, 0, handleSize));
                     script.CreateCurve();

@@ -25,10 +25,11 @@
   [Usage]
     Create a empty gameobject and attach the Path component to it.
 
-    Click the green sphere to add a anchor and drag the handle to change
-    it's position.
+    Press the CTRL key and click the green sphere to add anchor and drag
+    the handle to change it's position.
 
-    Click the red sphere to remove a anchor if you want.
+    Press the SHIFT key and click the red sphere to remove anchor if you
+    want.
 
     Attach the PathAnimation component to the target animation gameobject
     and set the "Path" as the Path component and click the "AlignToPath"

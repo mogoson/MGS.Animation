@@ -64,10 +64,7 @@
 
 - PathAnimation
 
-
-![PathAnimation
-](./Attachments/PathAnimation
-.gif)
+![PathAnimation](./Attachments/PathAnimation.gif)
 
 
 

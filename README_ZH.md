@@ -1,4 +1,4 @@
-﻿# MGS-PathAnimation
+# MGS-PathAnimation
 
 - [English Manual](./README.md)
 
@@ -63,8 +63,7 @@
 
 - PathAnimation
 
-![PathAnimation](./Attachments/README_Image/PathAnimation
-.gif)
+![PathAnimation](./Attachments/README_Image/PathAnimation.gif)
 
 
 

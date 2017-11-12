@@ -27,6 +27,7 @@ namespace Developer.PathAnimation
         protected Path script { get { return target as Path; } }
 
         protected readonly Color blue = new Color(0, 1, 1, 1);
+
         protected const float nodeSize = 0.1f;
         protected const float buttonSize = 0.2f;
         protected const float buttonOffset = 0.35f;
@@ -72,6 +73,7 @@ namespace Developer.PathAnimation
                         var anchorOffset = new Vector3(0, 0, handleSize);
                         if (i > 0)
                             anchorOffset = (script.anchors[i] - script.anchors[i - 1]).normalized * handleSize;
+
                         script.anchors.Insert(i + 1, script.anchors[i] + anchorOffset);
                         script.CreateCurve();
                         MarkSceneDirty();
@@ -108,7 +110,8 @@ namespace Developer.PathAnimation
         protected void DrawSphereCap(Vector3 position, Quaternion rotation, float size)
         {
 #if UNITY_5_5_OR_NEWER
-            Handles.SphereHandleCap(0, position, rotation, size, EventType.Ignore);
+            if (Event.current.type == EventType.Repaint)
+                Handles.SphereHandleCap(0, position, rotation, size, EventType.Repaint);
 #else
             Handles.SphereCap(0, position, rotation, size);
 #endif

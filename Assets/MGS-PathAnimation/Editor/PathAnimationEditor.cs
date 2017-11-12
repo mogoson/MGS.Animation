@@ -42,6 +42,7 @@ namespace Developer.PathAnimation
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
+
             if (GUILayout.Button("AlignToPath"))
             {
                 script.AlignToPath();

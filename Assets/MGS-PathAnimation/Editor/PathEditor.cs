@@ -122,11 +122,6 @@ namespace Developer.PathAnimation
             EditorApplication.MarkSceneDirty();
 #endif
         }
-
-        protected void ActiveSceneWindow()
-        {
-            EditorApplication.ExecuteMenuItem("Window/Scene");
-        }
         #endregion
 
         #region Public Method
@@ -142,7 +137,7 @@ namespace Developer.PathAnimation
             if (EditorGUI.EndChangeCheck())
             {
                 script.CreateCurve();
-                ActiveSceneWindow();
+                SceneView.RepaintAll();
                 MarkSceneDirty();
             }
         }

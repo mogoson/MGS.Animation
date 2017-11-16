@@ -10,8 +10,8 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using Developer.AnimationCurveExtension;
 using System.Collections.Generic;
+using Developer.AnimationCurveExtension;
 using UnityEngine;
 
 namespace Developer.PathAnimation
@@ -112,7 +112,7 @@ namespace Developer.PathAnimation
 
             if (isClose)
             {
-                //Add close key[the first key]
+                //Add close key(the first key).
                 time += Vector3.Distance(anchors[anchors.Count - 1], anchors[0]);
                 curve.AddKey(time, anchors[0]);
             }

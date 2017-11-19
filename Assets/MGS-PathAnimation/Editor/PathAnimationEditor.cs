@@ -25,9 +25,15 @@ namespace Developer.PathAnimation
     {
         #region Property and Field
         protected PathAnimation script { get { return target as PathAnimation; } }
+        protected SerializedProperty reference;
         #endregion
 
         #region Protected Method
+        protected virtual void OnEnable()
+        {
+            reference = serializedObject.FindProperty("reference");
+        }
+
         protected void MarkSceneDirty()
         {
 #if UNITY_5_3_OR_NEWER
@@ -42,6 +48,12 @@ namespace Developer.PathAnimation
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
+
+            if (script.keepUpMode == KeepUpMode.ReferenceForward || script.keepUpMode == KeepUpMode.ReferenceForwardAsNormal)
+            {
+                EditorGUILayout.PropertyField(reference);
+                serializedObject.ApplyModifiedProperties();
+            }
 
             if (GUILayout.Button("AlignToPath"))
             {

@@ -14,6 +14,14 @@ using UnityEngine;
 
 namespace Developer.PathAnimation
 {
+    public enum KeepUpMode
+    {
+        WorldUp = 0,
+        TransformUp = 1,
+        ReferenceForward = 2,
+        ReferenceForwardAsNormal = 3
+    }
+
     [AddComponentMenu("Developer/PathAnimation/PathAnimation")]
     public class PathAnimation : MonoBehaviour
     {
@@ -33,6 +41,17 @@ namespace Developer.PathAnimation
         /// </summary>
         [SerializeField]
         protected WrapMode wrapMode = WrapMode.Default;
+
+        /// <summary>
+        /// Keep up mode on play animation.
+        /// </summary>
+        public KeepUpMode keepUpMode = KeepUpMode.WorldUp;
+
+        /// <summary>
+        /// Keep up reference transform.
+        /// </summary>
+        [HideInInspector]
+        public Transform reference;
 
         /// <summary>
         /// Timer of animation.
@@ -63,12 +82,33 @@ namespace Developer.PathAnimation
         /// <param name="time">Time of path curve.</param>
         protected void TowTransformBaseOnPath(float time)
         {
-            var pathPoint = path.GetPointOnCurve(time);
-            var tangent = (path.GetPointOnCurve(time + delta) - pathPoint).normalized;
+            var timePos = path.GetPointOnCurve(time);
+            var deltaPos = path.GetPointOnCurve(time + delta);
+
+            var worldUp = Vector3.up;
+            switch (keepUpMode)
+            {
+                case KeepUpMode.TransformUp:
+                    worldUp = transform.up;
+                    break;
+
+                case KeepUpMode.ReferenceForward:
+                    if (reference)
+                        worldUp = reference.forward;
+                    break;
+
+                case KeepUpMode.ReferenceForwardAsNormal:
+                    if (reference)
+                    {
+                        var secant = (deltaPos - timePos).normalized;
+                        worldUp = Vector3.Cross(secant, reference.forward);
+                    }
+                    break;
+            }
 
             //Update position and look at tangent.
-            transform.position = pathPoint;
-            transform.LookAt(pathPoint + tangent, Vector3.up);
+            transform.position = timePos;
+            transform.LookAt(deltaPos, worldUp);
         }
         #endregion
 

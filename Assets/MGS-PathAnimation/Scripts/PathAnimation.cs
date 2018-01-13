@@ -67,7 +67,7 @@ namespace Developer.PathAnimation
         #region Protected Method
         protected virtual void Start()
         {
-            path.wrapmode = wrapMode;
+            path.Wrapmode = wrapMode;
         }
 
         protected virtual void Update()

@@ -24,7 +24,7 @@ namespace Developer.PathAnimation
     public class PathAnimationEditor : Editor
     {
         #region Property and Field
-        protected PathAnimation script { get { return target as PathAnimation; } }
+        protected PathAnimation Script { get { return target as PathAnimation; } }
         protected SerializedProperty reference;
         #endregion
 
@@ -49,7 +49,7 @@ namespace Developer.PathAnimation
         {
             DrawDefaultInspector();
 
-            if (script.keepUpMode == KeepUpMode.ReferenceForward || script.keepUpMode == KeepUpMode.ReferenceForwardAsNormal)
+            if (Script.keepUpMode == KeepUpMode.ReferenceForward || Script.keepUpMode == KeepUpMode.ReferenceForwardAsNormal)
             {
                 EditorGUILayout.PropertyField(reference);
                 serializedObject.ApplyModifiedProperties();
@@ -57,7 +57,7 @@ namespace Developer.PathAnimation
 
             if (GUILayout.Button("AlignToPath"))
             {
-                script.AlignToPath();
+                Script.AlignToPath();
                 MarkSceneDirty();
             }
         }

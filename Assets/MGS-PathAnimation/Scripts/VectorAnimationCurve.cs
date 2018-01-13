@@ -10,10 +10,12 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using System;
 using UnityEngine;
 
 namespace Developer.AnimationCurveExtension
 {
+    [Serializable]
     public struct VectorKeyframe
     {
         #region Property and Field
@@ -44,12 +46,12 @@ namespace Developer.AnimationCurveExtension
         /// <summary>
         /// Keyframe count.
         /// </summary>
-        public int length { get { return xCurve.length; } }
+        public int Length { get { return xCurve.length; } }
 
         /// <summary>
         /// The behaviour of the animation after the last keyframe.
         /// </summary>
-        public WrapMode postWrapMode
+        public WrapMode PostWrapMode
         {
             set { xCurve.postWrapMode = yCurve.postWrapMode = zCurve.postWrapMode = value; }
             get { return xCurve.postWrapMode; }
@@ -58,7 +60,7 @@ namespace Developer.AnimationCurveExtension
         /// <summary>
         /// The behaviour of the animation before the first keyframe.
         /// </summary>
-        public WrapMode preWrapMode
+        public WrapMode PreWrapMode
         {
             set { xCurve.preWrapMode = yCurve.preWrapMode = zCurve.preWrapMode = value; }
             get { return xCurve.preWrapMode; }
@@ -141,7 +143,7 @@ namespace Developer.AnimationCurveExtension
         /// <param name="weight">The smoothing weight to apply to the keyframe's tangents.</param>
         public void SmoothTangents(float weight)
         {
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < Length; i++)
             {
                 SmoothTangents(i, weight);
             }

@@ -1,7 +1,7 @@
 ﻿==========================================================================
   Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
   Name: MGS-PathAnimation
-  Author: Mogoson   Version: 0.1.0   Date: 7/9/2017
+  Author: Mogoson   Version: 0.1.1   Date: 1/13/2018
 ==========================================================================
   [Summary]
     Unity plugin for make path animation in scene.

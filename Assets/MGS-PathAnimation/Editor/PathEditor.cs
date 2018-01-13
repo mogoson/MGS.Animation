@@ -24,7 +24,7 @@ namespace Developer.PathAnimation
     public class PathEditor : Editor
     {
         #region Property and Field
-        protected Path script { get { return target as Path; } }
+        protected Path Script { get { return target as Path; } }
 
         protected readonly Color blue = new Color(0, 1, 1, 1);
 
@@ -45,64 +45,66 @@ namespace Developer.PathAnimation
             if (Application.isPlaying)
                 return;
 
-            for (int i = 0; i < script.anchors.Count; i++)
+            if (Script.anchors.Count == 0)
             {
-                var anchorPos = script.transform.TransformPoint(script.anchors[i]);
-                var handleSize = HandleUtility.GetHandleSize(anchorPos);
-
-                Handles.color = blue;
-                DrawSphereCap(anchorPos, Quaternion.identity, handleSize * nodeSize);
-
-                EditorGUI.BeginChangeCheck();
-                var position = Handles.PositionHandle(anchorPos, Quaternion.identity);
-                if (EditorGUI.EndChangeCheck())
-                {
-                    script.anchors[i] = script.transform.InverseTransformPoint(position);
-                    script.CreateCurve();
-                    MarkSceneDirty();
-                }
-
-                var constOffset = handleSize * buttonOffset;
-                var constSize = handleSize * buttonSize;
-
-                if (Event.current.control)
-                {
-                    Handles.color = Color.green;
-                    if (Handles.Button(anchorPos + new Vector3(constOffset, constOffset, constOffset), Quaternion.identity, constSize, constSize, SphereCap))
-                    {
-                        var anchorOffset = new Vector3(0, 0, handleSize);
-                        if (i > 0)
-                            anchorOffset = (script.anchors[i] - script.anchors[i - 1]).normalized * handleSize;
-
-                        script.anchors.Insert(i + 1, script.anchors[i] + anchorOffset);
-                        script.CreateCurve();
-                        MarkSceneDirty();
-                    }
-                }
-                else if (Event.current.shift)
-                {
-                    Handles.color = Color.red;
-                    if (Handles.Button(anchorPos + new Vector3(constOffset, constOffset, constOffset), Quaternion.identity, constSize, constSize, SphereCap))
-                    {
-                        script.anchors.RemoveAt(i);
-                        script.CreateCurve();
-                        MarkSceneDirty();
-                    }
-                }
-            }
-
-            if (script.anchors.Count == 0)
-            {
-                var handleSize = HandleUtility.GetHandleSize(script.transform.position);
+                var handleSize = HandleUtility.GetHandleSize(Script.transform.position);
                 var constOffset = handleSize * buttonOffset;
                 var constSize = handleSize * buttonSize;
 
                 Handles.color = Color.green;
-                if (Handles.Button(script.transform.position + new Vector3(constOffset, constOffset, constOffset), Quaternion.identity, constSize, constSize, SphereCap))
+                if (Handles.Button(Script.transform.position + new Vector3(constOffset, constOffset, constOffset), Quaternion.identity, constSize, constSize, SphereCap))
                 {
-                    script.anchors.Insert(0, new Vector3(0, 0, handleSize));
-                    script.CreateCurve();
+                    Script.anchors.Insert(0, new Vector3(0, 0, handleSize));
+                    Script.CreateCurve();
                     MarkSceneDirty();
+                }
+            }
+            else
+            {
+                for (int i = 0; i < Script.anchors.Count; i++)
+                {
+                    var anchorPos = Script.transform.TransformPoint(Script.anchors[i]);
+                    var handleSize = HandleUtility.GetHandleSize(anchorPos);
+
+                    Handles.color = blue;
+                    DrawSphereCap(anchorPos, Quaternion.identity, handleSize * nodeSize);
+
+                    EditorGUI.BeginChangeCheck();
+                    var position = Handles.PositionHandle(anchorPos, Quaternion.identity);
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        Script.anchors[i] = Script.transform.InverseTransformPoint(position);
+                        Script.CreateCurve();
+                        MarkSceneDirty();
+                    }
+
+                    var constOffset = handleSize * buttonOffset;
+                    var constSize = handleSize * buttonSize;
+
+                    if (Event.current.control)
+                    {
+                        Handles.color = Color.green;
+                        if (Handles.Button(anchorPos + new Vector3(constOffset, constOffset, constOffset), Quaternion.identity, constSize, constSize, SphereCap))
+                        {
+                            var anchorOffset = new Vector3(0, 0, handleSize);
+                            if (i > 0)
+                                anchorOffset = (Script.anchors[i] - Script.anchors[i - 1]).normalized * handleSize;
+
+                            Script.anchors.Insert(i + 1, Script.anchors[i] + anchorOffset);
+                            Script.CreateCurve();
+                            MarkSceneDirty();
+                        }
+                    }
+                    else if (Event.current.shift)
+                    {
+                        Handles.color = Color.red;
+                        if (Handles.Button(anchorPos + new Vector3(constOffset, constOffset, constOffset), Quaternion.identity, constSize, constSize, SphereCap))
+                        {
+                            Script.anchors.RemoveAt(i);
+                            Script.CreateCurve();
+                            MarkSceneDirty();
+                        }
+                    }
                 }
             }
         }
@@ -136,10 +138,10 @@ namespace Developer.PathAnimation
                 return;
 
             EditorGUI.BeginChangeCheck();
-            script.isClose = EditorGUILayout.Toggle("Close", script.isClose);
+            Script.isClose = EditorGUILayout.Toggle("Close", Script.isClose);
             if (EditorGUI.EndChangeCheck())
             {
-                script.CreateCurve();
+                Script.CreateCurve();
                 SceneView.RepaintAll();
                 MarkSceneDirty();
             }

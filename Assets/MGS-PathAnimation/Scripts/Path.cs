@@ -35,18 +35,18 @@ namespace Developer.PathAnimation
         /// <summary>
         /// WrapMode of path curve.
         /// </summary>
-        public WrapMode wrapmode
+        public WrapMode Wrapmode
         {
-            set { curve.preWrapMode = curve.postWrapMode = value; }
-            get { return curve.preWrapMode; }
+            set { curve.PreWrapMode = curve.PostWrapMode = value; }
+            get { return curve.PreWrapMode; }
         }
 
         /// <summary>
         /// Max time of path curve.
         /// </summary>
-        public float maxTime
+        public float MaxTime
         {
-            get { return curve[curve.length - 1].time; }
+            get { return curve[curve.Length - 1].time; }
         }
 
         /// <summary>
@@ -77,9 +77,9 @@ namespace Developer.PathAnimation
             }
 
             Gizmos.color = new Color(0, 1, 1, 1);
-            for (float time = 0; time < maxTime; time += 0.05f)
+            for (float time = 0; time < MaxTime; time += 0.05f)
             {
-                Gizmos.DrawLine(GetPointOnCurve(time), GetPointOnCurve(Mathf.Clamp(time + 0.05f, 0, maxTime)));
+                Gizmos.DrawLine(GetPointOnCurve(time), GetPointOnCurve(Mathf.Clamp(time + 0.05f, 0, MaxTime)));
             }
         }
         #endregion
@@ -97,7 +97,7 @@ namespace Developer.PathAnimation
             }
 
             curve = new VectorAnimationCurve();
-            curve.preWrapMode = curve.postWrapMode = wrapmode;
+            curve.PreWrapMode = curve.PostWrapMode = Wrapmode;
 
             //Add frame keys to curve.
             float time = 0;

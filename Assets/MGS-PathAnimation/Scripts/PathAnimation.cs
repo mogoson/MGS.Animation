@@ -135,7 +135,7 @@ namespace Developer.PathAnimation
         public void Stop()
         {
             timer = 0;
-            enabled = true;
+            enabled = false;
         }
 
 #if UNITY_EDITOR

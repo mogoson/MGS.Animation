@@ -53,6 +53,18 @@ namespace Developer.PathAnimation
         /// VectorAnimationCurve of path.
         /// </summary>
         protected VectorAnimationCurve curve;
+
+#if UNITY_EDITOR
+        /// <summary>
+        /// Blue color (Only use it in editor script).
+        /// </summary>
+        protected readonly Color blue = new Color(0, 1, 1, 1);
+
+        /// <summary>
+        /// Delta time of path curve (Only use it in editor script).
+        /// </summary>
+        protected const float delta = 0.05f;
+#endif
         #endregion
 
         #region Protected Method
@@ -66,6 +78,7 @@ namespace Developer.PathAnimation
             CreateCurve();
         }
 
+#if UNITY_EDITOR
         protected virtual void OnDrawGizmosSelected()
         {
             if (curve == null)
@@ -76,12 +89,13 @@ namespace Developer.PathAnimation
                     CreateCurve();
             }
 
-            Gizmos.color = new Color(0, 1, 1, 1);
-            for (float time = 0; time < MaxTime; time += 0.05f)
+            Gizmos.color = blue;
+            for (float time = 0; time < MaxTime; time += delta)
             {
-                Gizmos.DrawLine(GetPointOnCurve(time), GetPointOnCurve(Mathf.Clamp(time + 0.05f, 0, MaxTime)));
+                Gizmos.DrawLine(GetPointOnCurve(time), GetPointOnCurve(Mathf.Clamp(time + delta, 0, MaxTime)));
             }
         }
+#endif
         #endregion
 
         #region Public Method
@@ -100,7 +114,7 @@ namespace Developer.PathAnimation
             curve.PreWrapMode = curve.PostWrapMode = Wrapmode;
 
             //Add frame keys to curve.
-            float time = 0;
+            var time = 0f;
             for (int i = 0; i < anchors.Count - 1; i++)
             {
                 curve.AddKey(time, anchors[i]);

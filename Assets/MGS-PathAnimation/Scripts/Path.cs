@@ -46,13 +46,19 @@ namespace Developer.PathAnimation
         /// </summary>
         public float MaxTime
         {
-            get { return curve[curve.Length - 1].time; }
+            get
+            {
+                var maxTime = 0f;
+                if (curve.Length > 0)
+                    maxTime = curve[curve.Length - 1].time;
+                return maxTime;
+            }
         }
 
         /// <summary>
         /// VectorAnimationCurve of path.
         /// </summary>
-        protected VectorAnimationCurve curve;
+        protected VectorAnimationCurve curve = new VectorAnimationCurve();
 
 #if UNITY_EDITOR
         /// <summary>
@@ -70,7 +76,7 @@ namespace Developer.PathAnimation
         #region Protected Method
         protected virtual void Reset()
         {
-            curve = null;
+            CreateCurve();
         }
 
         protected virtual void Awake()
@@ -81,14 +87,6 @@ namespace Developer.PathAnimation
 #if UNITY_EDITOR
         protected virtual void OnDrawGizmosSelected()
         {
-            if (curve == null)
-            {
-                if (anchors.Count == 0)
-                    return;
-                else
-                    CreateCurve();
-            }
-
             Gizmos.color = blue;
             for (float time = 0; time < MaxTime; time += delta)
             {
@@ -104,14 +102,12 @@ namespace Developer.PathAnimation
         /// </summary>
         public virtual void CreateCurve()
         {
-            if (anchors.Count == 0)
-            {
-                curve = null;
-                return;
-            }
-
+            //New curve.
             curve = new VectorAnimationCurve();
-            curve.PreWrapMode = curve.PostWrapMode = Wrapmode;
+
+            //No anchor.
+            if (anchors.Count == 0)
+                return;
 
             //Add frame keys to curve.
             var time = 0f;

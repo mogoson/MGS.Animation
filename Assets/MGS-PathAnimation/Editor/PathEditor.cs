@@ -40,6 +40,12 @@ namespace Developer.PathAnimation
         #endregion
 
         #region Protected Method
+        protected virtual void OnEnable()
+        {
+            if (!Application.isPlaying)
+                Script.CreateCurve();
+        }
+
         protected virtual void OnSceneGUI()
         {
             if (Application.isPlaying)

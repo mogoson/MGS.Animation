@@ -59,7 +59,7 @@ namespace Developer.PathAnimation
         protected float timer;
 
         /// <summary>
-        /// Delta to calculate tangent.
+        /// Delta to calculate secant.
         /// </summary>
         protected const float delta = 0.1f;
         #endregion
@@ -106,7 +106,7 @@ namespace Developer.PathAnimation
                     break;
             }
 
-            //Update position and look at tangent.
+            //Update position and look at secant.
             transform.position = timePos;
             transform.LookAt(deltaPos, worldUp);
         }
@@ -144,7 +144,6 @@ namespace Developer.PathAnimation
         /// </summary>
         public void AlignToPath()
         {
-            path.CreateCurve();
             TowTransformBaseOnPath(0);
         }
 #endif

@@ -55,7 +55,7 @@ namespace Developer.PathAnimation
                 serializedObject.ApplyModifiedProperties();
             }
 
-            if (GUILayout.Button("AlignToPath"))
+            if (GUILayout.Button("Align To Path"))
             {
                 Script.AlignToPath();
                 MarkSceneDirty();

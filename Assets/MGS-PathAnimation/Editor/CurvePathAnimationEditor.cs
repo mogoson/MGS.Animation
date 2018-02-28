@@ -1,30 +1,27 @@
-/*************************************************************************
- *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
+﻿/*************************************************************************
+ *  Copyright © 2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  PathAnimationEditor.cs
- *  Description  :  Editor for PathAnimation.
+ *  File         :  CurvePathAnimationEditor.cs
+ *  DeTargetion  :  Editor for CurvePathAnimation.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  7/9/2017
- *  Description  :  Initial development version.
+ *  Date         :  2/28/2018
+ *  DeTargetion  :  Initial development version.
  *************************************************************************/
 
+using Developer.EditorExtension;
 using UnityEditor;
 using UnityEngine;
 
-#if UNITY_5_3_OR_NEWER
-using UnityEditor.SceneManagement;
-#endif
-
 namespace Developer.PathAnimation
 {
-    [CustomEditor(typeof(PathAnimation), true)]
+    [CustomEditor(typeof(CurvePathAnimation), true)]
     [CanEditMultipleObjects]
-    public class PathAnimationEditor : Editor
+    public class CurvePathAnimationEditor : GenericEditor
     {
-        #region Property and Field
-        protected PathAnimation Script { get { return target as PathAnimation; } }
+        #region Field and Property
+        protected CurvePathAnimation Target { get { return target as CurvePathAnimation; } }
         protected SerializedProperty reference;
         #endregion
 
@@ -33,15 +30,6 @@ namespace Developer.PathAnimation
         {
             reference = serializedObject.FindProperty("reference");
         }
-
-        protected void MarkSceneDirty()
-        {
-#if UNITY_5_3_OR_NEWER
-            EditorSceneManager.MarkAllScenesDirty();
-#else
-            EditorApplication.MarkSceneDirty();
-#endif
-        }
         #endregion
 
         #region Public Method
@@ -49,15 +37,17 @@ namespace Developer.PathAnimation
         {
             DrawDefaultInspector();
 
-            if (Script.keepUpMode == KeepUpMode.ReferenceForward || Script.keepUpMode == KeepUpMode.ReferenceForwardAsNormal)
+            if (Target.keepUpMode == KeepUpMode.ReferenceForward || Target.keepUpMode == KeepUpMode.ReferenceForwardAsNormal)
             {
+                EditorGUI.BeginChangeCheck();
                 EditorGUILayout.PropertyField(reference);
-                serializedObject.ApplyModifiedProperties();
+                if (EditorGUI.EndChangeCheck())
+                    serializedObject.ApplyModifiedProperties();
             }
 
             if (GUILayout.Button("Align To Path"))
             {
-                Script.AlignToPath();
+                Target.AlignToPath();
                 MarkSceneDirty();
             }
         }

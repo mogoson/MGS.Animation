@@ -1,13 +1,18 @@
 /*************************************************************************
- *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
+ *  Copyright © 2017-2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  VectorAnimationCurve.cs
- *  Description  :  AnimationCurve for three dimensional space.
+ *  Description  :  AnimationCurve in three dimensional space.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
  *  Date         :  6/21/2017
  *  Description  :  Initial development version.
+ *  
+ *  Author       :  Mogoson
+ *  Version      :  0.1.1
+ *  Date         :  2/28/2018
+ *  Description  :  Add the static method FromAnchors.
  *************************************************************************/
 
 using System;
@@ -15,10 +20,13 @@ using UnityEngine;
 
 namespace Developer.AnimationCurveExtension
 {
+    /// <summary>
+    /// Key frame data.
+    /// </summary>
     [Serializable]
     public struct VectorKeyframe
     {
-        #region Property and Field
+        #region Field and Property
         public float time;
         public Vector3 value;
         #endregion
@@ -32,9 +40,12 @@ namespace Developer.AnimationCurveExtension
         #endregion
     }
 
+    /// <summary>
+    /// AnimationCurve in three dimensional space.
+    /// </summary>
     public class VectorAnimationCurve
     {
-        #region Property and Field
+        #region Field and Property
         public VectorKeyframe this[int index]
         {
             get
@@ -147,6 +158,47 @@ namespace Developer.AnimationCurveExtension
             {
                 SmoothTangents(i, weight);
             }
+        }
+        #endregion
+
+        #region Static Method
+        /// <summary>
+        /// Create a curve base on anchors.
+        /// </summary>
+        /// <param name="anchors">Anchor points of curve.</param>
+        /// <param name="close">Curve is close.</param>
+        /// <returns>New curve.</returns>
+        public static VectorAnimationCurve FromAnchors(Vector3[] anchors, bool close)
+        {
+            var curve = new VectorAnimationCurve();
+
+            //No anchor.
+            if (anchors == null || anchors.Length == 0)
+                Debug.LogWarning("Created a curve with no key frame : The anchors is null or empty.");
+            else
+            {
+                //Add frame keys to curve.
+                var time = 0f;
+                for (int i = 0; i < anchors.Length - 1; i++)
+                {
+                    curve.AddKey(time, anchors[i]);
+                    time += Vector3.Distance(anchors[i], anchors[i + 1]);
+                }
+
+                //Add the last key.
+                curve.AddKey(time, anchors[anchors.Length - 1]);
+
+                if (close)
+                {
+                    //Add the close key(the first key).
+                    time += Vector3.Distance(anchors[anchors.Length - 1], anchors[0]);
+                    curve.AddKey(time, anchors[0]);
+                }
+
+                //Smooth curve keys out tangent.
+                curve.SmoothTangents(0);
+            }
+            return curve;
         }
         #endregion
     }

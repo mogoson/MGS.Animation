@@ -1,12 +1,12 @@
-/*************************************************************************
- *  Copyright (C), 2017-2018, Mogoson Tech. Co., Ltd.
+﻿/*************************************************************************
+ *  Copyright © 2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
- *  File         :  PathAnimation.cs
- *  Description  :  Play animation base on path.
+ *  File         :  CurvePathAnimation.cs
+ *  Description  :  Define animation base on curve path.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  7/5/2017
+ *  Date         :  2/28/2018
  *  Description  :  Initial development version.
  *************************************************************************/
 
@@ -14,6 +14,9 @@ using UnityEngine;
 
 namespace Developer.PathAnimation
 {
+    /// <summary>
+    /// Keep up mode of animation base on curve path.
+    /// </summary>
     public enum KeepUpMode
     {
         WorldUp = 0,
@@ -22,25 +25,19 @@ namespace Developer.PathAnimation
         ReferenceForwardAsNormal = 3
     }
 
-    [AddComponentMenu("Developer/PathAnimation/PathAnimation")]
-    public class PathAnimation : MonoBehaviour
+    [AddComponentMenu("Developer/PathAnimation/CurvePathAnimation")]
+    public class CurvePathAnimation : MonoBehaviour
     {
-        #region Property and Field
+        #region Field and Property
         /// <summary>
         /// Path of animation.
         /// </summary>
-        public Path path;
+        public CurvePath path;
 
         /// <summary>
         /// Speed of animation.
         /// </summary>
         public float speed = 5;
-
-        /// <summary>
-        /// Wrapmode of animation.
-        /// </summary>
-        [SerializeField]
-        protected WrapMode wrapMode = WrapMode.Default;
 
         /// <summary>
         /// Keep up mode on play animation.
@@ -59,17 +56,12 @@ namespace Developer.PathAnimation
         protected float timer;
 
         /// <summary>
-        /// Delta to calculate secant.
+        /// Delta to calculate tangent.
         /// </summary>
-        protected const float delta = 0.1f;
+        protected const float Delta = 0.05f;
         #endregion
 
         #region Protected Method
-        protected virtual void Start()
-        {
-            path.Wrapmode = wrapMode;
-        }
-
         protected virtual void Update()
         {
             timer += speed * Time.deltaTime;
@@ -82,8 +74,8 @@ namespace Developer.PathAnimation
         /// <param name="time">Time of path curve.</param>
         protected void TowTransformBaseOnPath(float time)
         {
-            var timePos = path.GetPointOnCurve(time);
-            var deltaPos = path.GetPointOnCurve(time + delta);
+            var timePos = path.GetPoint(time);
+            var deltaPos = path.GetPoint(time + Delta);
 
             var worldUp = Vector3.up;
             switch (keepUpMode)
@@ -100,8 +92,8 @@ namespace Developer.PathAnimation
                 case KeepUpMode.ReferenceForwardAsNormal:
                     if (reference)
                     {
-                        var secant = (deltaPos - timePos).normalized;
-                        worldUp = Vector3.Cross(secant, reference.forward);
+                        var tangent = (deltaPos - timePos).normalized;
+                        worldUp = Vector3.Cross(tangent, reference.forward);
                     }
                     break;
             }
@@ -134,8 +126,8 @@ namespace Developer.PathAnimation
         /// </summary>
         public void Stop()
         {
-            timer = 0;
             enabled = false;
+            timer = 0;
         }
 
 #if UNITY_EDITOR

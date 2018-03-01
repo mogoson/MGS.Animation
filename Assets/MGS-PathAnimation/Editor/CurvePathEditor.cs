@@ -29,7 +29,10 @@ namespace Developer.PathAnimation
         protected virtual void OnEnable()
         {
             if (!Application.isPlaying)
+            {
                 Target.Rebuild();
+                Undo.undoRedoPerformed = () => { Target.Rebuild(); };
+            }
         }
 
         protected virtual void OnSceneGUI()
@@ -39,6 +42,11 @@ namespace Developer.PathAnimation
             {
                 Handles.DrawLine(Target.GetPoint(t), Target.GetPoint(t + Delta));
             }
+        }
+
+        protected virtual void OnDisable()
+        {
+            Undo.undoRedoPerformed = null;
         }
         #endregion
 

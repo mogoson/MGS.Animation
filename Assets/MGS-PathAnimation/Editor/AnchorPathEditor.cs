@@ -20,9 +20,7 @@ namespace Developer.PathAnimation
     {
         #region Field and Property
         protected new AnchorPath Target { get { return target as AnchorPath; } }
-        protected const float AnchorSize = 0.1f;
-        protected const float ButtonSize = 0.2f;
-        protected const float ButtonOffset = 0.35f;
+        protected const float AnchorSize = 0.125f;
         #endregion
 
         #region Protected Method
@@ -36,17 +34,7 @@ namespace Developer.PathAnimation
             if (Target.Anchors.Count == 0)
             {
                 var handleSize = HandleUtility.GetHandleSize(Target.transform.position);
-                var constOffset = handleSize * ButtonOffset;
-                var constSize = handleSize * ButtonSize;
-
-                Handles.color = Color.green;
-                if (Handles.Button(Target.transform.position + Vector3.one * constOffset, Quaternion.identity, constSize, constSize, SphereCap))
-                {
-                    Undo.RecordObject(Target, "Insert Anchor");
-                    Target.Anchors.Insert(0, new Vector3(0, 0, handleSize));
-                    Target.Rebuild();
-                    MarkSceneDirty();
-                }
+                Target.Anchors.Insert(0, Vector3.one * handleSize * 0.5f);
             }
             else
             {
@@ -54,29 +42,14 @@ namespace Developer.PathAnimation
                 {
                     var anchorPos = Target.transform.TransformPoint(Target.Anchors[i]);
                     var handleSize = HandleUtility.GetHandleSize(anchorPos);
+                    var constSize = handleSize * AnchorSize;
 
-                    Handles.color = Blue;
-                    DrawSphereCap(anchorPos, Quaternion.identity, handleSize * AnchorSize);
-
-                    EditorGUI.BeginChangeCheck();
-                    var position = Handles.PositionHandle(anchorPos, Quaternion.identity);
-                    if (EditorGUI.EndChangeCheck())
-                    {
-                        Undo.RecordObject(Target, "Change Anchor Position");
-                        Target.Anchors[i] = Target.transform.InverseTransformPoint(position);
-                        Target.Rebuild();
-                        MarkSceneDirty();
-                    }
-
-                    var constOffset = handleSize * ButtonOffset;
-                    var constSize = handleSize * ButtonSize;
-
-                    if (Event.current.control)
+                    if (Event.current.alt)
                     {
                         Handles.color = Color.green;
-                        if (Handles.Button(anchorPos + Vector3.one * constOffset, Quaternion.identity, constSize, constSize, SphereCap))
+                        if (Handles.Button(anchorPos, Quaternion.identity, constSize, constSize, SphereCap))
                         {
-                            var anchorOffset = new Vector3(0, 0, handleSize);
+                            var anchorOffset = Vector3.forward * handleSize;
                             if (i > 0)
                                 anchorOffset = (Target.Anchors[i] - Target.Anchors[i - 1]).normalized * handleSize;
 
@@ -89,10 +62,23 @@ namespace Developer.PathAnimation
                     else if (Event.current.shift)
                     {
                         Handles.color = Color.red;
-                        if (Handles.Button(anchorPos + Vector3.one * constOffset, Quaternion.identity, constSize, constSize, SphereCap))
+                        if (Handles.Button(anchorPos, Quaternion.identity, constSize, constSize, SphereCap))
                         {
                             Undo.RecordObject(Target, "Remove Anchor");
                             Target.Anchors.RemoveAt(i);
+                            Target.Rebuild();
+                            MarkSceneDirty();
+                        }
+                    }
+                    else
+                    {
+                        Handles.color = Blue;
+                        EditorGUI.BeginChangeCheck();
+                        var position = Handles.FreeMoveHandle(anchorPos, Quaternion.identity, constSize, MoveSnap, SphereCap);
+                        if (EditorGUI.EndChangeCheck())
+                        {
+                            Undo.RecordObject(Target, "Change Anchor Position");
+                            Target.Anchors[i] = Target.transform.InverseTransformPoint(position);
                             Target.Rebuild();
                             MarkSceneDirty();
                         }

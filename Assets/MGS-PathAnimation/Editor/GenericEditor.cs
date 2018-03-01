@@ -25,17 +25,19 @@ namespace Developer.EditorExtension
         protected readonly Color Blue = new Color(0, 1, 1, 1);
         protected readonly Color TransparentBlue = new Color(0, 1, 1, 0.1f);
 
+        protected readonly Vector3 MoveSnap = Vector3.one;
+
 #if UNITY_5_5_OR_NEWER
-        protected readonly Handles.CapFunction SphereCap = Handles.SphereHandleCap;
         protected readonly Handles.CapFunction CircleCap = Handles.CircleHandleCap;
+        protected readonly Handles.CapFunction SphereCap = Handles.SphereHandleCap;
 #else
-        protected readonly Handles.DrawCapFunction SphereCap = Handles.SphereCap;
         protected readonly Handles.DrawCapFunction CircleCap = Handles.CircleCap;
+        protected readonly Handles.DrawCapFunction SphereCap = Handles.SphereCap;
 #endif
-        protected const float NodeSize = 0.05f;
+        protected const float AreaRadius = 0.5f;
         protected const float ArrowLength = 0.75f;
         protected const float LineLength = 10;
-        protected const float AreaRadius = 0.5f;
+        protected const float NodeSize = 0.05f;
         #endregion
 
         #region Protected Method
@@ -85,16 +87,6 @@ namespace Developer.EditorExtension
             }
         }
 
-        protected void DrawSphereCap(Vector3 position, Quaternion rotation, float size)
-        {
-#if UNITY_5_5_OR_NEWER
-            if (Event.current.type == EventType.Repaint)
-                SphereCap(0, position, rotation, size, EventType.Repaint);
-#else
-            SphereCap(0, position, rotation, size);
-#endif
-        }
-
         protected void DrawCircleCap(Vector3 position, Quaternion rotation, float size)
         {
 #if UNITY_5_5_OR_NEWER
@@ -102,6 +94,16 @@ namespace Developer.EditorExtension
                 CircleCap(0, position, rotation, size, EventType.Repaint);
 #else
             CircleCap(0, position, rotation, size);
+#endif
+        }
+
+        protected void DrawSphereCap(Vector3 position, Quaternion rotation, float size)
+        {
+#if UNITY_5_5_OR_NEWER
+            if (Event.current.type == EventType.Repaint)
+                SphereCap(0, position, rotation, size, EventType.Repaint);
+#else
+            SphereCap(0, position, rotation, size);
 #endif
         }
 

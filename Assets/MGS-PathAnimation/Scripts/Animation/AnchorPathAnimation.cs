@@ -19,17 +19,12 @@ namespace Developer.PathAnimation
     {
         #region Field and Property
         /// <summary>
-        /// Path of animation.
-        /// </summary>
-        public new AnchorPath path;
-
-        /// <summary>
         /// Wrapmode of animation.
         /// </summary>
         public WrapMode WrapMode
         {
-            set { path.Wrapmode = value; }
-            get { return path.Wrapmode; }
+            set { (path as AnchorPath).Wrapmode = value; }
+            get { return (path as AnchorPath).Wrapmode; }
         }
 
         /// <summary>
@@ -42,7 +37,7 @@ namespace Developer.PathAnimation
         #region Protected Method
         protected virtual void Start()
         {
-            path.Wrapmode = wrapMode;
+            (path as AnchorPath).Wrapmode = wrapMode;
         }
         #endregion
     }

@@ -30,12 +30,13 @@ namespace Developer.PathAnimation
         /// </summary>
         [SerializeField]
         [HideInInspector]
-        protected List<Vector3> anchors = new List<Vector3>();
+        protected List<Vector3> anchors = new List<Vector3>() { Vector3.one,
+            new Vector3(1, 1, 2), new Vector3(3, 1, 2), new Vector3(3, 1, 3)};
 
         /// <summary>
-        /// Anchors of path curve.
+        /// Count of path curve anchors.
         /// </summary>
-        public List<Vector3> Anchors { get { return anchors; } }
+        public int AnchorsCount { get { return anchors.Count; } }
 
         /// <summary>
         /// WrapMode of path curve.
@@ -50,6 +51,16 @@ namespace Developer.PathAnimation
         /// VectorAnimationCurve of path.
         /// </summary>
         protected VectorAnimationCurve curve = new VectorAnimationCurve();
+        #endregion
+
+        #region Protected Method
+        protected bool CheckAnchorIndex(int index)
+        {
+            if (index >= 0 && index < anchors.Count)
+                return true;
+            else
+                return false;
+        }
         #endregion
 
         #region Public Method
@@ -82,6 +93,44 @@ namespace Developer.PathAnimation
             else
                 return 0;
         }
+
+        #region Anchor Operate
+        public void AddAnchor(Vector3 item)
+        {
+            anchors.Add(transform.InverseTransformPoint(item));
+        }
+
+        public void InsertAnchor(int index, Vector3 item)
+        {
+            if (CheckAnchorIndex(index))
+                anchors.Insert(index, transform.InverseTransformPoint(item));
+        }
+
+        public void SetAnchorAt(int index, Vector3 position)
+        {
+            if (CheckAnchorIndex(index))
+                anchors[index] = transform.InverseTransformPoint(position);
+        }
+
+        public Vector3 GetAnchorAt(int index)
+        {
+            if (CheckAnchorIndex(index))
+                return transform.TransformPoint(anchors[index]);
+            else
+                return Vector3.zero;
+        }
+
+        public void RemoveAnchorAt(int index)
+        {
+            if (CheckAnchorIndex(index))
+                anchors.RemoveAt(index);
+        }
+
+        public void ClearAnchors()
+        {
+            anchors.Clear();
+        }
+        #endregion
         #endregion
     }
 }

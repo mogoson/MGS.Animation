@@ -35,13 +35,7 @@ namespace Developer.PathAnimation
         /// <summary>
         /// Rebuild path.
         /// </summary>
-        public virtual void Rebuild() { }
-
-        /// <summary>
-        /// Get max time of path curve.
-        /// </summary>
-        /// <returns>Max time of path curve.</returns>
-        public virtual float GetMaxTime() { return 1.0f; }
+        public abstract void Rebuild();
 
         /// <summary>
         /// Get point on path curve at time.
@@ -49,6 +43,12 @@ namespace Developer.PathAnimation
         /// <param name="time">Time of curve.</param>
         /// <returns>The point on path curve at time.</returns>
         public abstract Vector3 GetPoint(float time);
+
+        /// <summary>
+        /// Get max time of path curve.
+        /// </summary>
+        /// <returns>Max time of path curve.</returns>
+        public abstract float GetMaxTime();
         #endregion
     }
 }

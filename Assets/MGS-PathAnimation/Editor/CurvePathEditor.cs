@@ -23,6 +23,7 @@ namespace Developer.PathAnimation
         #region Field and Property
         protected CurvePath Target { get { return target as CurvePath; } }
         protected const float Delta = 0.05f;
+        protected const float AnchorSize = 0.125f;
         #endregion
 
         #region Protected Method

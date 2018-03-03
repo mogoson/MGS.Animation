@@ -20,7 +20,6 @@ namespace Developer.PathAnimation
     {
         #region Field and Property
         protected new AnchorPath Target { get { return target as AnchorPath; } }
-        protected const float AnchorSize = 0.125f;
         #endregion
 
         #region Protected Method
@@ -31,16 +30,16 @@ namespace Developer.PathAnimation
             if (Application.isPlaying)
                 return;
 
-            if (Target.Anchors.Count == 0)
+            if (Target.AnchorsCount == 0)
             {
                 var handleSize = HandleUtility.GetHandleSize(Target.transform.position);
-                Target.Anchors.Insert(0, Vector3.one * handleSize * 0.5f);
+                Target.InsertAnchor(0, Vector3.one * handleSize * 0.5f);
             }
             else
             {
-                for (int i = 0; i < Target.Anchors.Count; i++)
+                for (int i = 0; i < Target.AnchorsCount; i++)
                 {
-                    var anchorPos = Target.transform.TransformPoint(Target.Anchors[i]);
+                    var anchorPos = Target.GetAnchorAt(i);
                     var handleSize = HandleUtility.GetHandleSize(anchorPos);
                     var constSize = handleSize * AnchorSize;
 
@@ -51,10 +50,10 @@ namespace Developer.PathAnimation
                         {
                             var anchorOffset = Vector3.forward * handleSize;
                             if (i > 0)
-                                anchorOffset = (Target.Anchors[i] - Target.Anchors[i - 1]).normalized * handleSize;
+                                anchorOffset = (anchorPos - Target.GetAnchorAt(i - 1)).normalized * handleSize;
 
                             Undo.RecordObject(Target, "Insert Anchor");
-                            Target.Anchors.Insert(i + 1, Target.Anchors[i] + anchorOffset);
+                            Target.InsertAnchor(i + 1, anchorPos + anchorOffset);
                             Target.Rebuild();
                             MarkSceneDirty();
                         }
@@ -65,7 +64,7 @@ namespace Developer.PathAnimation
                         if (Handles.Button(anchorPos, Quaternion.identity, constSize, constSize, SphereCap))
                         {
                             Undo.RecordObject(Target, "Remove Anchor");
-                            Target.Anchors.RemoveAt(i);
+                            Target.RemoveAnchorAt(i);
                             Target.Rebuild();
                             MarkSceneDirty();
                         }
@@ -78,7 +77,7 @@ namespace Developer.PathAnimation
                         if (EditorGUI.EndChangeCheck())
                         {
                             Undo.RecordObject(Target, "Change Anchor Position");
-                            Target.Anchors[i] = Target.transform.InverseTransformPoint(position);
+                            Target.SetAnchorAt(i, position);
                             Target.Rebuild();
                             MarkSceneDirty();
                         }

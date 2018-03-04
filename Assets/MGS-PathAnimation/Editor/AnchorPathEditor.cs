@@ -39,21 +39,21 @@ namespace Developer.PathAnimation
             {
                 for (int i = 0; i < Target.AnchorsCount; i++)
                 {
-                    var anchorPos = Target.GetAnchorAt(i);
-                    var handleSize = HandleUtility.GetHandleSize(anchorPos);
+                    var anchorItem = Target.GetAnchorAt(i);
+                    var handleSize = HandleUtility.GetHandleSize(anchorItem);
                     var constSize = handleSize * AnchorSize;
 
                     if (Event.current.alt)
                     {
                         Handles.color = Color.green;
-                        if (Handles.Button(anchorPos, Quaternion.identity, constSize, constSize, SphereCap))
+                        if (Handles.Button(anchorItem, Quaternion.identity, constSize, constSize, SphereCap))
                         {
-                            var anchorOffset = Vector3.forward * handleSize;
+                            var offset = Vector3.forward * handleSize;
                             if (i > 0)
-                                anchorOffset = (anchorPos - Target.GetAnchorAt(i - 1)).normalized * handleSize;
+                                offset = (anchorItem - Target.GetAnchorAt(i - 1)).normalized * handleSize;
 
                             Undo.RecordObject(Target, "Insert Anchor");
-                            Target.InsertAnchor(i + 1, anchorPos + anchorOffset);
+                            Target.InsertAnchor(i + 1, anchorItem + offset);
                             Target.Rebuild();
                             MarkSceneDirty();
                         }
@@ -61,7 +61,7 @@ namespace Developer.PathAnimation
                     else if (Event.current.shift)
                     {
                         Handles.color = Color.red;
-                        if (Handles.Button(anchorPos, Quaternion.identity, constSize, constSize, SphereCap))
+                        if (Handles.Button(anchorItem, Quaternion.identity, constSize, constSize, SphereCap))
                         {
                             Undo.RecordObject(Target, "Remove Anchor");
                             Target.RemoveAnchorAt(i);
@@ -73,7 +73,7 @@ namespace Developer.PathAnimation
                     {
                         Handles.color = Blue;
                         EditorGUI.BeginChangeCheck();
-                        var position = Handles.FreeMoveHandle(anchorPos, Quaternion.identity, constSize, MoveSnap, SphereCap);
+                        var position = Handles.FreeMoveHandle(anchorItem, Quaternion.identity, constSize, MoveSnap, SphereCap);
                         if (EditorGUI.EndChangeCheck())
                         {
                             Undo.RecordObject(Target, "Change Anchor Position");

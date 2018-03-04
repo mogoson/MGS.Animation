@@ -24,12 +24,12 @@ namespace Developer.PathAnimation
         #endregion
 
         #region Private Method
-        private void DrawAnchorHandle(Vector3 anchorPos, Action<Vector3> callback)
+        private void DrawAnchorHandle(Vector3 anchor, Action<Vector3> callback)
         {
-            var constSize = HandleUtility.GetHandleSize(anchorPos) * AnchorSize;
+            var constSize = HandleUtility.GetHandleSize(anchor) * AnchorSize;
 
             EditorGUI.BeginChangeCheck();
-            var position = Handles.FreeMoveHandle(anchorPos, Quaternion.identity, constSize, MoveSnap, SphereCap);
+            var position = Handles.FreeMoveHandle(anchor, Quaternion.identity, constSize, MoveSnap, SphereCap);
             if (EditorGUI.EndChangeCheck())
             {
                 Undo.RecordObject(Target, "Change Anchor Position");

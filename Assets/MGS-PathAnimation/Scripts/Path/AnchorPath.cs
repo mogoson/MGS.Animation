@@ -54,12 +54,20 @@ namespace Developer.PathAnimation
         #endregion
 
         #region Protected Method
+        /// <summary>
+        /// Check the index of anchor is in the range?
+        /// </summary>
+        /// <param name="index">Index of anchor.</param>
+        /// <returns>Index is in the range.</returns>
         protected bool CheckAnchorIndex(int index)
         {
             if (index >= 0 && index < anchors.Count)
                 return true;
             else
+            {
+                Debug.LogErrorFormat("The anchor index({0}) is out of range(0~{1}).", index, anchors.Count);
                 return false;
+            }
         }
         #endregion
 
@@ -94,24 +102,42 @@ namespace Developer.PathAnimation
                 return 0;
         }
 
-        #region Anchor Operate
+        /// <summary>
+        /// Add anchor item.
+        /// </summary>
+        /// <param name="item">Anchor item.</param>
         public void AddAnchor(Vector3 item)
         {
             anchors.Add(transform.InverseTransformPoint(item));
         }
 
+        /// <summary>
+        /// Insert Anchor item at index.
+        /// </summary>
+        /// <param name="index">Index of anchor.</param>
+        /// <param name="item">Anchor item.</param>
         public void InsertAnchor(int index, Vector3 item)
         {
             if (CheckAnchorIndex(index))
                 anchors.Insert(index, transform.InverseTransformPoint(item));
         }
 
-        public void SetAnchorAt(int index, Vector3 position)
+        /// <summary>
+        /// Set the anchor item at index.
+        /// </summary>
+        /// <param name="index">Index of anchor.</param>
+        /// <param name="item">Anchor item.</param>
+        public void SetAnchorAt(int index, Vector3 item)
         {
             if (CheckAnchorIndex(index))
-                anchors[index] = transform.InverseTransformPoint(position);
+                anchors[index] = transform.InverseTransformPoint(item);
         }
 
+        /// <summary>
+        /// Get the anchor item at index.
+        /// </summary>
+        /// <param name="index">Anchor index.</param>
+        /// <returns>Anchor item.</returns>
         public Vector3 GetAnchorAt(int index)
         {
             if (CheckAnchorIndex(index))
@@ -120,17 +146,32 @@ namespace Developer.PathAnimation
                 return Vector3.zero;
         }
 
+        /// <summary>
+        /// Remove the anchor item.
+        /// </summary>
+        /// <param name="item">Anchor item.</param>
+        public void RemoveAnchor(Vector3 item)
+        {
+            anchors.Remove(item);
+        }
+
+        /// <summary>
+        /// Remove the anchor item at index.
+        /// </summary>
+        /// <param name="index">Anchor index.</param>
         public void RemoveAnchorAt(int index)
         {
             if (CheckAnchorIndex(index))
                 anchors.RemoveAt(index);
         }
 
+        /// <summary>
+        /// Clear all anchor items.
+        /// </summary>
         public void ClearAnchors()
         {
             anchors.Clear();
         }
-        #endregion
         #endregion
     }
 }

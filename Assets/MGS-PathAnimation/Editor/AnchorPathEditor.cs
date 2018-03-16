@@ -30,38 +30,33 @@ namespace Developer.PathAnimation
             if (Application.isPlaying)
                 return;
 
-            if (Target.AnchorsCount == 0)
+            for (int i = 0; i < Target.AnchorsCount; i++)
             {
-                var handleSize = HandleUtility.GetHandleSize(Target.transform.position);
-                Target.InsertAnchor(0, Vector3.one * handleSize * 0.5f);
-            }
-            else
-            {
-                for (int i = 0; i < Target.AnchorsCount; i++)
+                var anchorItem = Target.GetAnchorAt(i);
+                var handleSize = HandleUtility.GetHandleSize(anchorItem);
+                var constSize = handleSize * AnchorSize;
+
+                if (Event.current.alt)
                 {
-                    var anchorItem = Target.GetAnchorAt(i);
-                    var handleSize = HandleUtility.GetHandleSize(anchorItem);
-                    var constSize = handleSize * AnchorSize;
-
-                    if (Event.current.alt)
+                    Handles.color = Color.green;
+                    if (Handles.Button(anchorItem, Quaternion.identity, constSize, constSize, SphereCap))
                     {
-                        Handles.color = Color.green;
-                        if (Handles.Button(anchorItem, Quaternion.identity, constSize, constSize, SphereCap))
-                        {
-                            var offset = Vector3.forward * handleSize;
-                            if (i > 0)
-                                offset = (anchorItem - Target.GetAnchorAt(i - 1)).normalized * handleSize;
+                        var offset = Vector3.forward * handleSize;
+                        if (i > 0)
+                            offset = (anchorItem - Target.GetAnchorAt(i - 1)).normalized * handleSize;
 
-                            Undo.RecordObject(Target, "Insert Anchor");
-                            Target.InsertAnchor(i + 1, anchorItem + offset);
-                            Target.Rebuild();
-                            MarkSceneDirty();
-                        }
+                        Undo.RecordObject(Target, "Insert Anchor");
+                        Target.InsertAnchor(i + 1, anchorItem + offset);
+                        Target.Rebuild();
+                        MarkSceneDirty();
                     }
-                    else if (Event.current.shift)
+                }
+                else if (Event.current.shift)
+                {
+                    Handles.color = Color.red;
+                    if (Handles.Button(anchorItem, Quaternion.identity, constSize, constSize, SphereCap))
                     {
-                        Handles.color = Color.red;
-                        if (Handles.Button(anchorItem, Quaternion.identity, constSize, constSize, SphereCap))
+                        if (Target.AnchorsCount > 1)
                         {
                             Undo.RecordObject(Target, "Remove Anchor");
                             Target.RemoveAnchorAt(i);
@@ -69,18 +64,18 @@ namespace Developer.PathAnimation
                             MarkSceneDirty();
                         }
                     }
-                    else
+                }
+                else
+                {
+                    Handles.color = Blue;
+                    EditorGUI.BeginChangeCheck();
+                    var position = Handles.FreeMoveHandle(anchorItem, Quaternion.identity, constSize, MoveSnap, SphereCap);
+                    if (EditorGUI.EndChangeCheck())
                     {
-                        Handles.color = Blue;
-                        EditorGUI.BeginChangeCheck();
-                        var position = Handles.FreeMoveHandle(anchorItem, Quaternion.identity, constSize, MoveSnap, SphereCap);
-                        if (EditorGUI.EndChangeCheck())
-                        {
-                            Undo.RecordObject(Target, "Change Anchor Position");
-                            Target.SetAnchorAt(i, position);
-                            Target.Rebuild();
-                            MarkSceneDirty();
-                        }
+                        Undo.RecordObject(Target, "Change Anchor Position");
+                        Target.SetAnchorAt(i, position);
+                        Target.Rebuild();
+                        MarkSceneDirty();
                     }
                 }
             }

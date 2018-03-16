@@ -28,6 +28,11 @@ namespace Developer.PathAnimation
             new Vector3(3, 1, 3), new Vector3(1, 1, 2), new Vector3(3, 1, 2));
 
         /// <summary>
+        /// Max time of path curve.
+        /// </summary>
+        public override float MaxTime { get { return 1.0f; } }
+
+        /// <summary>
         /// Start point of path curve.
         /// </summary>
         public Vector3 StartPoint
@@ -75,15 +80,6 @@ namespace Developer.PathAnimation
         public override Vector3 GetPoint(float time)
         {
             return transform.TransformPoint(CubicBezierCurve.GetPoint(anchor, time));
-        }
-
-        /// <summary>
-        /// Get max time of path curve.
-        /// </summary>
-        /// <returns>Max time of path curve.</returns>
-        public override float GetMaxTime()
-        {
-            return 1.0f;
         }
         #endregion
     }

@@ -19,6 +19,13 @@ namespace Developer.PathAnimation
     /// </summary>
     public abstract class CurvePath : MonoBehaviour
     {
+        #region Field and Property
+        /// <summary>
+        /// Max time of path curve.
+        /// </summary>
+        public abstract float MaxTime { get; }
+        #endregion
+
         #region Protected Method
         protected virtual void Reset()
         {
@@ -43,12 +50,6 @@ namespace Developer.PathAnimation
         /// <param name="time">Time of curve.</param>
         /// <returns>The point on path curve at time.</returns>
         public abstract Vector3 GetPoint(float time);
-
-        /// <summary>
-        /// Get max time of path curve.
-        /// </summary>
-        /// <returns>Max time of path curve.</returns>
-        public abstract float GetMaxTime();
         #endregion
     }
 }

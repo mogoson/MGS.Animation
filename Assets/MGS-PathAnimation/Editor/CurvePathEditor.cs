@@ -39,7 +39,7 @@ namespace Developer.PathAnimation
         protected virtual void OnSceneGUI()
         {
             Handles.color = Blue;
-            for (float t = 0; t < Target.GetMaxTime(); t += Delta)
+            for (float t = 0; t < Target.MaxTime; t += Delta)
             {
                 Handles.DrawLine(Target.GetPoint(t), Target.GetPoint(t + Delta));
             }

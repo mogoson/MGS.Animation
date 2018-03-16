@@ -47,7 +47,7 @@ namespace Developer.PathAnimation
 
             if (GUILayout.Button("Align To Path"))
             {
-                Target.AlignToPath();
+                Target.AlignToPathInEditor();
                 MarkSceneDirty();
             }
         }

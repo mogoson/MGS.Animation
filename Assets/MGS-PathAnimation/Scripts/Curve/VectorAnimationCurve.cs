@@ -27,11 +27,23 @@ namespace Developer.AnimationCurveExtension
     public struct VectorKeyframe
     {
         #region Field and Property
+        /// <summary>
+        /// Time of key frame.
+        /// </summary>
         public float time;
+
+        /// <summary>
+        /// Value of key frame.
+        /// </summary>
         public Vector3 value;
         #endregion
 
         #region Public Method
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="time">Time of key frame.</param>
+        /// <param name="value">Value of key frame.</param>
         public VectorKeyframe(float time, Vector3 value)
         {
             this.time = time;

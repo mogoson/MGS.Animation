@@ -15,6 +15,16 @@ using UnityEngine;
 namespace Developer.PathAnimation
 {
     /// <summary>
+    /// Loop mode of animation.
+    /// </summary>
+    public enum LoopMode
+    {
+        Once = 0,
+        Loop = 1,
+        PingPong = 2,
+    }
+
+    /// <summary>
     /// Keep up mode of animation base on curve path.
     /// </summary>
     public enum KeepUpMode
@@ -40,6 +50,11 @@ namespace Developer.PathAnimation
         public float speed = 5;
 
         /// <summary>
+        /// Loop mode of animation.
+        /// </summary>
+        public LoopMode loopMode = LoopMode.Once;
+
+        /// <summary>
         /// Keep up mode on play animation.
         /// </summary>
         public KeepUpMode keepUpMode = KeepUpMode.WorldUp;
@@ -53,29 +68,57 @@ namespace Developer.PathAnimation
         /// <summary>
         /// Timer of animation.
         /// </summary>
-        protected float timer;
+        protected float timer = 0;
 
         /// <summary>
         /// Delta to calculate tangent.
         /// </summary>
         protected const float Delta = 0.05f;
+
+        /// <summary>
+        /// Direction of timer.
+        /// </summary>
+        protected int TimerDirection { get { return timer < 0 ? -1 : 1; } }
+
+        /// <summary>
+        /// Direction of speed.
+        /// </summary>
+        protected int SpeedDirection { get { return speed < 0 ? -1 : 1; } }
         #endregion
 
         #region Protected Method
         protected virtual void Update()
         {
             timer += speed * Time.deltaTime;
-            TowTransformBaseOnPath(timer);
+            if (timer < 0 || timer > path.MaxTime)
+            {
+                switch (loopMode)
+                {
+                    case LoopMode.Once:
+                        Stop();
+                        return;
+
+                    case LoopMode.Loop:
+                        timer -= path.MaxTime * TimerDirection;
+                        break;
+
+                    case LoopMode.PingPong:
+                        speed = -speed;
+                        timer = Mathf.Clamp(timer, 0, path.MaxTime);
+                        break;
+                }
+            }
+            TowGameObjectOnPath(timer);
         }
 
         /// <summary>
-        /// Tow transform base on path.
+        /// Tow gameobject base on path.
         /// </summary>
         /// <param name="time">Time of path curve.</param>
-        protected void TowTransformBaseOnPath(float time)
+        protected void TowGameObjectOnPath(float time)
         {
             var timePos = path.GetPoint(time);
-            var deltaPos = path.GetPoint(time + Delta);
+            var deltaPos = path.GetPoint(time + Delta * SpeedDirection);
 
             var worldUp = Vector3.up;
             switch (keepUpMode)
@@ -98,7 +141,7 @@ namespace Developer.PathAnimation
                     break;
             }
 
-            //Update position and look at secant.
+            //Update position and look at tangent.
             transform.position = timePos;
             transform.LookAt(deltaPos, worldUp);
         }
@@ -132,11 +175,11 @@ namespace Developer.PathAnimation
 
 #if UNITY_EDITOR
         /// <summary>
-        /// Align transform to path (Only call this method in editor script).
+        /// Align gameobject to path (Only call this method in editor script).
         /// </summary>
-        public void AlignToPath()
+        public void AlignToPathInEditor()
         {
-            TowTransformBaseOnPath(0);
+            TowGameObjectOnPath(0);
         }
 #endif
         #endregion

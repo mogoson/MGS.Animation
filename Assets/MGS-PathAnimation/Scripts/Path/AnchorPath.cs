@@ -41,34 +41,30 @@ namespace Developer.PathAnimation
         /// <summary>
         /// WrapMode of path curve.
         /// </summary>
-        public WrapMode Wrapmode
+        public WrapMode WrapMode
         {
             set { curve.PreWrapMode = curve.PostWrapMode = value; }
             get { return curve.PreWrapMode; }
         }
 
         /// <summary>
+        /// Max time of path curve.
+        /// </summary>
+        public override float MaxTime
+        {
+            get
+            {
+                if (curve.Length > 0)
+                    return curve[curve.Length - 1].time;
+                else
+                    return 0;
+            }
+        }
+
+        /// <summary>
         /// VectorAnimationCurve of path.
         /// </summary>
         protected VectorAnimationCurve curve = new VectorAnimationCurve();
-        #endregion
-
-        #region Protected Method
-        /// <summary>
-        /// Check the index of anchor is in the range?
-        /// </summary>
-        /// <param name="index">Index of anchor.</param>
-        /// <returns>Index is in the range.</returns>
-        protected bool CheckAnchorIndex(int index)
-        {
-            if (index >= 0 && index < anchors.Count)
-                return true;
-            else
-            {
-                Debug.LogErrorFormat("The anchor index({0}) is out of range(0~{1}).", index, anchors.Count);
-                return false;
-            }
-        }
         #endregion
 
         #region Public Method
@@ -91,18 +87,6 @@ namespace Developer.PathAnimation
         }
 
         /// <summary>
-        /// Get max time of path curve.
-        /// </summary>
-        /// <returns>Max time of path curve.</returns>
-        public override float GetMaxTime()
-        {
-            if (curve.Length > 0)
-                return curve[curve.Length - 1].time;
-            else
-                return 0;
-        }
-
-        /// <summary>
         /// Add anchor item.
         /// </summary>
         /// <param name="item">Anchor item.</param>
@@ -118,8 +102,7 @@ namespace Developer.PathAnimation
         /// <param name="item">Anchor item.</param>
         public void InsertAnchor(int index, Vector3 item)
         {
-            if (CheckAnchorIndex(index))
-                anchors.Insert(index, transform.InverseTransformPoint(item));
+            anchors.Insert(index, transform.InverseTransformPoint(item));
         }
 
         /// <summary>
@@ -129,8 +112,7 @@ namespace Developer.PathAnimation
         /// <param name="item">Anchor item.</param>
         public void SetAnchorAt(int index, Vector3 item)
         {
-            if (CheckAnchorIndex(index))
-                anchors[index] = transform.InverseTransformPoint(item);
+            anchors[index] = transform.InverseTransformPoint(item);
         }
 
         /// <summary>
@@ -140,10 +122,7 @@ namespace Developer.PathAnimation
         /// <returns>Anchor item.</returns>
         public Vector3 GetAnchorAt(int index)
         {
-            if (CheckAnchorIndex(index))
-                return transform.TransformPoint(anchors[index]);
-            else
-                return Vector3.zero;
+            return transform.TransformPoint(anchors[index]);
         }
 
         /// <summary>
@@ -161,8 +140,7 @@ namespace Developer.PathAnimation
         /// <param name="index">Anchor index.</param>
         public void RemoveAnchorAt(int index)
         {
-            if (CheckAnchorIndex(index))
-                anchors.RemoveAt(index);
+            anchors.RemoveAt(index);
         }
 
         /// <summary>

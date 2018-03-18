@@ -2,7 +2,7 @@
  *  Copyright © 2018 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  BezierPathEditor.cs
- *  Description  :  Editor for BezierPath..
+ *  Description  :  Editor for BezierPath.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0

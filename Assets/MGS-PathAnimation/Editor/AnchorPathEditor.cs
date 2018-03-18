@@ -25,7 +25,12 @@ namespace Developer.PathAnimation
         #region Protected Method
         protected override void OnSceneGUI()
         {
-            base.OnSceneGUI();
+            Handles.color = Blue;
+            var constDelta = Mathf.Max(Delta, Delta * HandleUtility.GetHandleSize(Target.transform.position));
+            for (float t = 0; t < Target.MaxTime; t += constDelta)
+            {
+                Handles.DrawLine(Target.GetPoint(t), Target.GetPoint(Mathf.Min(Target.MaxTime, t + constDelta)));
+            }
 
             if (Application.isPlaying)
                 return;

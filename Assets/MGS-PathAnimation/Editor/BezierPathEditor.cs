@@ -48,6 +48,8 @@ namespace Developer.PathAnimation
 
             DrawAnchorHandle(Target.StartPoint, (position) => { Target.StartPoint = position; });
             DrawAnchorHandle(Target.EndPoint, (position) => { Target.EndPoint = position; });
+
+            Handles.color = Color.green;
             DrawAnchorHandle(Target.StartTangentPoint, (position) => { Target.StartTangentPoint = position; });
             DrawAnchorHandle(Target.EndTangentPoint, (position) => { Target.EndTangentPoint = position; });
 

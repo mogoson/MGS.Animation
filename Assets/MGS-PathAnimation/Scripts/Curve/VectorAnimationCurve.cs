@@ -18,7 +18,7 @@
 using System;
 using UnityEngine;
 
-namespace Developer.AnimationCurveExtension
+namespace Mogoson.AnimationCurveExtension
 {
     /// <summary>
     /// Key frame data.
@@ -180,7 +180,7 @@ namespace Developer.AnimationCurveExtension
         /// <param name="anchors">Anchor points of curve.</param>
         /// <param name="close">Curve is close.</param>
         /// <returns>New curve.</returns>
-        public static VectorAnimationCurve FromAnchors(Vector3[] anchors, bool close)
+        public static VectorAnimationCurve FromAnchors(Vector3[] anchors, bool close = false)
         {
             var curve = new VectorAnimationCurve();
 

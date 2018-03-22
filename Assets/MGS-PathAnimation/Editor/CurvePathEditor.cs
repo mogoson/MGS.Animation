@@ -10,11 +10,11 @@
  *  DeTargetion  :  Initial development version.
  *************************************************************************/
 
-using Developer.EditorExtension;
+using Mogoson.EditorExtension;
 using UnityEditor;
 using UnityEngine;
 
-namespace Developer.PathAnimation
+namespace Mogoson.PathAnimation
 {
     [CustomEditor(typeof(CurvePath), true)]
     [CanEditMultipleObjects]

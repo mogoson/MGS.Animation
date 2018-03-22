@@ -12,7 +12,7 @@
 
 using UnityEngine;
 
-namespace Developer.PathAnimation
+namespace Mogoson.PathAnimation
 {
     /// <summary>
     /// Loop mode of animation.
@@ -35,7 +35,10 @@ namespace Developer.PathAnimation
         ReferenceForwardAsNormal = 3
     }
 
-    [AddComponentMenu("Developer/PathAnimation/CurvePathAnimation")]
+    /// <summary>
+    /// Animation base on curve path.
+    /// </summary>
+    [AddComponentMenu("Mogoson/PathAnimation/CurvePathAnimation")]
     public class CurvePathAnimation : MonoBehaviour
     {
         #region Field and Property

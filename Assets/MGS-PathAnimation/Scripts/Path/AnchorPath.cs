@@ -11,12 +11,15 @@
  *************************************************************************/
 
 using System.Collections.Generic;
-using Developer.AnimationCurveExtension;
+using Mogoson.AnimationCurveExtension;
 using UnityEngine;
 
-namespace Developer.PathAnimation
+namespace Mogoson.PathAnimation
 {
-    [AddComponentMenu("Developer/PathAnimation/AnchorPath")]
+    /// <summary>
+    /// Curve path base on anchors.
+    /// </summary>
+    [AddComponentMenu("Mogoson/PathAnimation/AnchorPath")]
     public class AnchorPath : CurvePath
     {
         #region Field and Property

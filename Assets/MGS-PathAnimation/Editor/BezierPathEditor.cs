@@ -14,7 +14,7 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace Developer.PathAnimation
+namespace Mogoson.PathAnimation
 {
     [CustomEditor(typeof(BezierPath), true)]
     public class BezierPathEditor : CurvePathEditor

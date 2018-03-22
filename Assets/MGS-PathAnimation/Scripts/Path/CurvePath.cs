@@ -12,7 +12,7 @@
 
 using UnityEngine;
 
-namespace Developer.PathAnimation
+namespace Mogoson.PathAnimation
 {
     /// <summary>
     /// Path base on curve.

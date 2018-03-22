@@ -10,12 +10,15 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-using Developer.MathExtension.Curve;
+using Mogoson.MathExtension.Curve;
 using UnityEngine;
 
-namespace Developer.PathAnimation
+namespace Mogoson.PathAnimation
 {
-    [AddComponentMenu("Developer/PathAnimation/BezierPath")]
+    /// <summary>
+    /// Path base on cubic bezier curve.
+    /// </summary>
+    [AddComponentMenu("Mogoson/PathAnimation/BezierPath")]
     public class BezierPath : CurvePath
     {
         #region Field and Property

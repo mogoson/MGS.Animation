@@ -13,7 +13,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Developer.PathAnimation
+namespace Mogoson.PathAnimation
 {
     [CustomEditor(typeof(AnchorPath), true)]
     public class AnchorPathEditor : CurvePathEditor

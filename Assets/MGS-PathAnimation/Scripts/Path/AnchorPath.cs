@@ -10,8 +10,8 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using Mogoson.Curve;
 using System.Collections.Generic;
-using Mogoson.AnimationCurveExtension;
 using UnityEngine;
 
 namespace Mogoson.PathAnimation

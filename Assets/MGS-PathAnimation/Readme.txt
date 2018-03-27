@@ -30,10 +30,11 @@
     CurvePathAnimationEditor : Editor for CurvePathAnimation.
 --------------------------------------------------------------------------
   [Usage]
-    Create a empty gameobject and attach the path component BezierPath
+    Create an empty gameobject and attach the path component BezierPath
     or AnchorPath to it.
 
-    If BezierPath attached, drag the blue sphere to change it's position.
+    If BezierPath attached, drag the green sphere to change tangent and
+    drag the blue sphere to change it's position.
 
     if AnchorPath attached, drag the blue sphere to change it's position,
     press the ALT key and click the green sphere to add anchor, press the

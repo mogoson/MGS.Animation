@@ -17,7 +17,6 @@ using UnityEngine;
 namespace Mogoson.PathAnimation
 {
     [CustomEditor(typeof(CurvePath), true)]
-    [CanEditMultipleObjects]
     public class CurvePathEditor : GenericEditor
     {
         #region Field and Property

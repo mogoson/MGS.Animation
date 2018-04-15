@@ -17,6 +17,7 @@ using UnityEngine;
 namespace Mogoson.PathAnimation
 {
     [CustomEditor(typeof(BezierPath), true)]
+    [CanEditMultipleObjects]
     public class BezierPathEditor : CurvePathEditor
     {
         #region Field and Property

@@ -13,13 +13,13 @@
 using Mogoson.Curve;
 using UnityEngine;
 
-namespace Mogoson.PathAnimation
+namespace Mogoson.CurvePath
 {
     /// <summary>
     /// Path base on cubic bezier curve.
     /// </summary>
-    [AddComponentMenu("Mogoson/PathAnimation/BezierPath")]
-    public class BezierPath : CurvePath
+    [AddComponentMenu("Mogoson/CurvePath/BezierPath")]
+    public class BezierPath : MonoCurvePath
     {
         #region Field and Property
         /// <summary>
@@ -80,9 +80,9 @@ namespace Mogoson.PathAnimation
         /// </summary>
         /// <param name="time">Time of curve.</param>
         /// <returns>The point on path curve at time.</returns>
-        public override Vector3 GetPoint(float time)
+        public override Vector3 GetPointAt(float time)
         {
-            return transform.TransformPoint(CubicBezierCurve.GetPoint(anchor, time));
+            return transform.TransformPoint(CubicBezierCurve.GetPointAt(anchor, time));
         }
         #endregion
     }

@@ -14,13 +14,13 @@ using Mogoson.Curve;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Mogoson.PathAnimation
+namespace Mogoson.CurvePath
 {
     /// <summary>
     /// Curve path base on anchors.
     /// </summary>
-    [AddComponentMenu("Mogoson/PathAnimation/AnchorPath")]
-    public class AnchorPath : CurvePath
+    [AddComponentMenu("Mogoson/CurvePath/AnchorPath")]
+    public class AnchorPath : MonoCurvePath
     {
         #region Field and Property
         /// <summary>
@@ -84,9 +84,9 @@ namespace Mogoson.PathAnimation
         /// </summary>
         /// <param name="time">Time of curve.</param>
         /// <returns>The point on path curve at time.</returns>
-        public override Vector3 GetPoint(float time)
+        public override Vector3 GetPointAt(float time)
         {
-            return transform.TransformPoint(curve.Evaluate(time));
+            return transform.TransformPoint(curve.GetPointAt(time));
         }
 
         /// <summary>

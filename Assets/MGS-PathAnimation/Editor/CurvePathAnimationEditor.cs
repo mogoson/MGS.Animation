@@ -14,7 +14,7 @@ using Mogoson.UEditor;
 using UnityEditor;
 using UnityEngine;
 
-namespace Mogoson.PathAnimation
+namespace Mogoson.AnimationExtension
 {
     [CustomEditor(typeof(CurvePathAnimation), true)]
     [CanEditMultipleObjects]
@@ -37,7 +37,7 @@ namespace Mogoson.PathAnimation
         {
             DrawDefaultInspector();
 
-            if (Target.keepUpMode == KeepUpMode.ReferenceForward || Target.keepUpMode == KeepUpMode.ReferenceForwardAsNormal)
+            if (Target.keepUp == KeepUpMode.ReferenceForward || Target.keepUp == KeepUpMode.ReferenceForwardAsNormal)
             {
                 EditorGUI.BeginChangeCheck();
                 EditorGUILayout.PropertyField(reference);

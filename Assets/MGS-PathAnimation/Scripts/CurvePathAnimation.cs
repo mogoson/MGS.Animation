@@ -10,20 +10,11 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using Mogoson.CurvePath;
 using UnityEngine;
 
-namespace Mogoson.PathAnimation
+namespace Mogoson.AnimationExtension
 {
-    /// <summary>
-    /// Loop mode of animation.
-    /// </summary>
-    public enum LoopMode
-    {
-        Once = 0,
-        Loop = 1,
-        PingPong = 2,
-    }
-
     /// <summary>
     /// Keep up mode of animation base on curve path.
     /// </summary>
@@ -38,29 +29,19 @@ namespace Mogoson.PathAnimation
     /// <summary>
     /// Animation base on curve path.
     /// </summary>
-    [AddComponentMenu("Mogoson/PathAnimation/CurvePathAnimation")]
-    public class CurvePathAnimation : MonoBehaviour
+    [AddComponentMenu("Mogoson/AnimationExtension/CurvePathAnimation")]
+    public class CurvePathAnimation : MonoAnimation
     {
         #region Field and Property
         /// <summary>
         /// Path of animation.
         /// </summary>
-        public CurvePath path;
-
-        /// <summary>
-        /// Speed of animation.
-        /// </summary>
-        public float speed = 5;
-
-        /// <summary>
-        /// Loop mode of animation.
-        /// </summary>
-        public LoopMode loopMode = LoopMode.Once;
+        public MonoCurvePath path;
 
         /// <summary>
         /// Keep up mode on play animation.
         /// </summary>
-        public KeepUpMode keepUpMode = KeepUpMode.WorldUp;
+        public KeepUpMode keepUp = KeepUpMode.WorldUp;
 
         /// <summary>
         /// Keep up reference transform.
@@ -95,7 +76,7 @@ namespace Mogoson.PathAnimation
             timer += speed * Time.deltaTime;
             if (timer < 0 || timer > path.MaxTime)
             {
-                switch (loopMode)
+                switch (loop)
                 {
                     case LoopMode.Once:
                         Stop();
@@ -111,20 +92,20 @@ namespace Mogoson.PathAnimation
                         break;
                 }
             }
-            TowGameObjectOnPath(timer);
+            TowTransformOnPath(timer);
         }
 
         /// <summary>
-        /// Tow gameobject base on path.
+        /// Tow this transform base on path.
         /// </summary>
         /// <param name="time">Time of path curve.</param>
-        protected void TowGameObjectOnPath(float time)
+        protected void TowTransformOnPath(float time)
         {
-            var timePos = path.GetPoint(time);
-            var deltaPos = path.GetPoint(time + Delta * SpeedDirection);
+            var timePos = path.GetPointAt(time);
+            var deltaPos = path.GetPointAt(time + Delta * SpeedDirection);
 
             var worldUp = Vector3.up;
-            switch (keepUpMode)
+            switch (keepUp)
             {
                 case KeepUpMode.TransformUp:
                     worldUp = transform.up;
@@ -152,27 +133,10 @@ namespace Mogoson.PathAnimation
 
         #region Public Method
         /// <summary>
-        /// Play animation.
+        /// Rewind animation.
         /// </summary>
-        public void Play()
+        public override void Rewind()
         {
-            enabled = true;
-        }
-
-        /// <summary>
-        /// Pause animation.
-        /// </summary>
-        public void Pause()
-        {
-            enabled = false;
-        }
-
-        /// <summary>
-        /// Stop animation.
-        /// </summary>
-        public void Stop()
-        {
-            enabled = false;
             timer = 0;
         }
 
@@ -182,7 +146,7 @@ namespace Mogoson.PathAnimation
         /// </summary>
         public void AlignToPathInEditor()
         {
-            TowGameObjectOnPath(0);
+            TowTransformOnPath(0);
         }
 #endif
         #endregion

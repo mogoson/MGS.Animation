@@ -10,6 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
+using Mogoson.Curve;
 using UnityEngine;
 
 namespace Mogoson.CurvePath
@@ -21,9 +22,19 @@ namespace Mogoson.CurvePath
     {
         #region Field and Property
         /// <summary>
-        /// Max time of path curve.
+        /// Length of path curve.
         /// </summary>
-        public abstract float MaxTime { get; }
+        public virtual float Length { get { return Curve.Length; } }
+
+        /// <summary>
+        /// Max key of path curve.
+        /// </summary>
+        public virtual float MaxKey { get { return Curve.MaxKey; } }
+
+        /// <summary>
+        /// Curve for path.
+        /// </summary>
+        protected abstract ICurve Curve { get; }
         #endregion
 
         #region Protected Method
@@ -45,11 +56,14 @@ namespace Mogoson.CurvePath
         public abstract void Rebuild();
 
         /// <summary>
-        /// Get point on path curve at time.
+        /// Get point on path curve at key.
         /// </summary>
-        /// <param name="time">Time of curve.</param>
-        /// <returns>The point on path curve at time.</returns>
-        public abstract Vector3 GetPointAt(float time);
+        /// <param name="key">Key of curve.</param>
+        /// <returns>The point on path curve at key.</returns>
+        public virtual Vector3 GetPointAt(float key)
+        {
+            return transform.TransformPoint(Curve.GetPointAt(key));
+        }
         #endregion
     }
 }

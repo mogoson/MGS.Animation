@@ -19,13 +19,6 @@ namespace Mogoson.CurvePath
     /// </summary>
     public interface ICurvePath : ICurve
     {
-        #region Field and Property
-        /// <summary>
-        /// Max time of path curve.
-        /// </summary>
-        float MaxTime { get; }
-        #endregion
-
         #region Method
         /// <summary>
         /// Rebuild path.

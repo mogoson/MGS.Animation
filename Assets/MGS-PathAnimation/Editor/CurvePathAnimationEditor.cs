@@ -14,7 +14,7 @@ using Mogoson.UEditor;
 using UnityEditor;
 using UnityEngine;
 
-namespace Mogoson.AnimationExtension
+namespace Mogoson.UAnimation
 {
     [CustomEditor(typeof(CurvePathAnimation), true)]
     [CanEditMultipleObjects]

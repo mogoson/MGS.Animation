@@ -51,23 +51,14 @@ namespace Mogoson.CurvePath
         }
 
         /// <summary>
-        /// Max time of path curve.
+        /// Curve for path.
         /// </summary>
-        public override float MaxTime
-        {
-            get
-            {
-                if (curve.Length > 0)
-                    return curve[curve.Length - 1].time;
-                else
-                    return 0;
-            }
-        }
+        protected override ICurve Curve { get { return curve; } }
 
         /// <summary>
-        /// VectorAnimationCurve of path.
+        /// Curve of path.
         /// </summary>
-        protected VectorAnimationCurve curve = new VectorAnimationCurve();
+        protected UHermiteCurve curve = new UHermiteCurve();
         #endregion
 
         #region Public Method
@@ -76,19 +67,9 @@ namespace Mogoson.CurvePath
         /// </summary>
         public override void Rebuild()
         {
-            curve = VectorAnimationCurve.FromAnchors(anchors.ToArray(), close);
+            curve = UHermiteCurve.FromAnchors(anchors.ToArray(), close);
         }
-
-        /// <summary>
-        /// Get point on path curve at time.
-        /// </summary>
-        /// <param name="time">Time of curve.</param>
-        /// <returns>The point on path curve at time.</returns>
-        public override Vector3 GetPointAt(float time)
-        {
-            return transform.TransformPoint(curve.GetPointAt(time));
-        }
-
+        
         /// <summary>
         /// Add anchor item.
         /// </summary>

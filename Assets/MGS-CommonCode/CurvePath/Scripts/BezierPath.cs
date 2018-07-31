@@ -29,12 +29,7 @@ namespace Mogoson.CurvePath
         [HideInInspector]
         protected CubicBezierAnchor anchor = new CubicBezierAnchor(Vector3.one,
             new Vector3(3, 1, 3), new Vector3(1, 1, 2), new Vector3(3, 1, 2));
-
-        /// <summary>
-        /// Max time of path curve.
-        /// </summary>
-        public override float MaxTime { get { return 1.0f; } }
-
+        
         /// <summary>
         /// Start point of path curve.
         /// </summary>
@@ -70,19 +65,25 @@ namespace Mogoson.CurvePath
             set { anchor.endTangent = transform.InverseTransformPoint(value); }
             get { return transform.TransformPoint(anchor.endTangent); }
         }
+
+        /// <summary>
+        /// Curve for path.
+        /// </summary>
+        protected override ICurve Curve { get { return curve; } }
+
+        /// <summary>
+        /// Curve of path.
+        /// </summary>
+        protected CubicBezierCurve curve = new CubicBezierCurve();
         #endregion
 
         #region Public Method
-        public override void Rebuild() { }
-
         /// <summary>
-        /// Get point on path curve at time.
+        /// Rebuild path.
         /// </summary>
-        /// <param name="time">Time of curve.</param>
-        /// <returns>The point on path curve at time.</returns>
-        public override Vector3 GetPointAt(float time)
+        public override void Rebuild()
         {
-            return transform.TransformPoint(CubicBezierCurve.GetPointAt(anchor, time));
+            curve.anchor = anchor;
         }
         #endregion
     }

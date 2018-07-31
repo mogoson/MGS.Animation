@@ -13,7 +13,7 @@
 using Mogoson.CurvePath;
 using UnityEngine;
 
-namespace Mogoson.AnimationExtension
+namespace Mogoson.UAnimation
 {
     /// <summary>
     /// Keep up mode of animation base on curve path.
@@ -29,7 +29,7 @@ namespace Mogoson.AnimationExtension
     /// <summary>
     /// Animation base on curve path.
     /// </summary>
-    [AddComponentMenu("Mogoson/AnimationExtension/CurvePathAnimation")]
+    [AddComponentMenu("Mogoson/UAnimation/CurvePathAnimation")]
     public class CurvePathAnimation : MonoAnimation
     {
         #region Field and Property
@@ -74,7 +74,7 @@ namespace Mogoson.AnimationExtension
         protected virtual void Update()
         {
             timer += speed * Time.deltaTime;
-            if (timer < 0 || timer > path.MaxTime)
+            if (timer < 0 || timer > path.MaxKey)
             {
                 switch (loop)
                 {
@@ -83,12 +83,12 @@ namespace Mogoson.AnimationExtension
                         return;
 
                     case LoopMode.Loop:
-                        timer -= path.MaxTime * TimerDirection;
+                        timer -= path.MaxKey * TimerDirection;
                         break;
 
                     case LoopMode.PingPong:
                         speed = -speed;
-                        timer = Mathf.Clamp(timer, 0, path.MaxTime);
+                        timer = Mathf.Clamp(timer, 0, path.MaxKey);
                         break;
                 }
             }

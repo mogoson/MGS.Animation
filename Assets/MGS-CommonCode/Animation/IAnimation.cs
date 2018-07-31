@@ -10,7 +10,7 @@
  *  Description  :  Initial development version.
  *************************************************************************/
 
-namespace Mogoson.AnimationExtension
+namespace Mogoson.UAnimation
 {
     /// <summary>
     /// Loop mode of animation.

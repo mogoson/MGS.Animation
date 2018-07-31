@@ -37,7 +37,7 @@ namespace Mogoson.CurvePath
         protected virtual void OnSceneGUI()
         {
             Handles.color = Blue;
-            for (float t = 0; t < Target.MaxTime; t += Delta)
+            for (float t = 0; t < Target.MaxKey; t += Delta)
             {
                 Handles.DrawLine(Target.GetPointAt(t), Target.GetPointAt(t + Delta));
             }
@@ -55,10 +55,7 @@ namespace Mogoson.CurvePath
             EditorGUI.BeginChangeCheck();
             DrawDefaultInspector();
             if (EditorGUI.EndChangeCheck())
-            {
-                if (!Application.isPlaying)
-                    Target.Rebuild();
-            }
+                Target.Rebuild();
         }
         #endregion
     }

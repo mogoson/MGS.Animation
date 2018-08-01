@@ -68,8 +68,9 @@ namespace Mogoson.CurvePath
         public override void Rebuild()
         {
             curve = UHermiteCurve.FromAnchors(anchors.ToArray(), close);
+            base.Rebuild();
         }
-        
+
         /// <summary>
         /// Add anchor item.
         /// </summary>

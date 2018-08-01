@@ -11,9 +11,10 @@
  *************************************************************************/
 
 using Mogoson.CurvePath;
+using Mogoson.UAnimation;
 using UnityEngine;
 
-namespace Mogoson.UAnimation
+namespace Mogoson.PathAnimation
 {
     /// <summary>
     /// Keep up mode of animation base on curve path.
@@ -29,7 +30,7 @@ namespace Mogoson.UAnimation
     /// <summary>
     /// Animation base on curve path.
     /// </summary>
-    [AddComponentMenu("Mogoson/UAnimation/CurvePathAnimation")]
+    [AddComponentMenu("Mogoson/PathAnimation/CurvePathAnimation")]
     public class CurvePathAnimation : MonoAnimation
     {
         #region Field and Property
@@ -74,7 +75,7 @@ namespace Mogoson.UAnimation
         protected virtual void Update()
         {
             timer += speed * Time.deltaTime;
-            if (timer < 0 || timer > path.MaxKey)
+            if (timer < 0 || timer > path.Length)
             {
                 switch (loop)
                 {
@@ -83,26 +84,36 @@ namespace Mogoson.UAnimation
                         return;
 
                     case LoopMode.Loop:
-                        timer -= path.MaxKey * TimerDirection;
+                        timer -= path.Length * TimerDirection;
                         break;
 
                     case LoopMode.PingPong:
                         speed = -speed;
-                        timer = Mathf.Clamp(timer, 0, path.MaxKey);
+                        timer = Mathf.Clamp(timer, 0, path.Length);
                         break;
                 }
             }
-            TowTransformOnPath(timer);
+            TowTransformOnPath(timer * path.MaxKey / path.Length);
+        }
+        #endregion
+
+        #region Public Method
+        /// <summary>
+        /// Rewind animation.
+        /// </summary>
+        public override void Rewind()
+        {
+            timer = 0;
         }
 
         /// <summary>
         /// Tow this transform base on path.
         /// </summary>
-        /// <param name="time">Time of path curve.</param>
-        protected void TowTransformOnPath(float time)
+        /// <param name="key">Key of curve.</param>
+        public void TowTransformOnPath(float key)
         {
-            var timePos = path.GetPointAt(time);
-            var deltaPos = path.GetPointAt(time + Delta * SpeedDirection);
+            var timePos = path.GetPointAt(key);
+            var deltaPos = path.GetPointAt(key + Delta * SpeedDirection);
 
             var worldUp = Vector3.up;
             switch (keepUp)
@@ -129,26 +140,6 @@ namespace Mogoson.UAnimation
             transform.position = timePos;
             transform.LookAt(deltaPos, worldUp);
         }
-        #endregion
-
-        #region Public Method
-        /// <summary>
-        /// Rewind animation.
-        /// </summary>
-        public override void Rewind()
-        {
-            timer = 0;
-        }
-
-#if UNITY_EDITOR
-        /// <summary>
-        /// Align gameobject to path (Only call this method in editor script).
-        /// </summary>
-        public void AlignToPathInEditor()
-        {
-            TowTransformOnPath(0);
-        }
-#endif
         #endregion
     }
 }

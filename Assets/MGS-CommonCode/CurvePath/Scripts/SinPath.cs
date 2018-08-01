@@ -52,6 +52,7 @@ namespace Mogoson.CurvePath
         {
             curve.args = args;
             curve.MaxKey = maxKey;
+            base.Rebuild();
         }
         #endregion
     }

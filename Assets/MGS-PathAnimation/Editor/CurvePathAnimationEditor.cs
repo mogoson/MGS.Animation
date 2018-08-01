@@ -14,7 +14,7 @@ using Mogoson.UEditor;
 using UnityEditor;
 using UnityEngine;
 
-namespace Mogoson.UAnimation
+namespace Mogoson.PathAnimation
 {
     [CustomEditor(typeof(CurvePathAnimation), true)]
     [CanEditMultipleObjects]
@@ -47,7 +47,7 @@ namespace Mogoson.UAnimation
 
             if (GUILayout.Button("Align To Path"))
             {
-                Target.AlignToPathInEditor();
+                Target.TowTransformOnPath(0);
                 MarkSceneDirty();
             }
         }

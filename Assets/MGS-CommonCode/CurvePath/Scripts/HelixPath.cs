@@ -57,6 +57,7 @@ namespace Mogoson.CurvePath
             curve.topEllipse = topEllipse;
             curve.bottomEllipse = bottomEllipse;
             curve.MaxKey = maxRadian;
+            base.Rebuild();
         }
         #endregion
     }

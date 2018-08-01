@@ -29,7 +29,7 @@ namespace Mogoson.CurvePath
         [HideInInspector]
         protected CubicBezierAnchor anchor = new CubicBezierAnchor(Vector3.one,
             new Vector3(3, 1, 3), new Vector3(1, 1, 2), new Vector3(3, 1, 2));
-        
+
         /// <summary>
         /// Start point of path curve.
         /// </summary>
@@ -84,6 +84,7 @@ namespace Mogoson.CurvePath
         public override void Rebuild()
         {
             curve.anchor = anchor;
+            base.Rebuild();
         }
         #endregion
     }

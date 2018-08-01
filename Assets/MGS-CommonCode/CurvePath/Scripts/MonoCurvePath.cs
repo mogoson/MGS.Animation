@@ -24,7 +24,7 @@ namespace Mogoson.CurvePath
         /// <summary>
         /// Length of path curve.
         /// </summary>
-        public virtual float Length { get { return Curve.Length; } }
+        public virtual float Length { get { return length; } }
 
         /// <summary>
         /// Max key of path curve.
@@ -35,6 +35,11 @@ namespace Mogoson.CurvePath
         /// Curve for path.
         /// </summary>
         protected abstract ICurve Curve { get; }
+
+        /// <summary>
+        /// Length of path curve.
+        /// </summary>
+        protected float length = 0.0f;
         #endregion
 
         #region Protected Method
@@ -53,7 +58,10 @@ namespace Mogoson.CurvePath
         /// <summary>
         /// Rebuild path.
         /// </summary>
-        public abstract void Rebuild();
+        public virtual void Rebuild()
+        {
+            length = Curve.Length;
+        }
 
         /// <summary>
         /// Get point on path curve at key.

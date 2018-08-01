@@ -44,7 +44,9 @@ namespace Mogoson.CurvePath
         /// </summary>
         public override void Rebuild()
         {
-            curve.ellipse.semiMinorAxis = curve.ellipse.semiMajorAxis = radius;
+            curve.ellipse.semiMinorAxis = radius;
+            curve.ellipse.semiMajorAxis = radius;
+            base.Rebuild();
         }
         #endregion
     }

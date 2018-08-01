@@ -51,6 +51,7 @@ namespace Mogoson.CurvePath
         {
             curve.ellipse.semiMinorAxis = semiMinorAxis;
             curve.ellipse.semiMajorAxis = semiMajorAxis;
+            base.Rebuild();
         }
         #endregion
     }

@@ -22,28 +22,12 @@ namespace Mogoson.PathAnimation
     {
         #region Field and Property
         protected CurvePathAnimation Target { get { return target as CurvePathAnimation; } }
-        protected SerializedProperty reference;
-        #endregion
-
-        #region Protected Method
-        protected virtual void OnEnable()
-        {
-            reference = serializedObject.FindProperty("reference");
-        }
         #endregion
 
         #region Public Method
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
-
-            if (Target.keepUp == KeepUpMode.ReferenceForward || Target.keepUp == KeepUpMode.ReferenceForwardAsNormal)
-            {
-                EditorGUI.BeginChangeCheck();
-                EditorGUILayout.PropertyField(reference);
-                if (EditorGUI.EndChangeCheck())
-                    serializedObject.ApplyModifiedProperties();
-            }
 
             if (GUILayout.Button("Align To Path"))
             {

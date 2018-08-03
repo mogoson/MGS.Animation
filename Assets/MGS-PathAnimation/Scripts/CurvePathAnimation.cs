@@ -47,7 +47,6 @@ namespace Mogoson.PathAnimation
         /// <summary>
         /// Keep up reference transform.
         /// </summary>
-        [HideInInspector]
         public Transform reference;
 
         /// <summary>

@@ -17,7 +17,7 @@ using UnityEngine;
 namespace Mogoson.CurvePath
 {
     /// <summary>
-    /// Curve path base on anchors.
+    /// Path base on anchors.
     /// </summary>
     [AddComponentMenu("Mogoson/CurvePath/AnchorPath")]
     public class AnchorPath : MonoCurvePath
@@ -58,7 +58,7 @@ namespace Mogoson.CurvePath
         /// <summary>
         /// Curve of path.
         /// </summary>
-        protected UHermiteCurve curve = new UHermiteCurve();
+        protected HermiteCurve curve = new HermiteCurve();
         #endregion
 
         #region Public Method
@@ -67,7 +67,7 @@ namespace Mogoson.CurvePath
         /// </summary>
         public override void Rebuild()
         {
-            curve = UHermiteCurve.FromAnchors(anchors.ToArray(), close);
+            curve = HermiteCurve.FromAnchors(anchors.ToArray(), close);
             base.Rebuild();
         }
 

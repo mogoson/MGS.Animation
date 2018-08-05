@@ -14,11 +14,18 @@
 
 ## 实现
 - BezierCurve：贝塞尔曲线。
-- VectorAnimationCurve：三维动画曲线。
+- HermiteCurve：分段三次埃尔米特曲线。
+- EllipseCurve：椭圆曲线。
+- HelixCurve：螺旋曲线。
+- SinCurve：Sin曲线。
 
-- CurvePath：曲线路径。
+- CurvePath：曲线路径基类。
 - BezierPath：贝塞尔曲线路径。
-- AnchorPath：锚点曲线路径。
+- AnchorPath： 锚点曲线路径。
+- CirclePath：圆形曲线路径。
+- EllipsePath：椭圆曲线路径。
+- HelixPath：螺旋曲线路径。
+- SinPath：Sin曲线路径。
 
 - CurvePathAnimation：曲线路径动画。
 

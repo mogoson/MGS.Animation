@@ -14,11 +14,18 @@
 
 ## Achieve
 - BezierCurve : Define BezierCurve.
-- VectorAnimationCurve : AnimationCurve in three dimensional space.
+- HermiteCurve : Hermite curve in three dimensional space.
+- EllipseCurve : Ellipse curve.
+- HelixCurve : Helix curve.
+- SinCurve : Sin curve.
 
 - CurvePath : Define path base on curve.
 - BezierPath : Define path base on cubic bezier curve.
 - AnchorPath :  Define curve path base on anchors.
+- CirclePath : Path base on circle curve.
+- EllipsePath : Path base on ellipse curve.
+- HelixPath : Path base on helix curve.
+- SinPath : Path base on sin curve.
 
 - CurvePathAnimation : Define animation base on curve path.
 

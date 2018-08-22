@@ -41,19 +41,19 @@
 ## Preview
 - Bezier Path Editor
 
-![BezierPathEditor](./Attachments/README_Image/BezierPathEditor.gif)
+![Bezier Path Editor](./Attachments/README_Image/BezierPathEditor.gif)
 
 - Anchor Path Editor
 
-![AnchorPathEditor](./Attachments/README_Image/AnchorPathEditor.gif)
+![Anchor Path Editor](./Attachments/README_Image/AnchorPathEditor.gif)
 
 - UI Animation
 
-![UIAnimation](./Attachments/README_Image/UIAnimation.gif)
+![UI Animation](./Attachments/README_Image/UIAnimation.gif)
 
 - Path Animation
 
-![PathAnimation](./Attachments/README_Image/PathAnimation.gif)
+![Path Animation](./Attachments/README_Image/PathAnimation.gif)
 
 ## Contact
-- If you have any questions, feel free to contact me at mogoson@qq.com.
+- If you have any questions, feel free to contact me at mogoson@outlook.com.

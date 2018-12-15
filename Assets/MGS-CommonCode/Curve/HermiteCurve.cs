@@ -15,6 +15,7 @@
  *  Description  :  Add static method FromAnchors.
  *************************************************************************/
 
+using Mogoson.IO;
 using System;
 using UnityEngine;
 
@@ -102,10 +103,11 @@ namespace Mogoson.Curve
         {
             get
             {
-                if (KeyframeCount > 0)
-                    return xCurve[KeyframeCount - 1].time;
-                else
+                if (KeyframeCount == 0)
+                {
                     return 0;
+                }
+                return xCurve[KeyframeCount - 1].time;
             }
         }
 
@@ -223,11 +225,14 @@ namespace Mogoson.Curve
         /// <returns>New curve.</returns>
         public static HermiteCurve FromAnchors(Vector3[] anchors, bool close = false)
         {
+            // Creat new curve.
             var curve = new HermiteCurve();
 
             //No anchor.
             if (anchors == null || anchors.Length == 0)
-                Debug.LogWarning("Created a curve with no key frame : The anchors is null or empty.");
+            {
+                LogUtility.LogWarning("Created a curve with no key frame: The anchors is null or empty.");
+            }
             else
             {
                 //Add frame keys to curve.

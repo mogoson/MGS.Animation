@@ -29,7 +29,9 @@ namespace Mogoson.CurvePath
             base.OnSceneGUI();
 
             if (Application.isPlaying)
+            {
                 return;
+            }
 
             DrawFreeMoveHandle(Target.StartPoint, Quaternion.identity, NodeSize, MoveSnap, SphereCap, position =>
             {

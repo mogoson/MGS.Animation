@@ -34,7 +34,9 @@ namespace Mogoson.CurvePath
             }
 
             if (Application.isPlaying)
+            {
                 return;
+            }
 
             for (int i = 0; i < Target.AnchorsCount; i++)
             {
@@ -46,10 +48,13 @@ namespace Mogoson.CurvePath
                     {
                         var offset = Vector3.zero;
                         if (i > 0)
+                        {
                             offset = (anchorItem - Target.GetAnchorAt(i - 1)).normalized * GetHandleSize(anchorItem);
+                        }
                         else
+                        {
                             offset = Vector3.forward * GetHandleSize(anchorItem);
-
+                        }
                         Target.InsertAnchor(i + 1, anchorItem + offset);
                         Target.Rebuild();
                     });

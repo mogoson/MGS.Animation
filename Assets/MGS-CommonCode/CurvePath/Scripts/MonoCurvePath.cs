@@ -68,7 +68,7 @@ namespace Mogoson.CurvePath
         /// </summary>
         /// <param name="key">Key of curve.</param>
         /// <returns>The point on path curve at key.</returns>
-        public virtual Vector3 GetPointAt(float key)
+        public Vector3 GetPointAt(float key)
         {
             return transform.TransformPoint(Curve.GetPointAt(key));
         }

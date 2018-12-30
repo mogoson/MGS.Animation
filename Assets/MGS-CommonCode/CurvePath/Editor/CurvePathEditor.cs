@@ -36,16 +36,21 @@ namespace Mogoson.CurvePath
 
         protected virtual void OnSceneGUI()
         {
-            Handles.color = Blue;
-            for (float t = 0; t < Target.MaxKey; t += Delta)
-            {
-                Handles.DrawLine(Target.GetPointAt(t), Target.GetPointAt(t + Delta));
-            }
+            DrawPathCenterCurve();
         }
 
         protected virtual void OnDisable()
         {
             Undo.undoRedoPerformed = null;
+        }
+
+        protected virtual void DrawPathCenterCurve()
+        {
+            Handles.color = Blue;
+            for (float t = 0; t < Target.MaxKey; t += Delta)
+            {
+                Handles.DrawLine(Target.GetPointAt(t), Target.GetPointAt(t + Delta));
+            }
         }
         #endregion
 

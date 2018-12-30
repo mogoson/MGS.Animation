@@ -26,18 +26,26 @@ namespace Mogoson.CurvePath
         #region Protected Method
         protected override void OnSceneGUI()
         {
+            base.OnSceneGUI();
+            if (Application.isPlaying)
+            {
+                return;
+            }
+            DrawAnchorCurveEditor();
+        }
+
+        protected override void DrawPathCenterCurve()
+        {
             Handles.color = Blue;
             var scaleDelta = Mathf.Max(Delta, Delta * GetHandleSize(Target.transform.position));
             for (float t = 0; t < Target.MaxKey; t += scaleDelta)
             {
                 Handles.DrawLine(Target.GetPointAt(t), Target.GetPointAt(Mathf.Min(Target.MaxKey, t + scaleDelta)));
             }
+        }
 
-            if (Application.isPlaying)
-            {
-                return;
-            }
-
+        protected void DrawAnchorCurveEditor()
+        {
             for (int i = 0; i < Target.AnchorsCount; i++)
             {
                 var anchorItem = Target.GetAnchorAt(i);

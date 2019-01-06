@@ -5,7 +5,7 @@
 - Unity plugin for make path animation in scene.
 
 ## Demand
-- Create path base on anchor curve.
+- Create path base on curve.
 - Play animation base on path curve.
 
 ## Environment
@@ -21,7 +21,7 @@
 
 - CurvePath : Define path base on curve.
 - BezierPath : Define path base on cubic bezier curve.
-- AnchorPath :  Define curve path base on anchors.
+- HermitePath :  Define curve path base on hermite curve.
 - CirclePath : Path base on circle curve.
 - EllipsePath : Path base on ellipse curve.
 - HelixPath : Path base on helix curve.
@@ -32,7 +32,7 @@
 - GenericEditor : Define generic editor.
 - CurvePathEditor : Editor for CurvePath.
 - BezierPathEditor : Editor for BezierPath.
-- AnchorPathEditor : Editor for AnchorPath.
+- HermitePathEditor : Editor for HermitePath.
 - CurvePathAnimationEditor : Editor for CurvePathAnimation.
 
 ## Demo
@@ -43,9 +43,9 @@
 
 ![Bezier Path Editor](./Attachments/README_Image/BezierPathEditor.gif)
 
-- Anchor Path Editor
+- Hermite Path Editor
 
-![Anchor Path Editor](./Attachments/README_Image/AnchorPathEditor.gif)
+![Anchor Path Editor](./Attachments/README_Image/HermitePathEditor.gif)
 
 - UI Animation
 

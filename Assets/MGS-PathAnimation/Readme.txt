@@ -22,7 +22,7 @@
 
     CurvePath : Define path base on curve.
     BezierPath : Define path base on cubic bezier curve.
-    AnchorPath :  Define curve path base on anchors.
+    HermitePath :  Define curve path base on hermite curve.
     CirclePath : Path base on circle curve.
     EllipsePath : Path base on ellipse curve.
     HelixPath : Path base on helix curve.
@@ -33,17 +33,17 @@
     GenericEditor : Define generic editor.
     CurvePathEditor : Editor for CurvePath.
     BezierPathEditor : Editor for BezierPath.
-    AnchorPathEditor : Editor for AnchorPath.
+    HermitePathEditor : Editor for HermitePath.
     CurvePathAnimationEditor : Editor for CurvePathAnimation.
 --------------------------------------------------------------------------
   [Usage]
     Create an empty gameobject and attach the path component BezierPath
-    or AnchorPath to it.
+    or HermitePath to it.
 
     If BezierPath attached, drag the green sphere to change tangent and
     drag the blue sphere to change it's position.
 
-    if AnchorPath attached, drag the blue sphere to change it's position,
+    if HermitePath attached, drag the blue sphere to change it's position,
     press the ALT key and click the green sphere to add anchor, press the
     SHIFT key and click the red sphere to remove anchor if you want.
     

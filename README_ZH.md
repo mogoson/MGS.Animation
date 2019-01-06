@@ -21,7 +21,7 @@
 
 - CurvePath：曲线路径基类。
 - BezierPath：贝塞尔曲线路径。
-- AnchorPath： 锚点曲线路径。
+- HermitePath： 锚点曲线路径。
 - CirclePath：圆形曲线路径。
 - EllipsePath：椭圆曲线路径。
 - HelixPath：螺旋曲线路径。
@@ -32,7 +32,7 @@
 - GenericEditor：通用扩展编辑器。
 - CurvePathEditor：曲线路径编辑器。
 - BezierPathEditor：贝塞尔曲线路径编辑器。
-- AnchorPathEditor：锚点曲线路径编辑器。
+- HermitePathEditor：锚点曲线路径编辑器。
 - CurvePathAnimationEditor：曲线路径动画编辑器。
 
 ## 案例
@@ -43,9 +43,9 @@
 
 ![Bezier Path Editor](./Attachments/README_Image/BezierPathEditor.gif)
 
-- Anchor Path Editor
+- Hermite Path Editor
 
-![Anchor Path Editor](./Attachments/README_Image/AnchorPathEditor.gif)
+![Anchor Path Editor](./Attachments/README_Image/HermitePathEditor.gif)
 
 - UI Animation
 

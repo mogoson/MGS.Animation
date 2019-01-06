@@ -45,7 +45,7 @@
 
 - Hermite Path Editor
 
-![Anchor Path Editor](./Attachments/README_Image/HermitePathEditor.gif)
+![Hermite Path Editor](./Attachments/README_Image/HermitePathEditor.gif)
 
 - UI Animation
 

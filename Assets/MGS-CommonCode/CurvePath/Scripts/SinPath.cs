@@ -30,7 +30,7 @@ namespace Mogoson.CurvePath
         /// <summary>
         /// Max key of sin curve.
         /// </summary>
-        public float maxKey = 2 * Mathf.PI;
+        public float maxKey = 2;
 
         /// <summary>
         /// Curve for path.
@@ -50,7 +50,7 @@ namespace Mogoson.CurvePath
         public override void Rebuild()
         {
             curve.args = args;
-            curve.MaxKey = maxKey;
+            curve.MaxKey = maxKey * Mathf.PI;
             base.Rebuild();
         }
         #endregion

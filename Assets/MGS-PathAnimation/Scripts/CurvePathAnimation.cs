@@ -11,22 +11,12 @@
  *************************************************************************/
 
 using Mogoson.CurvePath;
+using Mogoson.IO;
 using Mogoson.UAnimation;
 using UnityEngine;
 
 namespace Mogoson.PathAnimation
 {
-    /// <summary>
-    /// Keep up mode of animation base on curve path.
-    /// </summary>
-    public enum KeepUpMode
-    {
-        WorldUp = 0,
-        TransformUp = 1,
-        ReferenceForward = 2,
-        ReferenceForwardAsNormal = 3
-    }
-
     /// <summary>
     /// Animation base on curve path.
     /// </summary>
@@ -98,11 +88,33 @@ namespace Mogoson.PathAnimation
 
         #region Public Method
         /// <summary>
+        /// Refresh animation.
+        /// </summary>
+        /// <param name="data">Animation data, type is PathAnimationData.</param>
+        public override void Refresh(object data)
+        {
+            var newData = data as PathAnimationData;
+            if (newData == null)
+            {
+                LogUtility.LogError("[CurvePathAnimation] Refresh error: the type of data is not PathAnimationData.");
+            }
+            else
+            {
+                path = newData.path;
+                keepUp = newData.keepUp;
+                reference = newData.reference;
+                Rewind(0);
+            }
+        }
+
+        /// <summary>
         /// Rewind animation.
         /// </summary>
-        public override void Rewind()
+        /// <param name="progress">Progress of animation in the range[0~1]</param>
+        public override void Rewind(float progress)
         {
-            timer = 0;
+            progress = Mathf.Clamp01(progress);
+            timer = path.Length * progress;
         }
 
         /// <summary>
@@ -123,7 +135,9 @@ namespace Mogoson.PathAnimation
 
                 case KeepUpMode.ReferenceForward:
                     if (reference)
+                    {
                         worldUp = reference.forward;
+                    }
                     break;
 
                 case KeepUpMode.ReferenceForwardAsNormal:
@@ -140,5 +154,50 @@ namespace Mogoson.PathAnimation
             transform.LookAt(deltaPos, worldUp);
         }
         #endregion
+    }
+
+    /// <summary>
+    /// Keep up mode of animation base on curve path.
+    /// </summary>
+    public enum KeepUpMode
+    {
+        WorldUp = 0,
+        TransformUp = 1,
+        ReferenceForward = 2,
+        ReferenceForwardAsNormal = 3
+    }
+
+    /// <summary>
+    /// Data of path animation.
+    /// </summary>
+    public class PathAnimationData
+    {
+        /// <summary>
+        /// Path of animation.
+        /// </summary>
+        public MonoCurvePath path;
+
+        /// <summary>
+        /// Keep up mode on play animation.
+        /// </summary>
+        public KeepUpMode keepUp = KeepUpMode.WorldUp;
+
+        /// <summary>
+        /// Keep up reference transform.
+        /// </summary>
+        public Transform reference;
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="path">Path of animation.</param>
+        /// <param name="keepUp">Keep up mode on play animation.</param>
+        /// <param name="reference">Keep up reference transform.</param>
+        public PathAnimationData(MonoCurvePath path, KeepUpMode keepUp = KeepUpMode.WorldUp, Transform reference = null)
+        {
+            this.path = path;
+            this.keepUp = keepUp;
+            this.reference = reference;
+        }
     }
 }

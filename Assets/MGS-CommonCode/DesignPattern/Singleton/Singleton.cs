@@ -18,7 +18,7 @@ namespace Mogoson.DesignPattern
     /// Provide a single instance of the specified type T.
     /// </summary>
     /// <typeparam name="T">Specified type.</typeparam>
-    public class Singleton<T> where T : class
+    public abstract class Singleton<T> where T : class
     {
         #region Nested Class
         /// <summary>

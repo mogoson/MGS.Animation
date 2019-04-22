@@ -49,6 +49,15 @@ namespace Mogoson.UAnimation
             set { loop = value; }
             get { return loop; }
         }
+
+        /// <summary>
+        /// Animation is playing?
+        /// </summary>
+        public virtual bool IsPlaying
+        {
+            protected set;
+            get;
+        }
         #endregion
 
         #region Public Method
@@ -57,30 +66,47 @@ namespace Mogoson.UAnimation
         /// </summary>
         public virtual void Play()
         {
-            enabled = true;
+            enabled = IsPlaying = true;
         }
+
+        /// <summary>
+        /// Play animation.
+        /// </summary>
+        /// <param name="animation">Animation data.</param>
+        public virtual void Play(object animation)
+        {
+            Refresh(animation);
+            Play();
+        }
+
+        /// <summary>
+        /// Refresh animation.
+        /// </summary>
+        /// <param name="data">Animation data.</param>
+        public abstract void Refresh(object data);
 
         /// <summary>
         /// Pause animation.
         /// </summary>
         public virtual void Pause()
         {
-            enabled = false;
+            enabled = IsPlaying = false;
         }
+
+        /// <summary>
+        /// Rewind animation.
+        /// </summary>
+        /// <param name="progress">Progress of animation in the range[0~1]</param>
+        public abstract void Rewind(float progress);
 
         /// <summary>
         /// Stop animation.
         /// </summary>
         public virtual void Stop()
         {
-            enabled = false;
-            Rewind();
+            enabled = IsPlaying = false;
+            Rewind(0);
         }
-
-        /// <summary>
-        /// Rewind animation.
-        /// </summary>
-        public abstract void Rewind();
         #endregion
     }
 }

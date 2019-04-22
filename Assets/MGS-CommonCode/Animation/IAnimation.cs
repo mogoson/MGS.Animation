@@ -43,8 +43,8 @@ namespace Mogoson.UAnimation
         /// <summary>
         /// Play animation.
         /// </summary>
-        /// <param name="animation">Animation data.</param>
-        void Play(object animation);
+        /// <param name="data">Animation data.</param>
+        void Play(object data);
 
         /// <summary>
         /// Refresh animation.

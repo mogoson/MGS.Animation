@@ -111,10 +111,11 @@ namespace Mogoson.PathAnimation
         /// Rewind animation.
         /// </summary>
         /// <param name="progress">Progress of animation in the range[0~1]</param>
-        public override void Rewind(float progress)
+        public override void Rewind(float progress = 0)
         {
             progress = Mathf.Clamp01(progress);
             timer = path.Length * progress;
+            TowTransformOnPath(timer);
         }
 
         /// <summary>

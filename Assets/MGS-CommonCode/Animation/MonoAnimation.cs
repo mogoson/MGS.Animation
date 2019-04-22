@@ -72,10 +72,10 @@ namespace Mogoson.UAnimation
         /// <summary>
         /// Play animation.
         /// </summary>
-        /// <param name="animation">Animation data.</param>
-        public virtual void Play(object animation)
+        /// <param name="data">Animation data.</param>
+        public virtual void Play(object data)
         {
-            Refresh(animation);
+            Refresh(data);
             Play();
         }
 
@@ -97,7 +97,7 @@ namespace Mogoson.UAnimation
         /// Rewind animation.
         /// </summary>
         /// <param name="progress">Progress of animation in the range[0~1]</param>
-        public abstract void Rewind(float progress);
+        public abstract void Rewind(float progress = 0);
 
         /// <summary>
         /// Stop animation.

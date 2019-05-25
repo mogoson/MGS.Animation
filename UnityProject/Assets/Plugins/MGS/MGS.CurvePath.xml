@@ -1,0 +1,314 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MGS.CurvePath</name>
+    </assembly>
+    <members>
+        <member name="T:MGS.CurvePath.BezierPath">
+            <summary>
+            Path base on cubic bezier curve.
+            </summary>
+        </member>
+        <member name="F:MGS.CurvePath.BezierPath.anchor">
+            <summary>
+            Anchor points of path curve.
+            </summary>
+        </member>
+        <member name="P:MGS.CurvePath.BezierPath.StartPoint">
+            <summary>
+            Start point of path curve.
+            </summary>
+        </member>
+        <member name="P:MGS.CurvePath.BezierPath.EndPoint">
+            <summary>
+            End point of path curve.
+            </summary>
+        </member>
+        <member name="P:MGS.CurvePath.BezierPath.StartTangentPoint">
+            <summary>
+            Start tangent point of path curve.
+            </summary>
+        </member>
+        <member name="P:MGS.CurvePath.BezierPath.EndTangentPoint">
+            <summary>
+            End tangent point of path curve.
+            </summary>
+        </member>
+        <member name="P:MGS.CurvePath.BezierPath.Curve">
+            <summary>
+            Curve for path.
+            </summary>
+        </member>
+        <member name="F:MGS.CurvePath.BezierPath.curve">
+            <summary>
+            Curve of path.
+            </summary>
+        </member>
+        <member name="M:MGS.CurvePath.BezierPath.Rebuild">
+            <summary>
+            Rebuild path.
+            </summary>
+        </member>
+        <member name="T:MGS.CurvePath.CirclePath">
+            <summary>
+            Path base on circle curve.
+            </summary>
+        </member>
+        <member name="F:MGS.CurvePath.CirclePath.radius">
+            <summary>
+            Radius of circle curve.
+            </summary>
+        </member>
+        <member name="P:MGS.CurvePath.CirclePath.Curve">
+            <summary>
+            Curve for path.
+            </summary>
+        </member>
+        <member name="F:MGS.CurvePath.CirclePath.curve">
+            <summary>
+            Curve of path.
+            </summary>
+        </member>
+        <member name="M:MGS.CurvePath.CirclePath.Rebuild">
+            <summary>
+            Rebuild path.
+            </summary>
+        </member>
+        <member name="T:MGS.CurvePath.EllipsePath">
+            <summary>
+            Path base on ellipse curve.
+            </summary>
+        </member>
+        <member name="F:MGS.CurvePath.EllipsePath.semiMinorAxis">
+            <summary>
+            Semi minor axis of ellipse.
+            </summary>
+        </member>
+        <member name="F:MGS.CurvePath.EllipsePath.semiMajorAxis">
+            <summary>
+            Semi major axis of ellipse.
+            </summary>
+        </member>
+        <member name="P:MGS.CurvePath.EllipsePath.Curve">
+            <summary>
+            Curve for path.
+            </summary>
+        </member>
+        <member name="F:MGS.CurvePath.EllipsePath.curve">
+            <summary>
+            Curve of path.
+            </summary>
+        </member>
+        <member name="M:MGS.CurvePath.EllipsePath.Rebuild">
+            <summary>
+            Rebuild path.
+            </summary>
+        </member>
+        <member name="T:MGS.CurvePath.HelixPath">
+            <summary>
+            Path base on helix curve.
+            </summary>
+        </member>
+        <member name="F:MGS.CurvePath.HelixPath.topEllipse">
+            <summary>
+            Top ellipse args of curve.
+            </summary>
+        </member>
+        <member name="F:MGS.CurvePath.HelixPath.bottomEllipse">
+            <summary>
+            Bottom ellipse args of curve.
+            </summary>
+        </member>
+        <member name="F:MGS.CurvePath.HelixPath.maxRadian">
+            <summary>
+            Max around radian of helix.
+            </summary>
+        </member>
+        <member name="P:MGS.CurvePath.HelixPath.Curve">
+            <summary>
+            Curve for path.
+            </summary>
+        </member>
+        <member name="F:MGS.CurvePath.HelixPath.curve">
+            <summary>
+            Curve of path.
+            </summary>
+        </member>
+        <member name="M:MGS.CurvePath.HelixPath.Rebuild">
+            <summary>
+            Rebuild path.
+            </summary>
+        </member>
+        <member name="T:MGS.CurvePath.HermitePath">
+            <summary>
+            Path base on anchors.
+            </summary>
+        </member>
+        <member name="F:MGS.CurvePath.HermitePath.close">
+            <summary>
+            Path curve is close?
+            </summary>
+        </member>
+        <member name="F:MGS.CurvePath.HermitePath.anchors">
+            <summary>
+            Anchors of path curve.
+            </summary>
+        </member>
+        <member name="P:MGS.CurvePath.HermitePath.AnchorsCount">
+            <summary>
+            Count of path curve anchors.
+            </summary>
+        </member>
+        <member name="P:MGS.CurvePath.HermitePath.WrapMode">
+            <summary>
+            WrapMode of path curve.
+            </summary>
+        </member>
+        <member name="P:MGS.CurvePath.HermitePath.Curve">
+            <summary>
+            Curve for path.
+            </summary>
+        </member>
+        <member name="F:MGS.CurvePath.HermitePath.curve">
+            <summary>
+            Curve of path.
+            </summary>
+        </member>
+        <member name="M:MGS.CurvePath.HermitePath.Rebuild">
+            <summary>
+            Rebuild path.
+            </summary>
+        </member>
+        <member name="M:MGS.CurvePath.HermitePath.AddAnchor(UnityEngine.Vector3)">
+            <summary>
+            Add anchor item.
+            </summary>
+            <param name="item">Anchor item.</param>
+        </member>
+        <member name="M:MGS.CurvePath.HermitePath.InsertAnchor(System.Int32,UnityEngine.Vector3)">
+            <summary>
+            Insert Anchor item at index.
+            </summary>
+            <param name="index">Index of anchor.</param>
+            <param name="item">Anchor item.</param>
+        </member>
+        <member name="M:MGS.CurvePath.HermitePath.SetAnchorAt(System.Int32,UnityEngine.Vector3)">
+            <summary>
+            Set the anchor item at index.
+            </summary>
+            <param name="index">Index of anchor.</param>
+            <param name="item">Anchor item.</param>
+        </member>
+        <member name="M:MGS.CurvePath.HermitePath.GetAnchorAt(System.Int32)">
+            <summary>
+            Get the anchor item at index.
+            </summary>
+            <param name="index">Anchor index.</param>
+            <returns>Anchor item.</returns>
+        </member>
+        <member name="M:MGS.CurvePath.HermitePath.RemoveAnchor(UnityEngine.Vector3)">
+            <summary>
+            Remove the anchor item.
+            </summary>
+            <param name="item">Anchor item.</param>
+        </member>
+        <member name="M:MGS.CurvePath.HermitePath.RemoveAnchorAt(System.Int32)">
+            <summary>
+            Remove the anchor item at index.
+            </summary>
+            <param name="index">Anchor index.</param>
+        </member>
+        <member name="M:MGS.CurvePath.HermitePath.ClearAnchors">
+            <summary>
+            Clear all anchor items.
+            </summary>
+        </member>
+        <member name="T:MGS.CurvePath.ICurvePath">
+            <summary>
+            Interface of curve path.
+            </summary>
+        </member>
+        <member name="M:MGS.CurvePath.ICurvePath.Rebuild">
+            <summary>
+            Rebuild path.
+            </summary>
+        </member>
+        <member name="T:MGS.CurvePath.MonoCurvePath">
+            <summary>
+            Path base on curve.
+            </summary>
+        </member>
+        <member name="P:MGS.CurvePath.MonoCurvePath.Length">
+            <summary>
+            Length of path curve.
+            </summary>
+        </member>
+        <member name="P:MGS.CurvePath.MonoCurvePath.MaxKey">
+            <summary>
+            Max key of path curve.
+            </summary>
+        </member>
+        <member name="P:MGS.CurvePath.MonoCurvePath.Curve">
+            <summary>
+            Curve for path.
+            </summary>
+        </member>
+        <member name="F:MGS.CurvePath.MonoCurvePath.length">
+            <summary>
+            Length of path curve.
+            </summary>
+        </member>
+        <member name="M:MGS.CurvePath.MonoCurvePath.Reset">
+            <summary>
+            Reset component.
+            </summary>
+        </member>
+        <member name="M:MGS.CurvePath.MonoCurvePath.Awake">
+            <summary>
+            Awake component.
+            </summary>
+        </member>
+        <member name="M:MGS.CurvePath.MonoCurvePath.Rebuild">
+            <summary>
+            Rebuild path.
+            </summary>
+        </member>
+        <member name="M:MGS.CurvePath.MonoCurvePath.GetPointAt(System.Single)">
+            <summary>
+            Get point on path curve at key.
+            </summary>
+            <param name="key">Key of curve.</param>
+            <returns>The point on path curve at key.</returns>
+        </member>
+        <member name="T:MGS.CurvePath.SinPath">
+            <summary>
+            Path base on sin curve.
+            </summary>
+        </member>
+        <member name="F:MGS.CurvePath.SinPath.args">
+            <summary>
+            Args of sin curve.
+            </summary>
+        </member>
+        <member name="F:MGS.CurvePath.SinPath.maxKey">
+            <summary>
+            Max key of sin curve.
+            </summary>
+        </member>
+        <member name="P:MGS.CurvePath.SinPath.Curve">
+            <summary>
+            Curve for path.
+            </summary>
+        </member>
+        <member name="F:MGS.CurvePath.SinPath.curve">
+            <summary>
+            Curve of path.
+            </summary>
+        </member>
+        <member name="M:MGS.CurvePath.SinPath.Rebuild">
+            <summary>
+            Rebuild path.
+            </summary>
+        </member>
+    </members>
+</doc>

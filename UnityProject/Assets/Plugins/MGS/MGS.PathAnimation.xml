@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MGS.PathAnimation</name>
+    </assembly>
+    <members>
+        <member name="T:MGS.PathAnimation.CurvePathAnimation">
+            <summary>
+            Animation base on curve path.
+            </summary>
+        </member>
+        <member name="F:MGS.PathAnimation.CurvePathAnimation.curvePath">
+            <summary>
+            Path of animation.
+            </summary>
+        </member>
+        <member name="F:MGS.PathAnimation.CurvePathAnimation.keepUp">
+            <summary>
+            Keep up mode on play animation.
+            </summary>
+        </member>
+        <member name="F:MGS.PathAnimation.CurvePathAnimation.reference">
+            <summary>
+            Keep up reference transform.
+            </summary>
+        </member>
+        <member name="P:MGS.PathAnimation.CurvePathAnimation.Path">
+            <summary>
+            Path for animation base on.
+            </summary>
+        </member>
+        <member name="F:MGS.PathAnimation.CurvePathAnimation.timer">
+            <summary>
+            Timer of animation.
+            </summary>
+        </member>
+        <member name="F:MGS.PathAnimation.CurvePathAnimation.Delta">
+            <summary>
+            Delta to calculate tangent.
+            </summary>
+        </member>
+        <member name="P:MGS.PathAnimation.CurvePathAnimation.TimerDirection">
+            <summary>
+            Direction of timer.
+            </summary>
+        </member>
+        <member name="P:MGS.PathAnimation.CurvePathAnimation.SpeedDirection">
+            <summary>
+            Direction of speed.
+            </summary>
+        </member>
+        <member name="M:MGS.PathAnimation.CurvePathAnimation.Update">
+            <summary>
+            Update animation.
+            </summary>
+        </member>
+        <member name="M:MGS.PathAnimation.CurvePathAnimation.TowTransformOnPath(System.Single)">
+            <summary>
+            Tow this transform base on path.
+            </summary>
+            <param name="key">Key of curve.</param>
+        </member>
+        <member name="M:MGS.PathAnimation.CurvePathAnimation.Initialize">
+            <summary>
+            Initialize animation.
+            </summary>
+        </member>
+        <member name="M:MGS.PathAnimation.CurvePathAnimation.Refresh(System.Object)">
+            <summary>
+            Refresh animation.
+            </summary>
+            <param name="path">Path of animation, type is ICurvePath.</param>
+        </member>
+        <member name="M:MGS.PathAnimation.CurvePathAnimation.Rewind(System.Single)">
+            <summary>
+            Rewind animation.
+            </summary>
+            <param name="progress">Progress of animation in the range[0~1]</param>
+        </member>
+        <member name="T:MGS.PathAnimation.IPathAnimation">
+            <summary>
+            Interface for path animation.
+            </summary>
+        </member>
+        <member name="P:MGS.PathAnimation.IPathAnimation.Path">
+            <summary>
+            Path for animation base on.
+            </summary>
+        </member>
+        <member name="T:MGS.PathAnimation.KeepUpMode">
+            <summary>
+            Keep up mode of animation base on curve path.
+            </summary>
+        </member>
+        <member name="F:MGS.PathAnimation.KeepUpMode.WorldUp">
+            <summary>
+            Keep up as world up.
+            </summary>
+        </member>
+        <member name="F:MGS.PathAnimation.KeepUpMode.TransformUp">
+            <summary>
+            Keep up as transform up.
+            </summary>
+        </member>
+        <member name="F:MGS.PathAnimation.KeepUpMode.ReferenceForward">
+            <summary>
+            Keep up as reference forward.
+            </summary>
+        </member>
+        <member name="F:MGS.PathAnimation.KeepUpMode.ReferenceForwardAsNormal">
+            <summary>
+            Keep up as the cross of tangent and reference forward.
+            </summary>
+        </member>
+    </members>
+</doc>

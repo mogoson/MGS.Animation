@@ -49,6 +49,11 @@
             Direction of speed.
             </summary>
         </member>
+        <member name="M:MGS.PathAnimation.CurvePathAnimation.Initialize">
+            <summary>
+            Initialize animation.
+            </summary>
+        </member>
         <member name="M:MGS.PathAnimation.CurvePathAnimation.Update">
             <summary>
             Update animation.
@@ -60,16 +65,12 @@
             </summary>
             <param name="key">Key of curve.</param>
         </member>
-        <member name="M:MGS.PathAnimation.CurvePathAnimation.Initialize">
-            <summary>
-            Initialize animation.
-            </summary>
-        </member>
         <member name="M:MGS.PathAnimation.CurvePathAnimation.Refresh(System.Object)">
             <summary>
             Refresh animation.
             </summary>
             <param name="path">Path of animation, type is ICurvePath.</param>
+            <returns>Succeed?</returns>
         </member>
         <member name="M:MGS.PathAnimation.CurvePathAnimation.Rewind(System.Single)">
             <summary>

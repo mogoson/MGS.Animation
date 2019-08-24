@@ -1,5 +1,4 @@
 ﻿# MGS-PathAnimation
-- [中文手册](./README_ZH.md)
 
 ## Summary
 - Unity plugin for make path animation in scene.

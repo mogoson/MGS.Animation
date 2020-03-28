@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MGS.Graph</name>
+    </assembly>
+    <members>
+        <member name="T:MGS.Graph.GraphUtility">
+            <summary>
+            Utility for graph.
+            </summary>
+        </member>
+        <member name="M:MGS.Graph.GraphUtility.AsyncLoadGifAsFrames(System.String,System.Action{System.Single,UnityEngine.Texture2D},System.Action{System.Collections.Generic.List{UnityEngine.Texture2D}})">
+            <summary>
+            Asynchronous load gif as frames textures.
+            </summary>
+            <param name="filePath">Path of gif file.</param>
+            <param name="progressCallback">On loading callback.</param>
+            <param name="doneCallback">On loaded callback.</param>
+        </member>
+        <member name="M:MGS.Graph.GraphUtility.AsyncLoadGifFromFile(System.String,System.Action{System.Single,UnityEngine.Texture2D},System.Action{System.Collections.Generic.List{UnityEngine.Texture2D}})">
+            <summary>
+            Asynchronous load gif from local file.
+            </summary>
+            <param name="filePath">Path of gif file.</param>
+            <param name="progressCallback">On loading callback.</param>
+            <param name="doneCallback">On loaded callback.</param>
+            <returns>IEnumerator.</returns>
+        </member>
+        <member name="M:MGS.Graph.GraphUtility.GetBitmapData(System.Drawing.Bitmap)">
+            <summary>
+            Get bytes data of bitmap.
+            </summary>
+            <param name="bitmap">Bitmap source.</param>
+            <returns>Bytes data of bitmap.</returns>
+        </member>
+    </members>
+</doc>

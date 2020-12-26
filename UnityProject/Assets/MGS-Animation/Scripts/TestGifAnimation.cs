@@ -17,7 +17,7 @@ using UnityEngine.UI;
 
 namespace MGS.UAnimation
 {
-    [AddComponentMenu("MGS/UAnimation/TestGifAnimation")]
+    [AddComponentMenu("MGS/Animation/TestGifAnimation")]
     [RequireComponent(typeof(RIFramesAnimation))]
     public class TestGifAnimation : MonoBehaviour
     {
@@ -43,7 +43,7 @@ namespace MGS.UAnimation
             playBtn.gameObject.SetActive(false);
             progressBar.gameObject.SetActive(true);
 
-            GraphUtility.AsyncLoadGifAsFrames(gifFile, OnGifLoading, OnGifLoaded);
+            GraphUtility.LoadGifFromFileAsycn(gifFile, OnGifLoading, OnGifLoaded);
         }
 
         private void OnGifLoading(float progress, Texture2D frame)

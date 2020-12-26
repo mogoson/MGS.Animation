@@ -604,6 +604,152 @@
             <param name="x">Value of x axis.</param>
             <returns>The point on sin curve at x.</returns>
         </member>
+        <member name="T:MGS.UCommon.DesignPattern.MonoUpdater">
+            <summary>
+            Mono updater.
+            </summary>
+        </member>
+        <member name="P:MGS.UCommon.DesignPattern.MonoUpdater.IsTurnOn">
+            <summary>
+            Updater is turn on?
+            </summary>
+        </member>
+        <member name="P:MGS.UCommon.DesignPattern.MonoUpdater.YieldInstruction">
+            <summary>
+            Yield instruction.
+            </summary>
+        </member>
+        <member name="F:MGS.UCommon.DesignPattern.MonoUpdater.updater">
+            <summary>
+            Updater to update.
+            </summary>
+        </member>
+        <member name="M:MGS.UCommon.DesignPattern.MonoUpdater.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:MGS.UCommon.DesignPattern.MonoUpdater.Update">
+            <summary>
+            Processor update.
+            </summary>
+        </member>
+        <member name="M:MGS.UCommon.DesignPattern.MonoUpdater.OnUpdate">
+            <summary>
+            On update.
+            </summary>
+        </member>
+        <member name="M:MGS.UCommon.DesignPattern.MonoUpdater.TurnOn">
+            <summary>
+            Turn on processor.
+            </summary>
+        </member>
+        <member name="M:MGS.UCommon.DesignPattern.MonoUpdater.TurnOff">
+            <summary>
+            Turn off processor.
+            </summary>
+        </member>
+        <member name="T:MGS.UCommon.DesignPattern.IMonoUpdater">
+            <summary>
+            Interface for mono updater.
+            </summary>
+        </member>
+        <member name="P:MGS.UCommon.DesignPattern.IMonoUpdater.IsTurnOn">
+            <summary>
+            Updater is turn on?
+            </summary>
+        </member>
+        <member name="P:MGS.UCommon.DesignPattern.IMonoUpdater.YieldInstruction">
+            <summary>
+            Yield instruction.
+            </summary>
+        </member>
+        <member name="M:MGS.UCommon.DesignPattern.IMonoUpdater.TurnOn">
+            <summary>
+            Turn on updater.
+            </summary>
+        </member>
+        <member name="M:MGS.UCommon.DesignPattern.IMonoUpdater.TurnOff">
+            <summary>
+            Turn off updater.
+            </summary>
+        </member>
+        <member name="T:MGS.UCommon.DesignPattern.SingleUpdater`1">
+            <summary>
+            Single updater.
+            </summary>
+        </member>
+        <member name="P:MGS.UCommon.DesignPattern.SingleUpdater`1.IsTurnOn">
+            <summary>
+            Updater is turn on?
+            </summary>
+        </member>
+        <member name="P:MGS.UCommon.DesignPattern.SingleUpdater`1.YieldInstruction">
+            <summary>
+            Yield instruction.
+            </summary>
+        </member>
+        <member name="F:MGS.UCommon.DesignPattern.SingleUpdater`1.updater">
+            <summary>
+            Updater to update.
+            </summary>
+        </member>
+        <member name="M:MGS.UCommon.DesignPattern.SingleUpdater`1.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:MGS.UCommon.DesignPattern.SingleUpdater`1.Update">
+            <summary>
+            Processor update.
+            </summary>
+        </member>
+        <member name="M:MGS.UCommon.DesignPattern.SingleUpdater`1.OnUpdate">
+            <summary>
+            On update.
+            </summary>
+        </member>
+        <member name="M:MGS.UCommon.DesignPattern.SingleUpdater`1.TurnOn">
+            <summary>
+            Turn on processor.
+            </summary>
+        </member>
+        <member name="M:MGS.UCommon.DesignPattern.SingleUpdater`1.TurnOff">
+            <summary>
+            Turn off processor.
+            </summary>
+        </member>
+        <member name="T:MGS.UCommon.DesignPattern.SingleBehaviour">
+            <summary>
+            MonoBehaviour with a single instance.
+            </summary>
+        </member>
+        <member name="T:MGS.UCommon.DesignPattern.SingleMonoBehaviour`1">
+            <summary>
+            MonoBehaviour with a single instance.
+            </summary>
+            <typeparam name="T">Specified type.</typeparam>
+        </member>
+        <member name="T:MGS.UCommon.DesignPattern.SingleMonoBehaviour`1.InnerSingleton">
+            <summary>
+            Inner singleton provide instance.
+            </summary>
+        </member>
+        <member name="F:MGS.UCommon.DesignPattern.SingleMonoBehaviour`1.InnerSingleton.Instance">
+            <summary>
+            Single instance of the specified type T.
+            </summary>
+        </member>
+        <member name="M:MGS.UCommon.DesignPattern.SingleMonoBehaviour`1.InnerSingleton.#cctor">
+            <summary>
+            Explicit static constructor to tell C# compiler not to mark type as beforefieldinit.
+            </summary>
+        </member>
+        <member name="P:MGS.UCommon.DesignPattern.SingleMonoBehaviour`1.Instance">
+            <summary>
+            Single instance of the specified type T.
+            </summary>
+        </member>
         <member name="T:MGS.UCommon.Event.MonoEventTrigger">
             <summary>
             Event trigger for UI behaviour.
@@ -795,6 +941,26 @@
             On cancel.
             </summary>
             <param name="eventData">Pointer event data.</param>
+        </member>
+        <member name="T:MGS.UCommon.Generic.Axis">
+            <summary>
+            Coordinate axis.
+            </summary>
+        </member>
+        <member name="F:MGS.UCommon.Generic.Axis.X">
+            <summary>
+            X axis.
+            </summary>
+        </member>
+        <member name="F:MGS.UCommon.Generic.Axis.Y">
+            <summary>
+            Y axis.
+            </summary>
+        </member>
+        <member name="F:MGS.UCommon.Generic.Axis.Z">
+            <summary>
+            Z axis.
+            </summary>
         </member>
         <member name="T:MGS.UCommon.Generic.ColorBlendMode">
             <summary>
@@ -1102,37 +1268,6 @@
             <param name="mipLevel">The mip level of the texture to write to.</param>
             <param name="updateMipmaps">When set to true, mipmap levels are recalculated.</param>
             <param name="makeNointerReadable">When set to true, system memory copy of a texture is released.</param>
-        </member>
-        <member name="T:MGS.UCommon.DesignPattern.SingleBehaviour">
-            <summary>
-            MonoBehaviour with a single instance.
-            </summary>
-        </member>
-        <member name="T:MGS.UCommon.DesignPattern.SingleMonoBehaviour`1">
-            <summary>
-            MonoBehaviour with a single instance.
-            </summary>
-            <typeparam name="T">Specified type.</typeparam>
-        </member>
-        <member name="T:MGS.UCommon.DesignPattern.SingleMonoBehaviour`1.InnerSingleton">
-            <summary>
-            Inner singleton provide instance.
-            </summary>
-        </member>
-        <member name="F:MGS.UCommon.DesignPattern.SingleMonoBehaviour`1.InnerSingleton.Instance">
-            <summary>
-            Single instance of the specified type T.
-            </summary>
-        </member>
-        <member name="M:MGS.UCommon.DesignPattern.SingleMonoBehaviour`1.InnerSingleton.#cctor">
-            <summary>
-            Explicit static constructor to tell C# compiler not to mark type as beforefieldinit.
-            </summary>
-        </member>
-        <member name="P:MGS.UCommon.DesignPattern.SingleMonoBehaviour`1.Instance">
-            <summary>
-            Single instance of the specified type T.
-            </summary>
         </member>
         <member name="T:MGS.UCommon.Utility.ColorBlendUtility">
             <summary>

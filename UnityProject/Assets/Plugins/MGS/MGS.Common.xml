@@ -223,6 +223,32 @@
             Single instance of the specified type T.
             </summary>
         </member>
+        <member name="T:MGS.Common.Diagnostics.ProcessUtility">
+            <summary>
+            Utility for process.
+            </summary>
+        </member>
+        <member name="M:MGS.Common.Diagnostics.ProcessUtility.StartProcess(System.String)">
+            <summary>
+            Start process from file.
+            </summary>
+            <param name="fileName">Path of process file.</param>
+            <returns>Succeed?</returns>
+        </member>
+        <member name="M:MGS.Common.Diagnostics.ProcessUtility.KillProcess(System.String)">
+            <summary>
+            Kill process by name.
+            </summary>
+            <param name="processName">Name of process.</param>
+            <returns>Succeed?</returns>
+        </member>
+        <member name="M:MGS.Common.Diagnostics.ProcessUtility.KillProcess(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Kill processes by names.
+            </summary>
+            <param name="processNames">Names of processes.</param>
+            <returns>Succeed?</returns>
+        </member>
         <member name="T:MGS.Common.Generic.GenericEvent">
             <summary>
             Generic event.
@@ -330,20 +356,60 @@
             Utility for directory.
             </summary>
         </member>
-        <member name="M:MGS.Common.IO.DirectoryUtility.RequirePath(System.String,System.String@)">
+        <member name="M:MGS.Common.IO.DirectoryUtility.RequireDirectory(System.String)">
             <summary>
-            Require the directory path exist.
+            Require the directory of path exist.
             </summary>
-            <param name="path">Directory path.</param>
-            <param name="error">Error message.</param>
-            <returns>Create directory path succeed?</returns>
+            <param name="path">Directory or file path.</param>
+            <returns>Succeed?</returns>
         </member>
-        <member name="M:MGS.Common.IO.DirectoryUtility.RequirePath(System.String)">
+        <member name="M:MGS.Common.IO.DirectoryUtility.CopyChildrenEntries(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Action{System.Single},System.Action{System.Boolean,System.String})">
             <summary>
-            Require the directory path exist.
+            Copy the children entries of source to dest directory.
             </summary>
-            <param name="path">Directory path.</param>
-            <returns>Create directory path succeed?</returns>
+            <param name="sourceDir">Source dir.</param>
+            <param name="destDir">Dest dir.</param>
+            <param name="ignores">Ignore files or directories.</param>
+            <param name="progressCallback">Progress callback.</param>
+            <param name="completeCallback">Complete callback.</param>
+        </member>
+        <member name="M:MGS.Common.IO.DirectoryUtility.CopyChildrenEntriesAsync(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.String,System.Action{System.Single},System.Action{System.Boolean,System.String})">
+            <summary>
+            Copy the children entries of source to dest directory async.
+            </summary>
+            <param name="sourceDir">Source dir.</param>
+            <param name="destDir">Dest dir.</param>
+            <param name="ignores">Ignore files or directories.</param>
+            <param name="guid">Guid of async threadGuid of async thread [System will automatically assign if it is null or empty].</param>
+            <param name="progressCallback">Progress callback.</param>
+            <param name="completeCallback">Complete callback.</param>
+            <returns>Guid of async thread.</returns>
+        </member>
+        <member name="M:MGS.Common.IO.DirectoryUtility.DeleteChildrenEntries(System.String,System.Collections.Generic.IEnumerable{System.String},System.Action{System.Single},System.Action{System.Boolean,System.String})">
+            <summary>
+            Delete the children entries of the directory.
+            </summary>
+            <param name="destDir">Dest dir.</param>
+            <param name="ignores">Ignore files or directories.</param>
+            <param name="progressCallback">Progress callback.</param>
+            <param name="completeCallback">Complete callback.</param>
+        </member>
+        <member name="M:MGS.Common.IO.DirectoryUtility.DeleteChildrenEntriesAsync(System.String,System.Collections.Generic.IEnumerable{System.String},System.String,System.Action{System.Single},System.Action{System.Boolean,System.String})">
+            <summary>
+            Delete the children entries of the directory async.
+            </summary>
+            <param name="destDir">Dest dir.</param>
+            <param name="ignores">Ignore files or directories.</param>
+            <param name="guid">Guid of async threadGuid of async thread [System will automatically assign if it is null or empty].</param>
+            <param name="progressCallback">Progress callback.</param>
+            <param name="completeCallback">Complete callback.</param>
+            <returns>Guid of async thread.</returns>
+        </member>
+        <member name="M:MGS.Common.IO.DirectoryUtility.AbortAsync(System.String)">
+            <summary>
+            Abort Async thread.
+            </summary>
+            <param name="guid">Guid of async thread.</param>
         </member>
         <member name="T:MGS.Common.IO.FileUtility">
             <summary>
@@ -374,112 +440,6 @@
             <param name="filePath">Path of target file.</param>
             <param name="encoding">Encoding of target file.</param>
             <returns>All lines from file.</returns>
-        </member>
-        <member name="T:MGS.Common.Logger.FileLogger">
-            <summary>
-            Loggger for log to local file.
-            </summary>
-        </member>
-        <member name="P:MGS.Common.Logger.FileLogger.LogPath">
-            <summary>
-            Root path of log files.
-            </summary>
-        </member>
-        <member name="F:MGS.Common.Logger.FileLogger.logPath">
-            <summary>
-            Root path of log files.
-            </summary>
-        </member>
-        <member name="M:MGS.Common.Logger.FileLogger.#ctor">
-            <summary>
-            Constructor.
-            </summary>
-        </member>
-        <member name="M:MGS.Common.Logger.FileLogger.LogToFile(System.String,System.String,System.Object[])">
-            <summary>
-            Logs a formatted message to local file.
-            </summary>
-            <param name="tag">Tag of log message.</param>
-            <param name="format">A composite format string.</param>
-            <param name="args">Format arguments.</param>
-        </member>
-        <member name="M:MGS.Common.Logger.FileLogger.Log(System.String,System.Object[])">
-            <summary>
-            Logs a formatted message to local file.
-            </summary>
-            <param name="format">A composite format string.</param>
-            <param name="args">Format arguments.</param>
-        </member>
-        <member name="M:MGS.Common.Logger.FileLogger.LogError(System.String,System.Object[])">
-            <summary>
-            Logs a formatted error message to local file.
-            </summary>
-            <param name="format">A composite format string.</param>
-            <param name="args">Format arguments.</param>
-        </member>
-        <member name="M:MGS.Common.Logger.FileLogger.LogWarning(System.String,System.Object[])">
-            <summary>
-            Logs a formatted warning message to local file.
-            </summary>
-            <param name="format">A composite format string.</param>
-            <param name="args">Format arguments.</param>
-        </member>
-        <member name="T:MGS.Common.Logger.ILogger">
-            <summary>
-            Interface of logger.
-            </summary>
-        </member>
-        <member name="M:MGS.Common.Logger.ILogger.Log(System.String,System.Object[])">
-            <summary>
-            Logs a formatted message.
-            </summary>
-            <param name="format">A composite format string.</param>
-            <param name="args">Format arguments.</param>
-        </member>
-        <member name="M:MGS.Common.Logger.ILogger.LogError(System.String,System.Object[])">
-            <summary>
-            Logs a formatted error message.
-            </summary>
-            <param name="format">A composite format string.</param>
-            <param name="args">Format arguments.</param>
-        </member>
-        <member name="M:MGS.Common.Logger.ILogger.LogWarning(System.String,System.Object[])">
-            <summary>
-            Logs a formatted warning message.
-            </summary>
-            <param name="format">A composite format string.</param>
-            <param name="args">Format arguments.</param>
-        </member>
-        <member name="T:MGS.Common.Logger.LogUtility">
-            <summary>
-            Utility for log output.
-            </summary>
-        </member>
-        <member name="P:MGS.Common.Logger.LogUtility.Logger">
-            <summary>
-            Logger of utility.
-            </summary>
-        </member>
-        <member name="M:MGS.Common.Logger.LogUtility.Log(System.String,System.Object[])">
-            <summary>
-            Logs a formatted message.
-            </summary>
-            <param name="format">A composite format string.</param>
-            <param name="args">Format arguments.</param>
-        </member>
-        <member name="M:MGS.Common.Logger.LogUtility.LogError(System.String,System.Object[])">
-            <summary>
-            Logs a formatted error message.
-            </summary>
-            <param name="format">A composite format string.</param>
-            <param name="args">Format arguments.</param>
-        </member>
-        <member name="M:MGS.Common.Logger.LogUtility.LogWarning(System.String,System.Object[])">
-            <summary>
-            Logs a formatted warning message.
-            </summary>
-            <param name="format">A composite format string.</param>
-            <param name="args">Format arguments.</param>
         </member>
         <member name="T:MGS.Common.Crypto.MD5CryptoUtility">
             <summary>
@@ -1121,6 +1081,98 @@
             <summary>
             Clear paragraphs of languages.
             </summary>
+        </member>
+        <member name="T:MGS.Common.Reflection.Reflector">
+            <summary>
+            Reflector for reflection.
+            </summary>
+        </member>
+        <member name="M:MGS.Common.Reflection.Reflector.SetField(System.Object,System.String,System.Object,System.Reflection.BindingFlags)">
+            <summary>
+            Sets the value of the field supported by the given object.
+            </summary>
+            <param name="obj">The object whose field value will be set.</param>
+            <param name="name">The string containing the name of the data field to get.</param>
+            <param name="value">The value to assign to the field.</param>
+            <param name="bindingAttr">A bitwise combination of the enumeration values that specify how the search is conducted.</param>
+        </member>
+        <member name="M:MGS.Common.Reflection.Reflector.SetProperty(System.Object,System.String,System.Object,System.Reflection.BindingFlags,System.Object[])">
+            <summary>
+            Sets the value of the property supported by the given object.
+            </summary>
+            <param name="obj">The object whose property value will be set.</param>
+            <param name="name">The string containing the name of the property to get.</param>
+            <param name="value">The value to assign to the property.</param>
+            <param name="bindingAttr">A bitwise combination of the enumeration values that specify how the search is conducted.</param>
+            <param name="index">Optional index values for indexed properties.</param>
+        </member>
+        <member name="M:MGS.Common.Reflection.Reflector.InvokeMethod(System.Object,System.String,System.Reflection.BindingFlags,System.Object[])">
+            <summary>
+            Invokes the method or constructor represented by the given object, using the specified parameters.
+            </summary>
+            <param name="obj">The object on which to invoke the method or constructor.</param>
+            <param name="name">The string containing the name of the method to get.</param>
+            <param name="parameters">An argument list for the invoked method or constructor.</param>
+            <param name="bindingAttr">A bitwise combination of the enumeration values that specify how the search is conducted.</param>
+            <returns></returns>
+        </member>
+        <member name="T:MGS.Common.Threading.ThreadBridge">
+            <summary>
+            Bridge for thread.
+            </summary>
+        </member>
+        <member name="F:MGS.Common.Threading.ThreadBridge.queue">
+            <summary>
+            Queue for actions.
+            </summary>
+        </member>
+        <member name="M:MGS.Common.Threading.ThreadBridge.Enqueue(System.Action)">
+            <summary>
+            Enqueue an action.
+            </summary>
+            <param name="action">Register action.</param>
+        </member>
+        <member name="M:MGS.Common.Threading.ThreadBridge.Dequeue">
+            <summary>
+            Dequeue all actions.
+            </summary>
+        </member>
+        <member name="M:MGS.Common.Threading.ThreadBridge.Dequeue(System.Int32)">
+            <summary>
+            Dequeue the number of count actions.
+            </summary>
+            <param name="count">Count of dequeue actions once.</param>
+        </member>
+        <member name="T:MGS.Common.Threading.ThreadUtility">
+            <summary>
+            Utility for thread.
+            </summary>
+        </member>
+        <member name="F:MGS.Common.Threading.ThreadUtility.asyncs">
+            <summary>
+            Dictionary for asyncs.
+            </summary>
+        </member>
+        <member name="M:MGS.Common.Threading.ThreadUtility.RunAsync(System.Action)">
+            <summary>
+            Async run action in a thread.
+            </summary>
+            <param name="action">Run action.</param>
+            <returns>Thread instance.</returns>
+        </member>
+        <member name="M:MGS.Common.Threading.ThreadUtility.RunAsync(System.Action,System.String)">
+            <summary>
+            Async run action in a thread.
+            </summary>
+            <param name="action">Run action.</param>
+            <param name="guid">Guid of async thread [System will automatically assign if it is null or empty].</param>
+            <returns>Thread instance.</returns>
+        </member>
+        <member name="M:MGS.Common.Threading.ThreadUtility.AbortAsync(System.String)">
+            <summary>
+            Abort Async thread.
+            </summary>
+            <param name="guid">Guid of async thread.</param>
         </member>
     </members>
 </doc>

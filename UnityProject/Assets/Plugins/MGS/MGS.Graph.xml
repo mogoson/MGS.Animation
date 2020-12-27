@@ -9,21 +9,23 @@
             Utility for graph.
             </summary>
         </member>
-        <member name="M:MGS.Graph.GraphUtility.AsyncLoadGifAsFrames(System.String,System.Action{System.Single,UnityEngine.Texture2D},System.Action{System.Collections.Generic.List{UnityEngine.Texture2D}})">
+        <member name="M:MGS.Graph.GraphUtility.LoadGifFromFileAsycn(System.String,System.Action{System.Single,UnityEngine.Texture2D},System.Action{System.Collections.Generic.List{UnityEngine.Texture2D}},System.Action{System.String})">
             <summary>
-            Asynchronous load gif as frames textures.
+            Load gif from local file async(Coroutine).
             </summary>
             <param name="filePath">Path of gif file.</param>
             <param name="progressCallback">On loading callback.</param>
-            <param name="doneCallback">On loaded callback.</param>
+            <param name="completeCallback">On loaded callback.</param>
+            <param name="errorCallback">On error callback.</param>
         </member>
-        <member name="M:MGS.Graph.GraphUtility.AsyncLoadGifFromFile(System.String,System.Action{System.Single,UnityEngine.Texture2D},System.Action{System.Collections.Generic.List{UnityEngine.Texture2D}})">
+        <member name="M:MGS.Graph.GraphUtility.LoadGifFromFile(System.String,System.Action{System.Single,UnityEngine.Texture2D},System.Action{System.Collections.Generic.List{UnityEngine.Texture2D}},System.Action{System.String})">
             <summary>
-            Asynchronous load gif from local file.
+            Load gif from local file.
             </summary>
             <param name="filePath">Path of gif file.</param>
             <param name="progressCallback">On loading callback.</param>
-            <param name="doneCallback">On loaded callback.</param>
+            <param name="completeCallback">On loaded callback.</param>
+            <param name="errorCallback">On error callback.</param>
             <returns>IEnumerator.</returns>
         </member>
         <member name="M:MGS.Graph.GraphUtility.GetBitmapData(System.Drawing.Bitmap)">

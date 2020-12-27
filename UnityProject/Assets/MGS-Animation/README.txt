@@ -1,19 +1,42 @@
 ﻿==========================================================================
-  Copyright © 2017-2019 Mogoson. All rights reserved.
+  Copyright © 2020 Mogoson. All rights reserved.
   Name: MGS-PathAnimation
-  Author: Mogoson   Version: 1.0.0   Date: 8/10/2019
+  Author: Mogoson   Version: 1.0.0   Date: 12/27/2020
 ==========================================================================
   [Summary]
-    Unity plugin for make path animation in scene.
+    Unity plugin for make animation in scene.
 --------------------------------------------------------------------------
   [Demand]
-    Create path base on anchor curve and play animation base on path.
+    Frames animation display base on Mesh Renderer.
+    Frames animation display base on Sprite Renderer.
+    Frames animation display base on UI component(Image, RawImage).
+    Frames(an image) animation display base on Mesh Renderer.
+    UV offset animation display base on Mesh Renderer.
+    Play local gif animation.
+
+    Create path base on curve.
+    Play animation base on path curve.
 --------------------------------------------------------------------------
   [Environment]
     Unity 5.0 or above.
     .Net Framework 3.5 or above.
 --------------------------------------------------------------------------
   [Achieve]
+    RFramesAnimation : Frames(multi images) animation display base on Mesh
+    Renderer.
+
+    SRFramesAnimation ：Frames(multi images) animation display base on
+    Sprite Renderer.
+
+    UIFramesAnimation ：Frames(multi images) animation display base on UI
+    component(Image).
+
+    UVFramesAnimation ：Frames(an frames image) animation display base on
+    Mesh Renderer.
+
+    UVAnimation ：(an frames image)UV offset animation display base on
+    Mesh Renderer.
+
     BezierCurve : Define BezierCurve.
     HermiteCurve : Hermite curve in three dimensional space.
     EllipseCurve : Ellipse curve.
@@ -31,6 +54,16 @@
     CurvePathAnimation : Define animation base on curve path.
 --------------------------------------------------------------------------
   [Usage]
+    Attach FramesAnimation(example RFramesAnimation) or UVAnimation
+    component to the Renderer gameobject.
+
+    Add the images to the "Frames" of FramesAnimation and set the main
+    texture of Renderer material.
+
+    If use UVFramesAnimation component, set the values of "Row" and
+    "Column" and click the "Apply UV Maps" button in Inspector to apply
+    UV maps.
+
     Create an empty gameobject and attach the path component BezierPath
     or HermitePath to it.
 
@@ -47,10 +80,10 @@
     point of path curve.
 --------------------------------------------------------------------------
   [Demo]
-    Demos in the path "MGS-PathAnimation/Scenes" provide reference to you.
+    Demos in the path "MGS-Animation/Scenes" provide reference to you.
 --------------------------------------------------------------------------
   [Resource]
-    https://github.com/mogoson/MGS-PathAnimation.
+    https://github.com/mogoson/MGS-Animation.
 --------------------------------------------------------------------------
   [Contact]
     If you have any questions, feel free to contact me at mogoson@outlook.com.

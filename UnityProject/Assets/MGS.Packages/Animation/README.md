@@ -33,6 +33,32 @@ public class UVAnimation : MonoAnimation
 
 ## Technology
 
+### Graph
+
+```C#
+//Get frames from image file.
+var image = Image.FromFile(file);
+var dimension = new FrameDimension(image.FrameDimensionsList[0]);
+var framesCount = image.GetFrameCount(dimension);
+var frames = new Bitmap[framesCount];
+for (int i = 0; i < framesCount; i++)
+{
+    var bitmap = new Bitmap(image.Width, image.Height);
+    var graphics = Graphics.FromImage(bitmap);
+
+    image.SelectActiveFrame(dimension, i);
+    graphics.DrawImage(image, Point.Empty);
+    frames[i] = bitmap;
+}
+
+//Get buffer data from bitmap frame.
+using (var stream = new MemoryStream())
+{
+    bitmap.Save(stream, format);
+    return stream.GetBuffer();
+}
+```
+
 ### Loop Mode
 
 ```C#
@@ -57,7 +83,7 @@ if (timer < 0 || timer > curve.Length)
 }
 ```
 
-### Look At
+### Look Up
 
 ```C#
 var worldUp = Vector3.up;
@@ -85,6 +111,22 @@ switch (upMode)
 ```
 
 ## Usage
+
+### Curve Animation
+
+- Attach mono curve component to a game object. [Learn More](https://github.com/mogoson/MGS.MonoCurve)
+
+```tex
+MonoHermiteCurve MonoBezierCurve MonoHelixCurve MonoEllipseCurve MonoSinCurve
+```
+
+- Attach mono animation component to the game object.
+
+```tex
+MonoCurveAnimation
+```
+
+### 2D Animation
 
 - Attach mono animation component to a game object.
 

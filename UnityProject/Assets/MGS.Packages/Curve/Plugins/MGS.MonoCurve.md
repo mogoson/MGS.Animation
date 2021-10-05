@@ -17,6 +17,13 @@
 - System.dll
 - UnityEngine.dll
 
+## Demand
+
+- Create smooth **Curve** in 3D space.
+- Create **Renderer** to show curve in scene.
+- Create **Collider** to check trigger in scene.
+- Create **Cacher** to build curve to cache file and load curve from cache file.
+
 ## Implemented
 
 ```C#
@@ -29,9 +36,35 @@ public class MonoHermiteCurve : MonoCurve{}
 
 public abstract class MonoCurveRenderer : MonoBehaviour, IMonoCurveRenderer{}
 public class MonoCurveLineRenderer : MonoCurveRenderer{}
+
+public abstract class MonoCurveCollider : MonoBehaviour, IMonoCurveCollider{}
+public class MonoCurveCapsuleCollider : MonoCurveCollider{}
+
+//Unity 5.3 or above.
+public abstract class MonoCurveCacher : MonoBehaviour, IMonoCurveCacher{}
+public class MonoBezierCurveCacher : MonoCurveCacher{}
+public class MonoHermiteCurveCacher : MonoCurveCacher{}
 ```
 
 ## Technology
+
+### Check Rebuild
+
+```C#
+protected virtual void Awake() //I do not want to use Start.
+{
+    StartCoroutine(CheckRebuild());
+}
+protected virtual IEnumerator CheckRebuild()
+{
+    if (transform is RectTransform)
+    {
+        //Wait one frame to require the RectTransform is initialized (after Awake).
+        yield return null;
+    }
+    Rebuild();
+}
+```
 
 ### Transform
 
@@ -97,7 +130,12 @@ return length;
 ## Usage
 
 - Attach mono curve component to a game object.
-- Adjust the args of curve component or edit curve in scene editor.
+
+```tex
+MonoHermiteCurve MonoBezierCurve MonoHelixCurve MonoEllipseCurve MonoSinCurve
+```
+
+- Adjust the parameters of curve component or edit curve in scene editor.
 
 ```tex
 Select the MonoBezierCurve and drag the handle to adjust the anchor to see effect.
@@ -116,9 +154,22 @@ Press and hold the ALT+COMMAND into All Tangents mode.
 If the start and end points are close, they will stick together.
 ```
 
-- Attach mono curve renderer component to the mono curve game object to renderer curve in scene.
+- Attach mono curve renderer component to the mono curve game object to renderer curve in scene  if need.
+```tex
+MonoCurveLineRenderer
+```
 
-- Evaluate point on the mono curve.
+- Attach mono curve collider component to the mono curve game object if need.
+```tex
+MonoCurveCapsuleCollider
+```
+
+- Attach mono curve cacher component to the mono curve game object if need.
+```tex
+MonoBezierCurveCacher MonoHermiteCurveCacher
+```
+
+- Evaluate point on the mono curve if need.
 
 ```C#
 //Evaluate point on the mono curve at length.
@@ -133,7 +184,7 @@ while (len < curve.Length)
     p0 = p1;
 }
 
-//Evaluate point on the mono curve at normalized time int the range[0,1].
+//Evaluate point on the mono curve at normalized time in the range[0,1].
 var t = 0f;
 var p0 = curve.EvaluateNormalized(t);
 while (t < 1.0f)

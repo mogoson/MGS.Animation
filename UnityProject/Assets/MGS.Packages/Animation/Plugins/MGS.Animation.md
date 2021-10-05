@@ -1,6 +1,6 @@
 [TOC]
 
-# MGS.Animation
+# MGS.Animation.dll
 
 ## Summary
 
@@ -14,6 +14,14 @@
 
 - .Net Framework 3.5 or above.
 - Unity 5.0 or above.
+
+## Dependence
+
+- [MGS.Curve.dll](.\MGS.Curve.md)
+- [MGS.MonoCurve.dll](.\MGS.MonoCurve.md)
+- System.dll
+- UnityEngine.dll
+- UnityEngine.UI.dll
 
 ## Implemented
 
@@ -114,7 +122,7 @@ switch (upMode)
 
 ### Curve Animation
 
-- Attach mono curve component to a game object. [Learn More](https://github.com/mogoson/MGS.MonoCurve)
+- Attach mono curve component to a game object.
 
 ```tex
 MonoHermiteCurve MonoBezierCurve MonoHelixCurve MonoEllipseCurve MonoSinCurve
@@ -134,27 +142,9 @@ MonoCurveAnimation
 ImageAnimation RawImageAnimation SpriteAnimation UVFrameAnimation UVAnimation
 ```
 
-## Demo
+------
 
-- Demos in the path "MGS.Packages/Animation/Demo/" provide reference to you.
-
-## Preview
-
-- HermiteCurveAnim
-
-![](.\Attachment\images\HermiteCurveAnim.PNG)
-
-- BezierCurveAnim
-
-![](.\Attachment\images\BezierCurveAnim.PNG)
-
-- EllipseCurveAnim
-
-![](.\Attachment\images\EllipseCurveAnim.PNG)
-
-- GifAnim
-
-![](.\Attachment\images\GifAnim.PNG)
+[Previous](../../README.md)
 
 ------
 

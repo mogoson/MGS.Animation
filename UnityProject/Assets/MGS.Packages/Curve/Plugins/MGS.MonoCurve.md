@@ -17,13 +17,6 @@
 - System.dll
 - UnityEngine.dll
 
-## Demand
-
-- Create smooth **Curve** in 3D space.
-- Create **Renderer** to show curve in scene.
-- Create **Collider** to check trigger in scene.
-- Create **Cacher** to build curve to cache file and load curve from cache file.
-
 ## Implemented
 
 ```C#
@@ -36,14 +29,6 @@ public class MonoHermiteCurve : MonoCurve{}
 
 public abstract class MonoCurveRenderer : MonoBehaviour, IMonoCurveRenderer{}
 public class MonoCurveLineRenderer : MonoCurveRenderer{}
-
-public abstract class MonoCurveCollider : MonoBehaviour, IMonoCurveCollider{}
-public class MonoCurveCapsuleCollider : MonoCurveCollider{}
-
-//Unity 5.3 or above.
-public abstract class MonoCurveCacher : MonoBehaviour, IMonoCurveCacher{}
-public class MonoBezierCurveCacher : MonoCurveCacher{}
-public class MonoHermiteCurveCacher : MonoCurveCacher{}
 ```
 
 ## Technology

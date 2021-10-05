@@ -96,19 +96,9 @@ ImageAnimation RawImageAnimation SpriteAnimation UVFrameAnimation UVAnimation
 
 - Demos in the path "MGS.Packages/Animation/Demo/" provide reference to you.
 
-## Preview
+## Source
 
-- HermiteCurveAnim
-
-![](.\Attachment\images\HermiteCurveAnim.PNG)
-
-- BezierCurveAnim
-
-![](.\Attachment\images\BezierCurveAnim.PNG)
-
-- EllipseCurveAnim
-
-![](.\Attachment\images\EllipseCurveAnim.PNG)
+- https://github.com/mogoson/MGS.Animation.
 
 ------
 

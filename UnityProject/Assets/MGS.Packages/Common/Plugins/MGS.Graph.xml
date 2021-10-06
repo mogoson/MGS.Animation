@@ -4,26 +4,26 @@
         <name>MGS.Graph</name>
     </assembly>
     <members>
-        <member name="T:MGS.Graph.GraphUtility">
+        <member name="T:MGS.Graph.ImageUtility">
             <summary>
-            Utility for graph.
+            Utility for image.
             </summary>
         </member>
-        <member name="M:MGS.Graph.GraphUtility.GetFrames(System.String)">
+        <member name="M:MGS.Graph.ImageUtility.GetFrames(System.String)">
             <summary>
             Get frames from image file.
             </summary>
             <param name="file"></param>
             <returns></returns>
         </member>
-        <member name="M:MGS.Graph.GraphUtility.GetFrames(System.Drawing.Image)">
+        <member name="M:MGS.Graph.ImageUtility.GetFrames(System.Drawing.Image)">
             <summary>
             Get frames from image.
             </summary>
             <param name="image"></param>
             <returns></returns>
         </member>
-        <member name="M:MGS.Graph.GraphUtility.GetBuffer(System.Drawing.Bitmap,System.Drawing.Imaging.ImageFormat)">
+        <member name="M:MGS.Graph.ImageUtility.GetBuffer(System.Drawing.Bitmap,System.Drawing.Imaging.ImageFormat)">
             <summary>
             Get buffer data from bitmap.
             </summary>

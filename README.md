@@ -15,22 +15,6 @@
 - .Net Framework 3.5 or above.
 - Unity 5.0 or above.
 
-## Implemented
-
-```C#
-public abstract class MonoAnimation : MonoBehaviour, IAnimation{}
-public class MonoCurveAnimation : MonoAnimation{}
-
-public abstract class FrameAnimation : MonoAnimation{}
-public abstract class SpriteFrameAnimation : FrameAnimation{}
-public abstract class TextureFrameAnimation : FrameAnimation{}
-public class ImageAnimation : SpriteFrameAnimation{}
-public class RawImageAnimation : TextureFrameAnimation{}
-public class SpriteAnimation : SpriteFrameAnimation{}
-public class UVFrameAnimation : FrameAnimation{}
-public class UVAnimation : MonoAnimation
-```
-
 ## Technology
 
 ### Graph

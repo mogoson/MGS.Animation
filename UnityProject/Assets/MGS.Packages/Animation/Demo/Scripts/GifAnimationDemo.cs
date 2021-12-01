@@ -1,12 +1,12 @@
 /*************************************************************************
- *  Copyright © 2019 Mogoson. All rights reserved.
+ *  Copyright © 2021 Mogoson. All rights reserved.
  *------------------------------------------------------------------------
  *  File         :  GifAnimationDemo.cs
  *  Description  :  Test play gif animation.
  *------------------------------------------------------------------------
  *  Author       :  Mogoson
  *  Version      :  0.1.0
- *  Date         :  4/20/2019
+ *  Date         :  4/20/2021
  *  Description  :  Initial development version.
  *************************************************************************/
 
@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MGS.UAnimation.Demo
+namespace MGS.Animations.Demo
 {
     [RequireComponent(typeof(RawImageAnimation))]
     public class GifAnimationDemo : MonoBehaviour
@@ -36,7 +36,7 @@ namespace MGS.UAnimation.Demo
         {
             playBtn.gameObject.SetActive(false);
             progressBar.gameObject.SetActive(true);
-            StartCoroutine(Texture2DUtility.LoadGifAsync(gifFile, OnGifLoading, OnGifLoaded));
+            StartCoroutine(GraphUtility.LoadGifFromFile(gifFile, OnGifLoading, OnGifLoaded));
         }
 
         private void OnGifLoading(float progress, Texture2D tex)

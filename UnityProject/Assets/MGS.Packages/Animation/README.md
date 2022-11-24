@@ -98,13 +98,13 @@ switch (upMode)
 
 ### Curve Animation
 
-- Attach mono curve component to a game object. [Learn More](https://github.com/mogoson/MGS.MonoCurve)
+- Attach mono curve component to a game object. [Learn More](https://github.com/mogoson/MGS.Curve)
 
 ```tex
 MonoHermiteCurve MonoBezierCurve MonoHelixCurve MonoEllipseCurve MonoSinCurve
 ```
 
-- Attach mono animation component to the game object.
+- Attach animation component to the game object.
 
 ```tex
 MonoCurveAnimation
@@ -112,7 +112,7 @@ MonoCurveAnimation
 
 ### 2D Animation
 
-- Attach mono animation component to a game object.
+- Attach animation component to a game object.
 
 ```text
 ImageAnimation RawImageAnimation SpriteAnimation UVFrameAnimation UVAnimation

@@ -124,4 +124,4 @@ ImageAnimation RawImageAnimation SpriteAnimation UVFrameAnimation UVAnimation
 
 ------
 
-Copyright © 2021 Mogoson.	mogoson@outlook.com
+Copyright © 2022 Mogoson.	mogoson@outlook.com

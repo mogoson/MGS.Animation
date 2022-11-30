@@ -10,6 +10,10 @@
 
 - Windows
 
+## Version
+
+- 1.2.1
+
 ## Environment
 
 - .Net Framework 3.5 or above.
@@ -124,8 +128,8 @@ ImageAnimation RawImageAnimation SpriteAnimation UVFrameAnimation UVAnimation
 
 ## Source
 
-- https://github.com/mogoson/MGS.Animation.
+- https://github.com/mogoson/MGS.Animation
 
 ------
 
-Copyright © 2021 Mogoson.	mogoson@outlook.com
+Copyright © 2022 Mogoson.	mogoson@outlook.com

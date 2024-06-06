@@ -1,0 +1,17 @@
+{
+    "name": "MGS.Animation.Editor",
+    "rootNamespace": "",
+    "references": [
+        "MGS.Animation",
+        "MGS.Curve"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

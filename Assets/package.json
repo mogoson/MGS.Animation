@@ -2,6 +2,6 @@
     "description": "Unity plugin for make animation in scene.",
     "displayName": "Animation",
     "name": "com.mgs.animation",
-    "unity": "2019.4",
+    "unity": "2021.3",
     "version": "1.0.0"
 }

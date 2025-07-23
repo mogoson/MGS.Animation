@@ -21,7 +21,7 @@
 
 ### Curve Animation
 
-- Attach mono component to a game object. [Learn More](https://github.com/mogoson/MGS.Curve)
+- Attach curve component to a game object. [Learn More](https://github.com/mogoson/MGS.Curve)
 
 ```tex
 MonoHermiteCurve MonoBezierCurve MonoHelixCurve MonoEllipseCurve MonoSinCurve

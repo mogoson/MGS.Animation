@@ -64,3 +64,9 @@ crashlytics-build.properties
 /UnityProject/obj
 /UserSettings
 /*.vsconfig
+/Assets/Graph Demo
+/Assets/Animation Demo
+/Assets/Curve Demo
+/Assets/Curve Demo.meta
+/Assets/Graph Demo.meta
+/Assets/Animation Demo.meta

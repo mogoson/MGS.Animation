@@ -6,16 +6,9 @@
 
 - Unity plugin for make animation in scene.
 
-## Platform
-
-- Windows
-
 ## Environment
 
-- .Net Framework 3.5 or above.
-- Unity 5.0 or above.
-
-## Technology
+- Unity 2021.3 or above.
 
 ## Usage
 
@@ -43,4 +36,4 @@ ImageAnimation RawImageAnimation SpriteAnimation UVFrameAnimation UVAnimation
 
 ------
 
-Copyright © 2022 Mogoson.	mogoson@outlook.com
+Copyright © 2025 Mogoson.	mogoson@outlook.com

@@ -1,25 +1,18 @@
 {
   "dependencies": {
-    "com.mgs.common": {
-      "version": "https://github.com/mogoson/MGS.Common.git?path=/Assets",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "30eed4f4595351574ec554b23e540e8f6dc6fcc5"
-    },
     "com.mgs.curve": {
       "version": "https://github.com/mogoson/MGS.Curve.git?path=/Assets",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "fe0b620b87e0cce687cd9d82aa78d8c4e5d5ab7f"
+      "hash": "8cfc68e87de4c08ad6fd68a33d22417498280f2a"
     },
     "com.mgs.graph": {
       "version": "https://github.com/mogoson/MGS.Graph.git?path=/Assets",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "351fd210b71ab474cf5916e65227ca8ae075ac9b"
+      "hash": "7d5cae38928b3d1d595b3e935d024344b11282a3"
     },
     "com.unity.collab-proxy": {
       "version": "2.3.1",
@@ -55,13 +48,6 @@
     },
     "com.unity.ide.vscode": {
       "version": "1.2.5",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.cn"
-    },
-    "com.unity.nuget.newtonsoft-json": {
-      "version": "3.2.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {},

@@ -6,10 +6,6 @@
 
 - Unity plugin for make animation in scene.
 
-## Environment
-
-- Unity 2021.3 or above.
-
 ## Usage
 
 ### Curve Animation

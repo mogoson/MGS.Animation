@@ -6,6 +6,11 @@
 
 - Unity plugin for make animation in scene.
 
+## Ability
+
+- Curve Animation.
+- 2D Animation.
+
 ## Usage
 
 ### Curve Animation

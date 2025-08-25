@@ -5,14 +5,14 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "8cfc68e87de4c08ad6fd68a33d22417498280f2a"
+      "hash": "424bad916de4a8329e7366b810df5e01d9f4e38a"
     },
     "com.mgs.graph": {
       "version": "https://github.com/mogoson/MGS.Graph.git?path=/Assets",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "7d5cae38928b3d1d595b3e935d024344b11282a3"
+      "hash": "ce0ec9f935619c1a529822e4c9bac73d5c8dd726"
     },
     "com.unity.collab-proxy": {
       "version": "2.3.1",

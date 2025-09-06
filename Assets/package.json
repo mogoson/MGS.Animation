@@ -9,11 +9,11 @@
         "com.mgs.graph": "https://github.com/mogoson/MGS.Graph.git?path=/Assets"
     },
     "keywords": [
-        "Animation",
-        "Curve",
+        "animation",
+        "curve",
         "2D",
         "3D",
-        "UV",
+        "uv"
     ],
     "author": {
         "name": "Mogoson",

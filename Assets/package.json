@@ -1,7 +1,30 @@
 {
-    "description": "Unity plugin for make animation in scene.",
-    "displayName": "Animation",
     "name": "com.mgs.animation",
+    "version": "1.0.0",
+    "displayName": "Animation",
+    "description": "Unity plugin for make animation in scene.",
     "unity": "2021.3",
-    "version": "1.0.0"
+    "dependencies": {
+        "com.mgs.curve": "https://github.com/mogoson/MGS.Curve.git?path=/Assets",
+        "com.mgs.graph": "https://github.com/mogoson/MGS.Graph.git?path=/Assets"
+    },
+    "keywords": [
+        "Animation",
+        "Curve",
+        "2D",
+        "3D",
+        "UV",
+    ],
+    "author": {
+        "name": "Mogoson",
+        "email": "mogoson@outlook.com",
+        "url": "https://github.com/mogoson"
+    },
+    "samples": [
+        {
+            "displayName": "Sample",
+            "description": "Sample for animations",
+            "path": "Samples~/Sample"
+        }
+    ]
 }

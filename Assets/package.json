@@ -5,8 +5,7 @@
     "description": "Unity plugin for make animation in scene.",
     "unity": "2021.3",
     "dependencies": {
-        "com.mgs.curve": "https://github.com/mogoson/MGS.Curve.git?path=/Assets",
-        "com.mgs.graph": "https://github.com/mogoson/MGS.Graph.git?path=/Assets"
+        "com.mgs.curve": "https://github.com/mogoson/MGS.Curve.git?path=/Assets"
     },
     "keywords": [
         "animation",

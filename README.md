@@ -11,6 +11,15 @@
 - Curve Animation.
 - 2D Animation.
 
+## Install
+
+- Unity --> Window --> Package Manager --> "+" --> Add package from git URL...
+
+  ```text
+  https://github.com/mogoson/MGS.Curve.git?path=/Assets
+  https://github.com/mogoson/MGS.Animation.git?path=/Assets
+  ```
+
 ## Usage
 
 ### Curve Animation

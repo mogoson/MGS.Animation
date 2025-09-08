@@ -5,7 +5,9 @@
         "MGS.Animation",
         "MGS.Curve"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

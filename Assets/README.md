@@ -44,6 +44,10 @@ MonoCurveAnimation
 ImageAnimation RawImageAnimation SpriteAnimation UVFrameAnimation UVAnimation
 ```
 
+## Samples
+
+- Unity --> Window --> Package Manager --> Packages-Mogoson --> Animation  --> Samples.
+
 ------
 
 Copyright © 2025 Mogoson.	mogoson@outlook.com

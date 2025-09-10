@@ -17,7 +17,7 @@ namespace MGS.Animations
     /// <summary>
     /// Animation base on UV offset.
     /// </summary>
-    [AddComponentMenu("MGS/Animations/UVAnimation")]
+    [AddComponentMenu("MGS/Animations/UV Animation")]
     [RequireComponent(typeof(Renderer))]
     public class UVAnimation : MonoAnimation
     {

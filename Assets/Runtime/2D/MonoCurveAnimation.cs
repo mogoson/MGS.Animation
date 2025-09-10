@@ -18,7 +18,7 @@ namespace MGS.Animations
     /// <summary>
     /// Animation base on mono curve.
     /// </summary>
-    [AddComponentMenu("MGS/Animations/MonoCurveAnimation")]
+    [AddComponentMenu("MGS/Animations/Mono Curve Animation")]
     public class MonoCurveAnimation : MonoAnimation
     {
         /// <summary>

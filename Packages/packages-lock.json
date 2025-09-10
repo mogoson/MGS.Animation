@@ -4,8 +4,10 @@
       "version": "https://github.com/mogoson/MGS.Curve.git?path=/Assets",
       "depth": 0,
       "source": "git",
-      "dependencies": {},
-      "hash": "e4b92a4bb174deb2b5172638fe49afee28259fe2"
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      },
+      "hash": "bf5ed264aaf35782565a3098f69dad72a72e5c9e"
     },
     "com.unity.collab-proxy": {
       "version": "2.3.1",
@@ -42,6 +44,13 @@
     "com.unity.ide.vscode": {
       "version": "1.2.5",
       "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.cn"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.2.1",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.cn"

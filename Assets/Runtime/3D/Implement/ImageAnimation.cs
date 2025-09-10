@@ -18,7 +18,7 @@ namespace MGS.Animations
     /// <summary>
     /// Sequence frames animation base on Image.
     /// </summary>
-    [AddComponentMenu("MGS/Animations/ImageAnimation")]
+    [AddComponentMenu("MGS/Animations/Image Animation")]
     [RequireComponent(typeof(Image))]
     public class ImageAnimation : SpriteFrameAnimation
     {

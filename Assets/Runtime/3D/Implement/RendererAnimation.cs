@@ -17,7 +17,7 @@ namespace MGS.Animations
     /// <summary>
     /// Sequence frames animation base on Renderer.
     /// </summary>
-    [AddComponentMenu("MGS/Animations/RendererAnimation")]
+    [AddComponentMenu("MGS/Animations/Renderer Animation")]
     [RequireComponent(typeof(Renderer))]
     public class RendererAnimation : TextureFrameAnimation
     {

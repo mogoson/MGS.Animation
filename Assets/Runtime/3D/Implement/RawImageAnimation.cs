@@ -18,7 +18,7 @@ namespace MGS.Animations
     /// <summary>
     /// Sequence frames animation base on RawImage.
     /// </summary>
-    [AddComponentMenu("MGS/Animations/RawImageAnimation")]
+    [AddComponentMenu("MGS/Animations/RawImage Animation")]
     [RequireComponent(typeof(RawImage))]
     public class RawImageAnimation : TextureFrameAnimation
     {

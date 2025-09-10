@@ -18,7 +18,7 @@ namespace MGS.Animations
     /// <summary>
     /// Sequence frames animation base on SpriteRenderer.
     /// </summary>
-    [AddComponentMenu("MGS/Animations/SpriteAnimation")]
+    [AddComponentMenu("MGS/Animations/Sprite Animation")]
     [RequireComponent(typeof(SpriteRenderer))]
     public class SpriteAnimation : SpriteFrameAnimation
     {
